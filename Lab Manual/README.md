@@ -1,1 +1,0 @@
-This is a running compilation of Ecology Labs for Baylor University. 

@@ -1,0 +1,36 @@
+# Physiological Ecology
+
+## Background information
+
+In the presence of light, photosynthetic organisms can utilize light and carbon dioxide (CO~2~) to make sugars - the process of photosynthesis. The sugars made are used by these organisms (and organisms that eat them) as a source of energy. A by-product of the photosynthetic process is the liberation of oxygen (O~2~).
+
+At the same time, these organisms are consuming oxygen via respiration. Although respiration and photosynthesis both take place in the light, in the dark only respiration occurs (since photosynthesis is a light-dependent process). Though it is impossible to directly measure gross photosynthesis (or the total amount of O~2~ produced, [@wohlfahrt_many_2015], we *can* measure respiration (R) as the **rate of O~2~ decrease** in the dark, and the **rate of oxygen increase** in the presence of light as a measure of net photosynthesis (P~net~). Combining these direct measurements, we can estimate gross photosynthesis (P~gross~).
+
+\begin{equation}
+\color{blue} P_{net} \color{black}= \color{red}P_{gross} \color{black}- \color{blue}R
+(\#eq:photosynthesis)
+\end{equation}
+
+Using equation \@ref(eq:photosynthesis) can directly measure the terms in \color{blue} blue \color{black}, and may use them to calculate \color{red} P~gross~ \color{black}.
+
+Organisms capable of photosynthesis span an incredible range of phylogeny, from *unicellular algae* to *vascular plants* (Fig. \@ref(fig:organisms)). While every algae cell is photosynthetic, vascular aquatic plants (i.e. aquatic macrophytes) have large amounts of specialized tissue devoted to the transportation of resources and structural support. As Chapter \@ref(population) mentioned, every adaptation is a trade-off.
+
+```{r organisms, fig.ncol = 1, echo = FALSE, fig.cap = "Aquatic algae (left pane, both underwater and floating mats) and aquatic macrophytes (right pane) are photosynthetic organisms that evolved in aquatic ecosystems.", fig.show='hold', out.width="50%"}
+knitr::include_graphics(c("chapter_materials/physiological_ecology/aquatic_photosynthesis.jpg",
+                          "chapter_materials/physiological_ecology/ludwigia.jpg"), dpi = NA)
+```
+
+## Objectives
+
+We will test hypotheses about photosynthesis using two aquatic organisms - a community of algae and a common aquatic macrophyte.
+
+1. Which aquatic organism, algae or aquatic macrophyte, has the highest rate of *biomass specific* gross photosynthesis (P~gross~)?
+
+2. Which organism has the highest rate of *biomass-specific* respiration?
+
+3. Assuming these organisms photosynthesize at P~gross~ for 10 hours a day and respire for 24 hours a day, which organism has the highest rate of net primary production (P~net~) per day?
+
+## Materials & methods
+
+330 mL BOD bottles | Light source (> 400 uE m-2S-1)
+Dissolved O2 meter | Aluminum foil
