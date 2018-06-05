@@ -37,7 +37,7 @@ To evaluate your hypotheses, you will...
 1. Statistically address differences in survivorship between groups using a **t-test**, and display that information using a **bar-graph**
 2. Unpack question 1 by **computing** and **displaying survivorship** (no statistical test needed for this part).
 
-## Data Analysis
+## Data analysis
 
 1. Calculate the age at death of every individuals in both data sets
 2. If necessary, use Excel to sort (Google it) the data based on your column of interest (i.e. gender).

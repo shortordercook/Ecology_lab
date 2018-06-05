@@ -114,6 +114,21 @@
 
 \usepackage{booktabs}
 \usepackage{longtable}
+\usepackage{multicol}
+\usepackage{textgreek}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+
 \usepackage[bf,singlelinecheck=off]{caption}
 
 \usepackage{framed,color}
@@ -387,7 +402,7 @@ To evaluate your hypotheses, you will\ldots{}
   survivorship} (no statistical test needed for this part).
 \end{enumerate}
 
-\section{Data Analysis}\label{data-analysis}
+\section{Data analysis}\label{data-analysis}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -530,6 +545,8 @@ also utilize the general grading rubric in the Syllabus!
 
 \section{Background information}\label{background-information-1}
 
+\newcommand{\textunderscript}[1]{$_{\text{#1}}$}
+
 In the presence of light, photosynthetic organisms can utilize light and
 carbon dioxide (CO\textsubscript{2}) to make sugars - the process of
 photosynthesis. The sugars made are used by these organisms (and
@@ -571,8 +588,9 @@ adaptation is a trade-off.
 
 \section{Objectives}\label{objectives-1}
 
-We will test hypotheses about photosynthesis using two aquatic organisms
-- a community of algae and a common aquatic macrophyte.
+We will form hypotheses to test questions about photosynthesis in 2
+aquatic organisms - a community of algae and a common aquatic
+macrophyte.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -591,8 +609,265 @@ We will test hypotheses about photosynthesis using two aquatic organisms
 
 \section{Materials \& methods}\label{materials-methods}
 
-330 mL BOD bottles \textbar{} Light source (\textgreater{} 400 uE
-m-2S-1) Dissolved O2 meter \textbar{} Aluminum foil
+\begin{multicols}{2}
+\begin{itemize}{}
+  \item 10 L photosynthesis solution\footnote{10 L DI Water, 917 mg CaCl\textunderscript{2}, 960 mg MgSO\textunderscript{4}, 584 mg NaHCO\textunderscript{3}, 154 mg KHCO\textunderscript{3}}\\(40\% air saturation\footnote{Aerate with N\textunderscript{2} gas for 10 minutes})
+  \item Samples of algae and macrophytes
+  \item 330 mL BOD bottles
+  \item Dissolved O\textsubscript{2} meter (D.O. Meter)
+  \item Light source (> 400 \textmu E m\textsuperscript{-2}s\textsuperscript{-1})
+  \item Aluminum foil
+  \item Stir bars / stir plate
+  \item Sieves (fine mesh)
+  \item Forceps
+  \item Drying boats (aluminum)
+  \item Analytical balance \\(capable of 0.001 g)
+  \item Drying oven
+\end{itemize}
+\end{multicols}
+
+Oxygen production varies with the intensity of light, but reaches
+saturation as light intensity increases (Fig.
+\ref{fig:light-response-fig}). Since different organisms display
+different light-response curves, we need to saturate the photosystems
+with high light levels to prevent a potential confounding variable in
+our experiment.
+
+\begin{figure}
+\centering
+\includegraphics{chapter_materials/physiological_ecology/light_response_curve.pdf}
+\caption{\label{fig:light-response-fig}A photosynthesis light-response curve
+illustrates that as light intensity increases, dissolved oxygen (D.O.)
+production eventually becomes saturated. In the dark, photosynthesis
+shuts off, and respiration causes the rate of D.O. production to fall
+below 0 (red circle on the y-axis).}
+\end{figure}
+
+\subsection{Methods}\label{methods}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Each group will be responsible for \textbf{one} of the two species.
+  Fill 9 BOD bottles with photosynthesis solution (fill to brim - the
+  idea with BOD bottles is for the glass stopper to push any excess
+  water out of the seal the stopper creates).
+\item
+  Carefully transfer a representative sample of your organism into 8 of
+  the BOD bottles. Add a small stir bar to each bottle, and place the
+  glass stopper and plastic cap on the bottle to seal. Use the D.O.
+  probe to measure oxygen concentration in the remaining bottle (your
+  control bottle).
+\item
+  You will have 4 replicates for the dark treatment, and 4 for the
+  light. Wrap the dark treatment bottles in aluminum foil, and place the
+  light treatment bottles under the light source.
+  \underline{Record the intial times for these samples}.
+\item
+  While you wait (at least 1.5 hours)\ldots{}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Observe samples of these organisms under a dissecting/compound
+    microscope and note differences in morphology. Note differences in
+    the proportion of support tissues (i.e.~stems) vs.~photosynthetic
+    tissues for each organism.
+  \end{itemize}
+\item
+  After at least 1.5 hours, measure D.O. concentrations in the light
+  bottles. Make sure to record the end time each time you take a D.O.
+  measurement.
+\item
+  After 2 hours, measure the D.O. concentrations in the dark bottles.
+  Make sure to record the end time each time you take a D.O.
+  measurement.
+\item
+  Carefully empty the BOD bottle into a fine-mesh sieve to separate the
+  sample from the photosynthesis solution. Collect/scrape the sample
+  into a labeled aluminum drying tin, and place tins into a drying oven
+  for 24 hrs at 105\textdegree{}C.
+\end{enumerate}
+
+\section{Data analysis}\label{data-analysis-1}
+
+You can directly determine P\textsubscript{net} (from the light
+treatment bottles) and R (from the dark treatment bottles) by
+calculating the change (\textDelta) in dissolved oxygen (DO)
+concentrations:
+
+\begin{equation}
+\Delta{}DO = DO_{final} - DO_{initial}
+\label{eq:delta}
+\end{equation}
+
+You also recorded the elapsed incubation time(\textDelta{}h), the volume
+of the BOD bottles (0.330 L), and the mass of the sample (in dry weight,
+g). Using equation \eqref{eq:photosynthesis}, after getting \textDelta{}DO
+normalized to volume (L) and dry weight (g), you can then calculate
+P\textsubscript{gross}, or the total oxygen produced by photosynthesis
+per unit biomass.
+
+For the 1\textsuperscript{st}, and 2\textsuperscript{nd} questions, a
+two-sample t-test comparing the rates of each process
+(P\textsubscript{gross} and R) will tell you if there are significant
+differences between each organism. Bar-graphs (with error-bars display
+the stardard error of the mean) are a good way of displaying this data
+visually.
+
+The 3\textsuperscript{rd} question requires you to construct a simple
+\textbf{model}. A model is a way to represent a natural process using
+mathematics. Some models are simple (like the one you will construct),
+and some are incredibly complex. What assumptions, which may be overly
+simplistic, can we make to tackle question 3? If we assume that these
+organisms respire for 24 hours a day, and only photosynthesize when the
+sunlight is out (10 hours a day), we can use these values as a
+foundation for our model (Fig. \ref{fig:light-response-fig}).
+
+\begin{figure}
+\centering
+\includegraphics{chapter_materials/physiological_ecology/photo_model.pdf}
+\caption{\label{fig:photo-model}A photosynthesis light-response curve
+illustrates that as light intensity increases, dissolved oxygen (D.O.)
+production eventually becomes saturated. In the dark, photosynthesis
+shuts off, and respiration causes the rate of D.O. production to fall
+below 0 (red circle on the y-axis).}
+\end{figure}
+
+There are no associated statistical tests for question 3, since you
+should calculate daily values using mean P\textsubscript{gross} and mean
+R (no replicate values for this question). You can present the results
+of your model in the text of your results section.
+
+\pagebreak
+
+\section{Lab report specifics}\label{lab-report-specifics-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Introduction
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Importance of photosynthesis
+  \item
+    Morphological adaptations of aquatic photosynthesizers
+  \item
+    Objectives
+  \item
+    Hypotheses
+  \end{itemize}
+\item
+  Methods
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Oxygen change method (light/dark treatments)
+  \item
+    Experimental design
+  \item
+    Calculations / statistics / model explanation
+  \end{itemize}
+\item
+  Results
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Graphs/statistics for questions 1 and 2
+  \item
+    Results for question 3
+  \end{itemize}
+\item
+  Discussion
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Hypotheses rejected/supported
+  \item
+    Provide a coherent explanation for the patterns you see in the
+    photosynthesis and respiration data (use your observations of
+    morphology)
+  \end{itemize}
+\end{enumerate}
+
+\pagebreak
+
+\begin{landscape}\begin{table}[H]
+\centering\begingroup\fontsize{8}{10}\selectfont
+\rowcolors{2}{gray!6}{white}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{>{\raggedright\arraybackslash}p{1cm}ll>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}}
+\hiderowcolors
+\toprule
+BOD No. & Organism & Treatment & Initial time & Initial D.O. (mg/L) & Final time & Final D.O. (mg/L) & Dish ID & Weight (g)\\
+\midrule
+\showrowcolors
+ & Algae & Light &  &  &  &  &  & \\
+ & Algae & Light &  &  &  &  &  & \\
+ & Algae & Light &  &  &  &  &  & \\
+ & Algae & Light &  &  &  &  &  & \\
+ & Algae & Dark &  &  &  &  &  & \\
+ & Algae & Dark &  &  &  &  &  & \\
+ & Algae & Dark &  &  &  &  &  & \\
+ & Algae & Dark &  &  &  &  &  & \\
+ & Algae & Control &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  & \\
+ & Macrophyte & Control &  &  &  &  &  & \\
+\bottomrule
+\end{tabular}}
+\rowcolors{2}{white}{white}\endgroup{}
+\end{table}
+\end{landscape}
+
+\begin{landscape}\begin{table}[H]
+\centering\begingroup\fontsize{8}{10}\selectfont
+\rowcolors{2}{gray!6}{white}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{>{\raggedright\arraybackslash}p{1cm}ll>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}}
+\hiderowcolors
+\toprule
+BOD No. & Organism & Treatment & Elapsed time (h) & Delta D.O. (mg/L) & Delta D.O. (mg) & Net Rate O2 (mg/(g*h)) & Rate (mg/(g*h)) & Daily\\
+\midrule
+\showrowcolors
+ & Algae & Light &  &  &  &  &  & \\
+ & Algae & Light &  &  &  &  &  & \\
+ & Algae & Light &  &  &  &  &  & \\
+ & Algae & Light &  &  &  &  &  & \\
+ & Algae & Dark &  &  &  &  &  & \\
+ & Algae & Dark &  &  &  &  &  & \\
+ & Algae & Dark &  &  &  &  &  & \\
+ & Algae & Dark &  &  &  &  &  & \\
+ & Algae & Control &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  & \\
+ & Macrophyte & Control &  &  &  &  &  & \\
+\bottomrule
+\end{tabular}}
+\rowcolors{2}{white}{white}\endgroup{}
+\end{table}
+\end{landscape}
 
 \bibliography{book.bib,packages.bib}
 
