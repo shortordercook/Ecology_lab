@@ -34,6 +34,9 @@ You will form hypotheses to test questions about photosynthesis in 2 aquatic org
 ## Materials & methods
 
 You will be using a common **oxygen-change method** to determine rates of photosynthesis and respiration. Biological oxygen demand (BOD) bottles use a stopper that prevents gas exchange, which provides a means of isolating processes happening inside the bottle from the outside environment. 
+
+\pagebreak
+
 ### Materials
 
 \begin{multicols}{2}
