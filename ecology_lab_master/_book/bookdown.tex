@@ -255,9 +255,9 @@ my book. My R session information is shown below:
 \end{Shaded}
 
 \begin{verbatim}
-## R version 3.4.4 (2018-03-15)
+## R version 3.4.3 (2017-11-30)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
-## Running under: Windows 10 x64 (build 17134)
+## Running under: Windows 7 x64 (build 7601) Service Pack 1
 ## 
 ## Matrix products: default
 ## 
@@ -273,12 +273,12 @@ my book. My R session information is shown below:
 ## [6] methods   base     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] compiler_3.4.4  backports_1.1.2 bookdown_0.7.11
-##  [4] magrittr_1.5    rprojroot_1.3-2 tools_3.4.4    
-##  [7] htmltools_0.3.6 rstudioapi_0.7  yaml_2.1.19    
-## [10] Rcpp_0.12.16    stringi_1.1.7   rmarkdown_1.9  
-## [13] knitr_1.20.3    xfun_0.1        stringr_1.3.1  
-## [16] digest_0.6.15   evaluate_0.10.1
+##  [1] compiler_3.4.3   backports_1.1.2  bookdown_0.7.12 
+##  [4] magrittr_1.5     rprojroot_1.3-2  tools_3.4.3     
+##  [7] htmltools_0.3.6  rstudioapi_0.7   yaml_2.1.19     
+## [10] Rcpp_0.12.17     stringi_1.1.7    rmarkdown_1.10.1
+## [13] knitr_1.20       xfun_0.1         stringr_1.3.1   
+## [16] digest_0.6.15    evaluate_0.10.1
 \end{verbatim}
 
 Package names are in bold text (e.g., \textbf{rmarkdown}), and inline
@@ -808,6 +808,41 @@ of your model in the text of your results section.
 
 \pagebreak
 
+\begin{verbatim}
+## Warning: package 'tibble' was built under R version
+## 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'tidyr' was built under R version
+## 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'purrr' was built under R version
+## 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version
+## 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'stringr' was built under R version
+## 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'forcats' was built under R version
+## 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'kableExtra' was built under R version
+## 3.4.4
+\end{verbatim}
+
 \begin{landscape}\begin{table}[H]
 \centering\begingroup\fontsize{8}{10}\selectfont
 \rowcolors{2}{gray!6}{white}
@@ -877,6 +912,150 @@ BOD No. & Organism & Treatment & Elapsed time (h) & Delta DO (mg/L) & Delta DO (
 \rowcolors{2}{white}{white}\endgroup{}
 \end{table}
 \end{landscape}
+
+\chapter{Biodiversity \& ecosystem
+management}\label{biodiversity-ecosystem-management}
+
+\section{Background information}\label{background-information-2}
+
+Community ecology depends directly on our ability to quantify the
+various species that compose the community or a component of the
+community (such as the plants present). Quantification of community
+composition is essential for understanding changes through time or
+impacts of management actions. This week we will quantify the community
+composition of wetland plants at the Lake Waco Wetlands (LWWs).
+
+The LWWs has historically been strongly dominated by \emph{Typha}
+(cattail). Although native to Texas, cattails are very agressive and
+frequently dominant wetlands to the exclusion of other species. To
+counter this dominance tendency, managers have tried to increase the
+diversity of the plant community in some areas of the LWWs by planting
+other species {[}especially \emph{Schenoplectus} (bulrush) and
+\emph{Pontederia} (pickerelweed){]}, or by hand-harvesting cattail out
+of some areas in the hopes that other species will colonize the open
+areas (Fig. \ref{fig:restoration-fig}).
+
+\begin{figure}
+\centering
+\includegraphics{chapter_materials/restoration_ecology/lww_management.jpg}
+\caption{\label{fig:restoration-fig}Map showing cells 1 and 2 of the Lake
+Waco Wetlands (LWWs). The boardwalk in cell 1 has had frequent
+management for several years (dotted red circle), while cell 2 has had
+no mmanagement (solid red circle).}
+\end{figure}
+
+\section{Objectives}\label{objectives-2}
+
+You will collect vegetation data from two zones in the LWWs which have
+different management histories. One area in Cell 1 adjacent to the
+floating boardwalk is a high visitation area where frequent management
+has taken place. In contrast, Cell 2 has had virtually no management.
+Five transects will be made originating from the boardwalk (cell 1) and
+from the levee (cell 2). Data about community composition will be
+recorded from 5 quadrats (area of 1 m\textsuperscript{2}) along each
+transect.
+
+\pagebreak
+Using the data generated and appropriate statistical analyses
+(contingency table or t-test), address the following questions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Is management activity influencing the \textbf{abundance} of cattail?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    A 2x2 contingency table is appropriate for this question.
+  \end{itemize}
+\item
+  Is management activity influencing the \textbf{dominance} of cattail?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    A 2x2 contingency table is appropriate for this question.
+  \end{itemize}
+\item
+  Is management activity influencing \textbf{species richness}?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Could be addressed using a 2x2 contingency table or a t-test.
+  \end{itemize}
+\item
+  Does cattail dominance influence \textbf{species richness}?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Could be addressed using a 2x2 contingency table or a t-test. For
+    this question, the grouping variable is \emph{cattail dominance}, so
+    you should use data from both cells!
+  \end{itemize}
+\end{enumerate}
+
+\pagebreak
+
+\section{Lab report specifics}\label{lab-report-specifics-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Introduction
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Why is biodiversity important?
+  \item
+    Why sample vegetation?
+  \item
+    Objectives
+  \item
+    Hypotheses
+  \end{itemize}
+\item
+  Methods
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Experimental design
+  \item
+    Review how data was collected
+  \item
+    Calculations / statistics
+  \end{itemize}
+\item
+  Results
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Question 1 (text \textbf{AND} graph/table)
+  \item
+    Question 2 (text \textbf{AND} graph/table)
+  \item
+    Question 3 (text \textbf{AND} graph/table)
+  \item
+    Question 4 (text \textbf{AND} graph/table)
+  \end{itemize}
+\item
+  Discussion
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Hypotheses rejected/supported
+  \item
+    Provide a coherent explanation/interpretation of your results
+  \end{itemize}
+\end{enumerate}
 
 \bibliography{book.bib,packages.bib}
 
