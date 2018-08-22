@@ -1,0 +1,41 @@
+---
+title: "A gentle introduction to R and R Markdown"
+author: "Stephen Cook^[Baylor University, Department of Biology]"
+header-includes:
+- \usepackage{titling}
+- \pretitle{\begin{flushleft}\LARGE}
+- \posttitle{\par\end{flushleft}}
+- \preauthor{\begin{flushleft}}
+- \postauthor{\par\end{flushleft}}
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+fontfamily: mathpazo
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+
+R is a programming language that is used by scientists in a wide variety of fields. It is open source (free to use and driven by community development) and able to be installed on all major operating systems. RStudio is a desktop program that provides a graphical wrapped to the R language. The technical term for this type of program is *integrated development environment* (IDE), and it makes life much easier when using R.
+
+This document will get you up and running in R and RStudio on your personal machine. You will need installation permission on your computer (if installing on your home computer you will almost certainly have this). 
+
+\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+
+# Installation
+
+## R
+
+We will use R primarily for calculations, statistical analyses, and plotting data. R is generally more powerful than Excel or other 'point-and-click' programs, and once you generate code to perform a certain calculation or generate a graph, you may quicly reuse that code throughout the semester.
+
+There are numerous online resources (including YouTube videos) that outline how to install R. Below are general instructions for a normal installation in Windows 10.
+
+1. Navigate to the [R project homepage](https://www.r-project.org).
+
+## R Markdown
+
+## Obligatory 'hello world' example
