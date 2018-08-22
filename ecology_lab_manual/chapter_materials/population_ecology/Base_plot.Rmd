@@ -1,0 +1,44 @@
+---
+title: "Survivorship Plot"
+author: "SCC"
+date: "May 30, 2018"
+output: html_document
+---
+
+```{r}
+require(tidyverse)
+require(cowplot)
+```
+
+
+```{r}
+plot1 <- ggplot(mtcars, aes(wt, mpg)) +
+  geom_blank() +
+  theme_classic(base_size = 12) +
+  scale_y_log10(limits = c(1,1000), breaks = c(1,10,100,1000),
+                expand = c(0,0)) +
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank()) +
+  ylab("Number of survivors") +
+  xlab("Age (in relative units)") +
+  annotation_logticks(sides = "l")
+
+plot1
+```
+
+```{r}
+ggsave(plot1, device = "pdf", filename = "base_plot.pdf", height = 3, width = 5)
+```
+
+
+- Water backup (home)
+- transportation expense (car)
+- roadside coverage (car)
+- actual cash value vs bluebook value (replacement costs)
+- personal property depreciated like roof? replacement cost or assessed value?
+- ask about safe driver discounts (conditions)
+- ask about all discounts and if they expire after 1 year
+- responsible payment discount??
+- need roof depreciation schedule
+

@@ -1,0 +1,156 @@
+# Physiological Ecology
+
+
+## Background information
+\newcommand{\textunderscript}[1]{$_{\text{#1}}$}
+In the presence of light, photosynthetic organisms can utilize light and carbon dioxide (CO~2~) to make sugars - the process of photosynthesis. The sugars made are used by these organisms (and organisms that eat them) as a source of energy. A by-product of the photosynthetic process is the liberation of oxygen (O~2~).
+
+At the same time, these organisms are consuming oxygen via respiration. Although respiration and photosynthesis both take place in the light, in the dark only respiration occurs (since photosynthesis is a light-dependent process). Though it is impossible to directly measure gross photosynthesis (or the total amount of O~2~ produced [@wohlfahrt_many_2015], we *can* measure respiration (R) as the **rate of O~2~ decrease** in the dark, and the **rate of oxygen increase** in the presence of light as a measure of net photosynthesis (P~net~). Combining these direct measurements, we can estimate gross photosynthesis (P~gross~).
+
+\begin{equation}
+\color{blue} P_{net} \color{black}= \color{red}P_{gross} \color{black}- \color{blue}R
+(\#eq:photosynthesis)
+\end{equation}
+
+Using equation \@ref(eq:photosynthesis), we can use the direclty measured terms in \color{blue} blue \color{black}, and may use them to calculate \color{red} P~gross~ \color{black}.
+
+Organisms capable of photosynthesis span an incredible range of phylogeny, from *unicellular algae* to *vascular plants* (Fig. \@ref(fig:organisms)). While every algae cell is photosynthetic, *aquatic macrophytes* (i.e. vascular plants adapted to live in aquatic ecosystems) have large amounts of specialized tissue devoted to the transportation of resources and structural support. These two organisms are in competition for very similar resources (such as sunlight and dissolved nutrients) - how do their morphological adaptations convey a competitive advantage?
+
+```{r organisms, fig.ncol = 1, echo = FALSE, fig.cap = "Aquatic algae (left pane, in both meta- and periphyton communities) and aquatic macrophytes (right pane) are photosynthetic organisms that evolved in aquatic ecosystems.", fig.show='hold', out.width="50%"}
+knitr::include_graphics(c("chapter_materials/physiological_ecology/aquatic_photosynthesis.jpg",
+                          "chapter_materials/physiological_ecology/ludwigia.jpg"), dpi = NA)
+```
+
+## Objectives
+
+You will form hypotheses to test questions about photosynthesis in 2 aquatic organisms - algae and a common aquatic macrophyte.
+
+1. Which organism has the highest rate of *biomass specific* gross photosynthesis?
+
+2. Which organism has the highest rate of *biomass-specific* respiration?
+
+3. Which organism has the highest rate of net primary production (NPP) per day?
+
+## Materials & methods
+
+You will be using a common **oxygen-change method** to determine rates of photosynthesis and respiration. Biological oxygen demand (BOD) bottles use a stopper that prevents gas exchange, which provides a means of isolating processes happening inside the bottle from the outside environment. 
+
+\pagebreak
+
+### Materials
+
+\begin{multicols}{2}
+\begin{itemize}{}
+  \item 10 L photosynthesis solution\footnote{10 L DI Water, 917 mg CaCl\textunderscript{2}, 960 mg MgSO\textunderscript{4}, 584 mg NaHCO\textunderscript{3}, 154 mg KHCO\textunderscript{3}}\\(40\% air saturation\footnote{Aerate with N\textunderscript{2} gas for 10 minutes})
+  \item Samples of algae and macrophytes
+  \item 330 mL BOD bottles
+  \item Dissolved O\textsubscript{2} meter (DO Meter)
+  \item Light source (> 400 \textmu E m\textsuperscript{-2}s\textsuperscript{-1})
+  \item Aluminum foil
+  \item Stir bars / stir plate
+  \item Sieves (fine mesh)
+  \item Forceps
+  \item Drying boats (aluminum)
+  \item Analytical balance \\(capable of 0.001 g)
+  \item Drying oven
+\end{itemize}
+\end{multicols}
+
+Oxygen production varies with the intensity of light, but reaches saturation as light intensity increases (Fig. \@ref(fig:light-response-fig)). Since different organisms display different light-response curves, we need to saturate their photosystems with high light levels to account for a potential confounding variable in our experiment.
+
+```{r light-response-fig, echo = FALSE, fig.cap="A photosynthesis light-response curve illustrates that as light intensity increases, dissolved oxygen (DO) production eventually becomes saturated. In the dark, photosynthesis shuts off, and respiration causes the rate of DO production to fall below 0 (red circle on the y-axis)."}
+knitr::include_graphics("chapter_materials/physiological_ecology/light_response_curve.pdf")
+```
+
+### Methods
+
+1. Each group will be responsible for **one** of the two species. Fill 9 BOD bottles with photosynthesis solution (fill to brim - the idea with BOD bottles is for the glass stopper to push any excess water out of the seal the stopper creates). 
+2. Carefully transfer a representative sample of your organism into 8 of the BOD bottles. Add a small stir bar to each bottle, and place the glass stopper and plastic cap on the bottle to seal. Use the DO probe to measure oxygen concentration in the remaining bottle (your control bottle).
+3. You will have 4 replicates for the dark treatment, and 4 for the light. Wrap the dark treatment bottles in aluminum foil, and place the light treatment bottles under the light source. \underline{Record the intial times for these samples}.
+4. While you wait (at least 1.5 hours)...
+    * Observe samples of these organisms under a dissecting/compound microscope and note differences in morphology. Note differences in the proportion of support tissues (i.e. stems) vs. photosynthetic tissues for each organism.
+5. After at least 1.5 hours, measure DO concentrations in the light bottles. Make sure to record the end time each time you take a DO measurement.
+6. After 2 hours, measure the DO concentrations in the dark bottles. Make sure to record the end time each time you take a DO measurement.
+7. Carefully empty the BOD bottle into a fine-mesh sieve to separate the sample from the photosynthesis solution. Collect/scrape the sample into a labeled aluminum drying tin, and place tins into a drying oven for 24 hrs at 105\textdegree{}C.
+
+## Data analysis
+
+You can directly determine P~net~ (from the light treatment bottles) and R (from the dark treatment bottles) by calculating the change (\textDelta) in dissolved oxygen (DO) concentrations:
+
+\begin{equation}
+\Delta{}DO = DO_{final} - DO_{initial}
+(\#eq:delta)
+\end{equation}
+
+You also recorded the elapsed incubation time(\textDelta{}h), the volume of the BOD bottles (0.330 L), and the mass of the sample (in dry weight, g). Using equation \@ref(eq:photosynthesis), after getting \textDelta{}DO normalized to volume (L) and dry weight (g), you can then calculate P~gross~, or the total oxygen produced by photosynthesis per unit biomass.
+
+For the 1\textsuperscript{st}, and 2\textsuperscript{nd} questions, a two-sample t-test comparing the rates of each process (P~gross~ and R) will tell you if there are significant differences between each organism. Bar-graphs (with error-bars display the stardard error of the mean) are a good way of displaying this data visually. 
+
+The 3\textsuperscript{rd} question requires you to construct a simple **model**. A model is a way to represent a natural process using mathematics. Some models are simple (like the one you will construct), and some are incredibly complex. What assumptions can you make to tackle question 3? If we assume that these organisms respire for 24 hours a day, and only photosynthesize when the sun is out (10 hours a day), we can use these values as a foundation for our model (Fig. \@ref(fig:photo-model)). While this makes the maths significantly easier, what are the limitations of this assumption?
+
+```{r photo-model, echo = FALSE, fig.cap="A photosynthesis light-response curve illustrates that as light intensity increases, dissolved oxygen (DO) production eventually becomes saturated. In the dark, photosynthesis shuts off, and respiration causes the rate of DO production to fall below 0 (red circle on the y-axis)."}
+knitr::include_graphics("chapter_materials/physiological_ecology/photo_model.pdf")
+```
+
+There are no associated statistical tests for question 3, since you should calculate daily values using mean P~gross~ and mean R (no replicate values for this question). You can present the results of your model in the text of your results section. 
+
+\pagebreak
+
+## Lab report specifics
+
+1. Introduction
+    * Importance of photosynthesis
+    * Morphological adaptations of aquatic photosynthesizers
+    * Objectives
+    * Hypotheses
+2. Methods
+    * Oxygen change method (light/dark treatments)
+    * Experimental design
+    * Calculations / statistics / model explanation
+3. Results
+    * Graphs/statistics for questions 1 and 2
+    * Results for question 3
+4. Discussion
+    * Hypotheses rejected/supported
+    * Provide a coherent explanation for the patterns you see in the photosynthesis and respiration data (use your observations of morphology)
+
+\pagebreak
+
+```{r, echo =FALSE, message = FALSE, fig.cap="Data table for recording dissolved oxygen measurements."}
+require(tidyverse)
+require(kableExtra)
+data_sheet <- read.csv(file = "chapter_materials/physiological_ecology/data_sheet.csv", 
+                         header = T, 
+                         sep = ",")
+
+data_sheet[is.na(data_sheet)] <- " "
+
+col_headings <- c("BOD No.", "Organism", "Treatment", "Initial time", "Initial DO (mg/L)", "Final time", "Final DO (mg/L)", "Dish ID", "Weight (g)")
+
+names(data_sheet) <- col_headings
+
+knitr::kable(data_sheet,
+             booktabs = T,
+             "latex",
+             linesep = "") %>%
+  kable_styling(latex_options = c("striped", "scale_down"),
+                font_size = 8) %>%
+  landscape() %>%
+  column_spec(c(1,4,5,6,7,8,9), width="1cm")
+```
+
+```{r, echo =FALSE, message = FALSE, fig.cap="Calculations table."}
+
+col_headings <- c("BOD No.", "Organism", "Treatment", "Elapsed time (h)", "Delta DO (mg/L)", "Delta DO (mg)", "Net Rate O2 (mg/(g*h))", "Rate (mg/(g*h))", "Daily")
+
+names(data_sheet) <- col_headings
+
+knitr::kable(data_sheet,
+             booktabs = T,
+             "latex",
+             linesep = "") %>%
+  kable_styling(latex_options = c("striped", "scale_down"),
+                font_size = 8) %>%
+  landscape() %>%
+  column_spec(c(1,4,5,6,7,8,9), width="1cm")
+```

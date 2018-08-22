@@ -1,5 +1,5 @@
 ---
-title: "A gentle introduction to R and R Markdown"
+title: "A gentle introduction to R and RStudio"
 author: "Stephen Cook^[Baylor University, Department of Biology]"
 header-includes:
 - \usepackage{titling}
@@ -7,35 +7,62 @@ header-includes:
 - \posttitle{\par\end{flushleft}}
 - \preauthor{\begin{flushleft}}
 - \postauthor{\par\end{flushleft}}
+- \renewcommand{\abstractname}{} # removes the word "abstract" from template
 output:
-  pdf_document: default
-  html_document:
-    df_print: paged
+  bookdown::pdf_document2: null
 fontfamily: mathpazo
 urlcolor: blue
+abstract: "R is a programming language that is used by scientists in a wide variety of fields. It is open source (free to use and driven by community development) and installable on all major operating systems. RStudio is a separate installation from the R language, and is a desktop program that provides a graphical wrapper to the R language. The technical term for this type of program is *integrated development environment* (IDE), and it makes life much easier when using R.
+
+This document will get you up and running in R and RStudio on your personal machine. You will need installation permission on your computer (if installing on your home computer you will almost certainly have this)."
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
-\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
-
-R is a programming language that is used by scientists in a wide variety of fields. It is open source (free to use and driven by community development) and able to be installed on all major operating systems. RStudio is a desktop program that provides a graphical wrapped to the R language. The technical term for this type of program is *integrated development environment* (IDE), and it makes life much easier when using R.
-
-This document will get you up and running in R and RStudio on your personal machine. You will need installation permission on your computer (if installing on your home computer you will almost certainly have this). 
-
-\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
 
 # Installation
 
+Depending on download and computer speed, you should plan to spend about 15 minutes installing both R and RStudio. The LaTeX download is much larger, and could take longer if you are not on fast internet. 
+
 ## R
 
-We will use R primarily for calculations, statistical analyses, and plotting data. R is generally more powerful than Excel or other 'point-and-click' programs, and once you generate code to perform a certain calculation or generate a graph, you may quicly reuse that code throughout the semester.
+We will use R for calculations, statistical analyses, and plotting data. R is generally more powerful than Excel or other 'point-and-click' programs, and once you generate code to perform a certain calculation or generate a graph, you may quicly reuse that code throughout the semester.
 
-There are numerous online resources (including YouTube videos) that outline how to install R. Below are general instructions for a normal installation in Windows 10.
+There are numerous online resources (including [YouTube videos](https://youtu.be/d-u_7vdag-0)) that outline how to install R. Below are general instructions for a normal installation in Windows 10.
 
 1. Navigate to the [R project homepage](https://www.r-project.org).
+2. Click on the **CRAN** link under the **Download** header on the left side of the page. **CRAN** is an archival network that stores R and the majority of 3^rd^-party packages.
+3. Choose your operating system, and then click through using either the **base** hyperlink or the **install R for the first time** hyperlink (they take you to the same place).
+4. Click **Download R**, which will download an executable into your downloads folder.
+5. Run this executable file, which will take you through the R installation process. Keep all defaults.
 
-## R Markdown
+You now have the R language installed on your computer. If you were to open R, and base R terminal would appear (Fig. \@ref(fig:r-console)) At its simplest, R is run from this command line window. You could dive in and start scripting immediatly, but there are programs that make navigating and writing in the R language a much more pleasant experience (i.e. R Markdown). 
+
+```{r r-console, fig.cap="This is the R console, which you may open after installing R. The text that appears is non-editable, and includes some basic information about the current version of R you have installed (the R team gets creative with their version names). You may start scripting by typing next to the red greater-than sign. While completely functional, the R console lacks many 'bells-and-whistles' that a full IDE provides.", fig.align = "center", out.width="75%"}
+knitr::include_graphics("figures/r_console.png")
+```
+
+
+## RStudio
+
+RStudio is a free, open-source **integrated development environment** (IDE) that significantly improves the R experience. It is a excellent text-editor, provides ways to import data into the R environment without writing code, and exports figures and documents. And again, if you prefer a visual walkthrough, there are many good YouTube videos that cover this installation.
+
+1. Navigate to the [R Studio homepage](https://www.rstudio.com/). 
+2. Click **Download R Studio**
+3. **Download** the free RStudio open source license. The other options add functionality for large teams of researchers, which we do not need for this lab.
+4. Choose your operating system under **Installers for Supported Platforms**, which will download an executable file to your downloads folder.
+5. Run this executable file, which will take you through the RStudio installation. Keep all defaults.
+
+# Getting started in RStudio
+
+After installation open RStudio ().
+
+
 
 ## Obligatory 'hello world' example
+
+Programming tutorials have a ubiquitous and questionably useful history of including the 'hello-world' example as the first venture into whatever language the tutorial is presenting. Far be it from me to rob you of this experience. 
+
+
+Congratulations, you have sucessfully convinced the computer to do your bidding.
