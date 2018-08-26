@@ -58,11 +58,30 @@ RStudio is a free, open-source **integrated development environment** (IDE) that
 
 After installation open RStudio ().
 
+## LaTeX download
 
+[LaTeX](https://www.latex-project.org/about/) is a document preparation system for high-quality typesetting. Some people write in raw LaTeX, but RStudio provides a simpler Markdown language that is both easier to read and easier to learn. 
+
+RStudio recommends a complete installation of MiKTex, and if you do not have a LaTeX distribution installed, Rstudio will throw an error when you try to *knit* your document and direct you toward the downloads page for your operating system (Figure here). You will download a copy of the installer program from the MiKTex website, and when you run that program it will download and install the actual LaTeX distribution. **CAUTION**: the LaTeX distribution is a rather large collection of files. Make sure you are on the fastest internet available to you, and that your roommate is not in the middle of an online game. I will also have a USB thumb-drive with this download in lab that you can transfer to your personal computer.
+
+1. Open the MiKTex installer.
+2. Accept copying conditions.
+3. Choose the **Download MiKTex** option and click next. In lab, I will also have a USB thumb-drive with this download.
+4. Choose **Complete MiKTex** and click next. This means you will not have to install different packages piecemeal every time you need a new function. 
+5. Choose a download mirror somewhere in the United States and click next. *http* vs *https* does not really matter.
+6. Accept the default installation directory and click next.
+7. Click **Start**, which will begin the download. This is a rather large series of files. So go take a coffee break. 
+
+# Using R
+
+*If you think you might perform a task more than once or twice, it is probably worth automating it.* For this lab, you will find yourself repeating several tasks on the computer (doing simple calculations, plotting the results of those calculations, and performing simple statistical tests). The lab manual will cover specific requirements for any given lab, but if you get stuck refer back to this section for the basics. 
 
 ## Obligatory 'hello world' example
 
-Programming tutorials have a ubiquitous and questionably useful history of including the 'hello-world' example as the first venture into whatever language the tutorial is presenting. Far be it from me to rob you of this experience. 
+Programming tutorials have a ubiquitous and questionably useful history of including the 'hello-world' example as the first venture into whatever language the tutorial is presenting. Far be it from me to rob you of this experience. the `print()` command tells the R Console to return whatever text supplied in the `()` portion of the command. Try entering the code below to verify R is indeed awake at the wheel. 
 
+```{r, echo = TRUE}
+print("Hello world")
+```
 
 Congratulations, you have sucessfully convinced the computer to do your bidding.
