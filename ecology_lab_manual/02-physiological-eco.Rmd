@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Physiological Ecology
 
 
@@ -16,7 +21,7 @@ Using equation \@ref(eq:photosynthesis), we can use the direclty measured terms 
 
 Organisms capable of photosynthesis span an incredible range of phylogeny, from *unicellular algae* to *vascular plants* (Fig. \@ref(fig:organisms)). While every algae cell is photosynthetic, *aquatic macrophytes* (i.e. vascular plants adapted to live in aquatic ecosystems) have large amounts of specialized tissue devoted to the transportation of resources and structural support. These two organisms are in competition for very similar resources (such as sunlight and dissolved nutrients) - how do their morphological adaptations convey a competitive advantage?
 
-```{r organisms, fig.ncol = 1, echo = FALSE, fig.cap = "Aquatic algae (left pane, in both meta- and periphyton communities) and aquatic macrophytes (right pane) are photosynthetic organisms that evolved in aquatic ecosystems.", fig.show='hold', out.width="50%"}
+```{r organisms, fig.ncol = 2, echo = FALSE, fig.cap = "Aquatic algae (left pane, in both meta- and periphyton communities) and aquatic macrophytes (right pane) are photosynthetic organisms that evolved in aquatic ecosystems.", fig.show='hold', out.width="50%"}
 knitr::include_graphics(c("chapter_materials/physiological_ecology/aquatic_photosynthesis.jpg",
                           "chapter_materials/physiological_ecology/ludwigia.jpg"), dpi = NA)
 ```
