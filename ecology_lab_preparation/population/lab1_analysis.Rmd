@@ -6,36 +6,47 @@ output:
   pdf_document: default
 ---
 
-```{r setup, include=FALSE}
-#knitr::opts_chunk$set(echo = FALSE)
-```
+# Analysis
 
-## Import required packages
+
+
+## Import packages
+
 
 ```{r, message=FALSE}
 require(tidyverse)
 require(stringr)
 ```
 
-## Import and tidy data
+## Import data
+
 
 ```{r}
-human <- read.csv(file = "human_data.csv", header = T, sep = ",") %>%
-  mutate(GENDER = as.factor(toupper(trimws(GENDER)))) %>%
-  mutate(HEADSTONE = as.factor(toupper(trimws(HEADSTONE))))
+human <- read.csv(file = "human_data.csv", header = T, sep = ",")
 ```
 
-## Begin calculations and plotting
+
+## Calculations
 
 ```{r}
 human <- human %>%
   mutate(AGE = DEATH - BIRTH)
 ```
 
+## Plotting
 
 ```{r}
 plot1 <- ggplot() +
-  geom_histogram(data = human, aes(x = AGE),
+  geom_histogram(data = human,
+                 aes(x = AGE))
+
+plot1
+```
+
+```{r}
+plot1 <- ggplot() +
+  geom_histogram(data = human,
+                 aes(x = AGE),
                  binwidth = 1)
 
 plot1
@@ -43,12 +54,12 @@ plot1
 
 
 ```{r}
-plot2 <- ggplot() +
-  geom_histogram(data = human, aes(x = AGE, colour = GENDER),
-                 alpha = 0.25,
+plot1 <- ggplot() +
+  geom_histogram(data = human,
+                 aes(x = AGE, fill = GENDER),
                  binwidth = 1)
 
-plot2
+plot1
 ```
 
 
@@ -59,8 +70,29 @@ human_avg <- human %>%
             AGE_SE = sd(AGE)/sqrt(n()))
 ```
 
+```{r}
+plot2 <- ggplot() +
+  geom_col(data = human_avg,
+           aes(x = GENDER, y = AGE_MEAN))
 
-```{r, fig.cap = "This is a test caption."}
+plot2
+```
+
+
+```{r}
+plot2 <- ggplot() +
+  geom_col(data = human_avg,
+           aes(x = GENDER, y = AGE_MEAN),
+           width = 0.5) +
+  geom_errorbar(data = human_avg,
+                aes(x = GENDER, ymin = AGE_MEAN - AGE_SE, ymax = AGE_MEAN + AGE_SE),
+                width = 0.25)
+
+plot2
+```
+
+
+```{r, fig.cap = "This is a really nice way to make figure captions without worrying about formatting in Microsoft Word"}
 plot3 <- ggplot() +
   geom_col(data = human_avg,
            aes(x = GENDER, y = AGE_MEAN),
@@ -68,9 +100,8 @@ plot3 <- ggplot() +
   geom_errorbar(data = human_avg,
                 aes(x = GENDER, ymin = AGE_MEAN - AGE_SE, ymax = AGE_MEAN + AGE_SE),
                 width = 0.25) +
-  theme_classic() +
   xlab("Gender") +
-  ylab("Age at death")
+  ylab("Age at death (mean)")
 
 plot3
 ```
@@ -78,15 +109,15 @@ plot3
 
 ## Statistical analysis
 
-Is there *really* a difference?
 
 ```{r}
 male <- human %>%
-  filter(GENDER == "M")
+  filter(GENDER == "M") # filters only males out to assign to 'male'
 
 female <- human %>%
-  filter(GENDER == "F")
+  filter(GENDER == "F") # filters only females out to assign to 'female'
 ```
+
 
 ```{r}
 human_ttest <- t.test(male$AGE, female$AGE)
@@ -96,7 +127,6 @@ human_ttest
 
 ## Survivorship curve
 
-So how would we program a way to calculate the "classic" way of displaying survivorship information?
 
 ```{r}
 human_survivorship <- human %>%
