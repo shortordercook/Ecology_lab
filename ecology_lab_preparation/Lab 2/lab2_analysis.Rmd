@@ -9,7 +9,7 @@ output:
 ## Import packages
 
 
-```{r, message=FALSE}
+```{r, message=FALSE, warning = FALSE}
 require(tidyverse)
 require(lubridate)
 ```
@@ -34,7 +34,6 @@ do_data <- do_data %>%
   mutate(ELAPSED_TIME = TIME_FINAL - TIME_INITIAL) %>% # returns elapsed time in hours
   mutate(DELTA_DO = DO_FINAL - DO_INITIAL) %>%
   mutate(DELTA_DO_WEIGHT_HOUR = DELTA_DO/(as.numeric(ELAPSED_TIME)*WEIGHT))
-  
 ```
 
 
@@ -58,7 +57,7 @@ After the t-test, we can summarise the respiration values for both organisms bel
 
 ```{r}
 respiration <- do_data %>%
-  filter(TREATMENT == "light") %>%
+  filter(TREATMENT == "dark") %>%
   group_by(ORGANISM) %>%
   summarise(RESPIRATION_MEAN = mean(DELTA_DO_WEIGHT_HOUR),
             RESPIRATION_SE = sd(DELTA_DO_WEIGHT_HOUR)/sqrt(n()))
@@ -68,9 +67,9 @@ Net photosynthesis can be measured from the light bottles, but to calculate gros
 
 ```{r}
 gross_photosynthesis <- do_data %>%
-  filter(TREATMENT == "dark") %>%
-  mutate(GROSS_PHOTOSYNTHESIS = case_when(ORGANISM == "algae" ~ DELTA_DO_WEIGHT_HOUR + 1.818,
-                                          ORGANISM == "macrophyte" ~ DELTA_DO_WEIGHT_HOUR + 1.841))
+  filter(TREATMENT == "light") %>%
+  mutate(GROSS_PHOTOSYNTHESIS = case_when(ORGANISM == "algae" ~ DELTA_DO_WEIGHT_HOUR + 1.253,
+                                          ORGANISM == "macrophyte" ~ DELTA_DO_WEIGHT_HOUR + 1.305))
 ```
 
 Then split the data and pull the values out for the t-test like above.
