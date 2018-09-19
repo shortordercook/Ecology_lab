@@ -1,0 +1,96 @@
+---
+title: "Lab 2 Analysis"
+author: "Your name here"
+date: "Sep 18 2018"
+output:
+  pdf_document: default
+---
+
+Below I have laid out how I would go about the calculations and statistics for lab 2. Anywhere you see '<>' notation is somewhere that you should delete the '<>' and fill in with either code or variable names. These redactions are things that you should have grasped from lab 1's analysis, so if you get lost please reload the annotated version of lab 1 and review the concepts we went over there. 
+
+Also - anywhere I use the `#` sign denotes a "code comment" that is a quick note that is not evaluated by R. These are meant as a hint for you. Please delete my commentary before uploading this assignment to Canvas.
+
+
+## Import packages
+
+
+```{r, message=FALSE, warning = FALSE}
+require(tidyverse)
+require(lubridate)
+```
+
+
+## Import data
+
+We need to get our data into R before we can actually do any work. The `read.csv()` function goes hunting for a `.csv` file with that name and assigns it to the data frame `do_data`. The rest of the stuff inside the `()` just tells the `read.csv()` function that we have headers, and that our file is comma-separated. 
+
+```{r}
+do_data <- <>(file = "<>", header = T, sep = ",") %>%
+  mutate(<> = mdy_hm(TIME_INITIAL),
+         <> = mdy_hm(TIME_FINAL))
+```
+
+## Calculations
+
+First we to get our final endpoints for analysis and graphing. We need to (1) calculate how long each bottle incubated, (2) what the change in dissolved oxygen was over that time period, and (3) standardize that rate to biomass in the form of weight in grams.
+
+```{r}
+do_data <- do_data %>%
+  mutate(ELAPSED_TIME = <> - <>) %>% # calculates elapsed time in hours
+  mutate(DELTA_DO = <> - <>) %>% # calculates change in DO
+  mutate(DELTA_DO_WEIGHT_HOUR = <>/(as.numeric(<>)*<>)) # standardizes DELTA_DO to elapsed time and biomass
+```
+
+
+Respiration values can be directly measured from the dark bottles, so we can pull the values from the data frame above for the t-test.
+
+```{r}
+algae_r <- do_data %>%
+  filter(<> == "algae") %>%
+  filter(<> == "dark")
+
+macrophyte_r <- do_data %>%
+  filter(<> == "macrophyte") %>%
+  filter(<> == "dark")
+
+respiration_t <- t.test(algae_r$<>, macrophyte_r$<>) # the final endpoint columns should go in the `<>` here
+
+respiration_t
+```
+
+After the t-test, we can summarise the respiration values for both organisms below for plotting. Note that this is virtually identical in format to lab 1!
+
+```{r}
+respiration <- do_data %>%
+  filter(<> == "dark") %>%
+  group_by(<>) %>%
+  summarise(RESPIRATION_MEAN = mean(<>),
+            RESPIRATION_SE = sd(<>)/sqrt(n()))
+```
+
+Net photosynthesis can be measured from the light bottles, but to calculate *gross* photosynthesis we need to add in the effect of respiration. This is new code so I have given it to you in full. Take a look at the data frame you create below by clicking it in the upper right hand environment pane. What are those numbers in the code below? Those are adding in the *organism-specific* rates of respiration to net-photosynthesis!
+
+```{r}
+gross_photosynthesis <- do_data %>%
+  filter(TREATMENT == "light") %>%
+  mutate(GROSS_PHOTOSYNTHESIS = case_when(ORGANISM == "algae" ~ DELTA_DO_WEIGHT_HOUR + 1.253,
+                                          ORGANISM == "macrophyte" ~ DELTA_DO_WEIGHT_HOUR + 1.305))
+```
+
+
+Then split the data and pull the values out for the t-test like above.
+
+```{r}
+# this is nothing new! model it off the t-test above, except use the `gross-photosynthesis` data-frame, and change the name of the endpoint.
+```
+
+And like above, we need to summarise the values for plotting gross photosynthesis.
+
+```{r}
+# again, nothing new! take it one step at a time and recycle the code from above
+```
+
+
+## Plotting
+
+Please create 2 bar-graphs (with standard error bars) for your report. One should display mean respiration for each organism, and the other should display gross photosynthesis for each organism. 
