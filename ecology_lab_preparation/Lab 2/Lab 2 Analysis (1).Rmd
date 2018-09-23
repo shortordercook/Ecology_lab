@@ -1,0 +1,43 @@
+---
+title: "Lab 2 Analysis"
+author: "Miguel Balderas"
+date: "September 23, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+require(tidyverse)
+require(lubridate)
+```
+
+```{r}
+do_data <- read.csv(file = "lab2_monday.csv", header = T, sep = ",") %>%
+mutate(TIME_INITIAL = mdy_hm(TIME_INITIAL)) %>%
+mutate(TIME_FINAL = mdy_hm(TIME_FINAL))
+  
+```
+
+```{r}
+do_data <- do_data %>%
+  mutate(ELAPSED_TIME = TIME_FINAL -TIME_INITIAL) %>%
+mutate(DELTA_DO = DO_FINAL - DO_INITIAL) %>%
+  mutate(DELTA_DO_WEIGHT_HOUR = DELTA_DO/(as.numeric(ELAPSED_TIME)*WEIGHT))
+```
+
+```{r}
+algae_r <- do_data %>%
+  filter(ORGANISM == "algae") %>%
+  filter(TREATMENT == "dark")
+  
+  macrophyte_r <- do_data %>%
+  filter(ORGANISM == "macrophyte") %>%
+  filter(TREATMENT == "dark")
+respiration_t <- t.test(algae_r$DELTA_DO, macrophyte_r$DELTA_DO)
+
+respiration_t
+```
+
