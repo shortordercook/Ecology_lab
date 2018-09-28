@@ -1,0 +1,238 @@
+---
+title: "Lab 2 Analysis"
+author: "Your name here"
+date: "Sep 18 2018"
+output:
+  pdf_document: default
+---
+
+Below I have laid out how I would go about the calculations and statistics for lab 2. Anywhere you see '<>' notation is somewhere that you should delete the '<>' and fill in with either code or variable names. These redactions are things that you should have grasped from lab 1's analysis, so if you get lost please reload the annotated version of lab 1 and review the concepts we went over there. 
+
+Also - anywhere I use the `#` sign denotes a "code comment" that is a quick note that is not evaluated by R. These are meant as a hint for you. Please delete my commentary before uploading this assignment to Canvas.
+
+
+## Import packages
+
+
+```{r, message=FALSE, warning = FALSE}
+require(tidyverse)
+require(lubridate)
+require(tidyverse)
+```
+
+
+## Import data
+
+We need to get our data into R before we can actually do any work. The `read.csv()` function goes hunting for a `.csv` file with that name and assigns it to the data frame `do_data`. The rest of the stuff inside the `()` just tells the `read.csv()` function that we have headers, and that our file is comma-separated. 
+
+```{r}
+do_data <- read.csv(file = "lab2_monday.csv", header = T, sep = ",")
+
+```
+
+```{r}
+do_data <- do_data %>%
+  mutate (TIME_INITIAL = mdy_hm(TIME_INITIAL))%>%
+  mutate (TIME_FINAL=mdy_hm(TIME_FINAL))
+```
+
+## Calculations
+
+First we to get our final endpoints for analysis and graphing. We need to (1) calculate how long each bottle incubated, (2) what the change in dissolved oxygen was over that time period, and (3) standardize that rate to biomass in the form of weight in grams.
+
+```{r}
+do_data <- do_data %>%
+  mutate(ELAPSED_TIME = TIME_FINAL-TIME_INITIAL) %>% # calculates elapsed time in hours
+  mutate(DELTA_DO = DO_FINAL - DO_INITIAL) %>% # calculates change in DO
+  mutate(DELTA_DO_WEIGHT_HOUR = DELTA_DO/(as.numeric(ELAPSED_TIME)*WEIGHT)) # standardizes DELTA_DO to elapsed time and biomass
+```
+
+
+Respiration values can be directly measured from the dark bottles, so we can pull the values from the data frame above for the t-test.
+
+```{r}
+algae_r <- do_data %>%
+  filter(ORGANISM == "algae") %>%
+  filter(TREATMENT == "dark")
+
+macrophyte_r <- do_data %>%
+  filter (ORGANISM == "macrophyte") %>%
+  filter (TREATMENT == "dark")
+
+respiration_t <- t.test(algae_r$DELTA_DO_WEIGHT_HOUR, macrophyte_r$DELTA_DO_WEIGHT_HOUR) # the final endpoint columns should go in the `<>` here
+
+respiration_t
+```
+
+After the t-test, we can summarise the respiration values for both organisms below for plotting. Note that this is virtually identical in format to lab 1!
+
+```{r}
+respiration <- do_data %>%
+  filter(TREATMENT == "dark") %>%
+  group_by(ORGANISM) %>%
+  summarise(RESPIRATION_MEAN = mean(DELTA_DO_WEIGHT_HOUR),
+            RESPIRATION_SE = sd(DELTA_DO_WEIGHT_HOUR)/sqrt(n()))
+```
+
+Net photosynthesis can be measured from the light bottles, but to calculate *gross* photosynthesis we need to add in the effect of respiration. This is new code so I have given it to you in full. Take a look at the data frame you create below by clicking it in the upper right hand environment pane. What are those numbers in the code below? Those are adding in the *organism-specific* rates of respiration to net-photosynthesis!
+
+```{r}
+gross_photosynthesis <- do_data %>%
+  filter(TREATMENT == "light") %>%
+  mutate(GROSS_PHOTOSYNTHESIS = case_when(ORGANISM == "algae" ~ DELTA_DO_WEIGHT_HOUR + 1.253,
+                                          ORGANISM == "macrophyte" ~ DELTA_DO_WEIGHT_HOUR + 1.305))
+```
+
+
+Then split the data and pull the values out for the t-test like above.
+
+```{r}
+algae_p <- do_data %>%
+  filter(ORGANISM == "algae") %>%
+  filter(TREATMENT == "light")
+
+macrophyte_p <- do_data %>%
+  filter (ORGANISM == "macrophyte") %>%
+  filter (TREATMENT == "light")
+
+gross_photosynthesis_t <- t.test(algae_p$DELTA_DO_WEIGHT_HOUR, macrophyte_p$DELTA_DO_WEIGHT_HOUR) # the final endpoint columns should go in the `<>` here
+
+gross_photosynthesis_t
+# this is nothing new! model it off the t-test above, except use the `gross-photosynthesis` data-frame, and change the name of the endpoint.
+```
+
+And like above, we need to summarise the values for plotting gross photosynthesis.
+
+```{r}
+gross_photosynthesis <- do_data %>%
+  filter(TREATMENT == "light") %>%
+  group_by(ORGANISM) %>%
+  summarise(GROSS_PHOTOSYNTHESIS_MEAN = mean(DELTA_DO_WEIGHT_HOUR),
+            GROSS_PHOTOSYNTHESIS_SE = sd(DELTA_DO_WEIGHT_HOUR)/sqrt(n()))
+# again, nothing new! take it one step at a time and recycle the code from above
+```
+
+
+## Plotting
+
+Please create 2 bar-graphs (with standard error bars) for your report. One should display mean respiration for each organism, and the other should display gross photosynthesis for each organism. 
+
+```{r}
+plot1 <- ggplot() +
+  geom_histogram(data = respiration,
+                 aes(x = RESPIRATION_MEAN))
+
+plot1
+```
+
+```{r}
+plot1 <- ggplot() +
+  geom_histogram(data = respiration,
+                 aes(x = RESPIRATION_MEAN, fill = ORGANISM))
+
+plot1
+```
+
+
+
+```{r}
+respiration <- do_data %>%
+  group_by(ORGANISM) %>%
+  summarise(RESPIRATION_MEAN = mean(DELTA_DO_WEIGHT_HOUR),
+            RESPIRATION_SE = sd(DELTA_DO_WEIGHT_HOUR)/sqrt(n()))
+```
+
+```{r}
+plot2 <- ggplot() +
+  geom_col(data = respiration,
+           aes(x = ORGANISM, y = RESPIRATION_MEAN))
+
+plot2
+```
+
+```{r}
+plot2 <- ggplot() +
+  geom_col(data = respiration,
+           aes(x = ORGANISM, y = RESPIRATION_MEAN),
+           width = 0.5) +
+  geom_errorbar(data = respiration,
+                aes(x = ORGANISM, ymin = RESPIRATION_MEAN - RESPIRATION_SE, ymax = RESPIRATION_MEAN + RESPIRATION_SE),
+                width = 0.25)
+
+plot2
+```
+
+
+
+
+```{r}
+plot3 <- ggplot() +
+  geom_col(data = respiration,
+           aes(x = ORGANISM, y = RESPIRATION_MEAN),
+           width = 0.5) +
+  geom_errorbar(data = respiration,
+                aes(x = ORGANISM, ymin = RESPIRATION_MEAN - RESPIRATION_SE, ymax = RESPIRATION_MEAN + RESPIRATION_SE),
+                width = 0.25) +
+  xlab("Organism") +
+  ylab("Respiration (mean)")
+
+plot3
+```
+
+```{r}
+plot1 <- ggplot() +
+  geom_histogram(data = gross_photosynthesis,
+                 aes(x = GROSS_PHOTOSYNTHESIS_MEAN))
+
+plot1
+```
+
+```{r}
+plot1 <- ggplot() +
+  geom_histogram(data = gross_photosynthesis,
+                 aes(x = GROSS_PHOTOSYNTHESIS_MEAN, fill = ORGANISM))
+
+plot1
+```
+
+```{r}
+gross_photosynthesis <- do_data %>%
+  group_by(ORGANISM) %>%
+  summarise(GROSS_PHOTOSYNTHESIS_MEAN = mean(DELTA_DO_WEIGHT_HOUR),
+            GROSS_PHOTOSYNTHESIS_SE = sd(DELTA_DO_WEIGHT_HOUR)/sqrt(n()))
+
+```
+
+```{r}
+plot2 <- ggplot() +
+  geom_col(data = gross_photosynthesis,
+           aes(x = ORGANISM, y = GROSS_PHOTOSYNTHESIS_MEAN))
+
+plot2
+```
+
+```{r}
+plot2 <- ggplot() +
+  geom_col(data = gross_photosynthesis,
+           aes(x = ORGANISM, y = GROSS_PHOTOSYNTHESIS_MEAN),
+           width = 0.5) +
+  geom_errorbar(data = gross_photosynthesis,
+                aes(x = ORGANISM, ymin = GROSS_PHOTOSYNTHESIS_MEAN - GROSS_PHOTOSYNTHESIS_SE, ymax = GROSS_PHOTOSYNTHESIS_MEAN + GROSS_PHOTOSYNTHESIS_SE),
+                width = 0.25)
+
+plot2
+```
+
+```{r}
+plot3 <- ggplot() +
+  geom_col(data = gross_photosynthesis,
+           aes(x = ORGANISM, y = GROSS_PHOTOSYNTHESIS_MEAN),
+           width = 0.5) +
+  geom_errorbar(data = gross_photosynthesis,
+                aes(x = ORGANISM, ymin = GROSS_PHOTOSYNTHESIS_MEAN - GROSS_PHOTOSYNTHESIS_SE, ymax = GROSS_PHOTOSYNTHESIS_MEAN + GROSS_PHOTOSYNTHESIS_SE),
+                width = 0.25) +
+  xlab("Organism") +
+  ylab("Gross Photosynthesis (mean)")
+
+plot3
+```

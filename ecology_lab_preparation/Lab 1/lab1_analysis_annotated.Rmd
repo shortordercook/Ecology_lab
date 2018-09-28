@@ -1,6 +1,6 @@
 ---
 title: "Lab 1 Analysis"
-author: "Stephen Cook"
+author: "S Cook"
 date: "August 27 2018"
 output:
   pdf_document: default
@@ -20,7 +20,7 @@ All labs will generally require the same three steps:
 
 This section just imports packages which add extra functions to R that we will need for analysis. Don't think too hard about this part - just include it. If you haven't installed the package yet, this will throw errors in the R console below. Click on "Packages" in the lower right hand pane to install them if necessary.
 
-```{r, message=FALSE}
+```{r, message=FALSE, warning = FALSE}
 require(tidyverse)
 require(stringr)
 ```
@@ -43,7 +43,7 @@ Right now we only need to calculate how old each individual was when they died. 
 
 We assign all of this back to `human` with the `<-` symbol. The `mutate()` function creates a new column in our data frame.
 
-```{r}
+```{r, warning = FALSE}
 human <- human %>%
   mutate(AGE = DEATH - BIRTH)
 ```
