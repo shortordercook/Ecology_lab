@@ -1,0 +1,107 @@
+---
+title: "Lab 3 Analysis"
+author: "Stephen Cook"
+date: "Oct 6 2018"
+output:
+  pdf_document: default
+---
+
+## Import packages
+
+
+```{r, message=FALSE}
+require(tidyverse)
+require(lubridate)
+```
+
+
+## Import data
+
+
+```{r}
+lww <- read.csv(file = "lww_fall_18.csv", header = T, sep = ",")
+```
+
+## Calculations
+
+Is management activity influencing the *abundance* of cattail?
+
+```{r}
+management_abundance <- lww %>%
+  select(CELL, CAT_PRESENT) %>%
+  group_by(CELL) %>%
+  summarise(CAT_PRESENT = sum(CAT_PRESENT)) %>%
+  mutate(CAT_ABSENT = 50 - CAT_PRESENT)
+
+
+managment.abund <- chisq.test(management_abundance, simulate.p.value = TRUE)
+managment.abund
+```
+
+Is management activity influencing the *dominance* of cattail?
+
+```{r}
+management_dominance <- lww %>%
+  select(CELL, CAT_DOMINANT) %>%
+  group_by(CELL) %>%
+  summarise(CAT_DOMINANT = sum(CAT_DOMINANT)) %>%
+  mutate(CAT_NOT_DOM = 50 - CAT_DOMINANT)
+
+managment.dom <- chisq.test(management_dominance, simulate.p.value = TRUE)
+managment.dom
+```
+
+Is management activity influencing species richness?
+
+```{r}
+cell1_richness <- lww %>%
+  select(CELL, RICHNESS) %>%
+  filter(CELL == 1)
+
+cell2_richness <- lww %>%
+  select(CELL, RICHNESS) %>%
+  filter(CELL == 2)
+
+richness.test <- t.test(cell1_richness$RICHNESS, cell2_richness$RICHNESS)
+
+richness.test
+```
+
+
+
+
+## Plotting
+
+
+```{r, fig.cap = "This is a really nice way to make figure captions without worrying about formatting in Microsoft Word"}
+respiration_plot <- ggplot() +
+  geom_col(data = respiration,
+           aes(x = ORGANISM, y = RESPIRATION_MEAN),
+           width = 0.5) +
+  geom_errorbar(data = respiration,
+                aes(x = ORGANISM, 
+                    ymin = RESPIRATION_MEAN - RESPIRATION_SE, 
+                    ymax = RESPIRATION_MEAN + RESPIRATION_SE),
+                width = 0.25) +
+  xlab("Organism") +
+  ylab("Respiration (mg 02 / (g*h))")
+
+respiration_plot
+```
+```{r, fig.cap = "This is a really nice way to make figure captions without worrying about formatting in Microsoft Word"}
+gross_plot <- ggplot() +
+  geom_col(data = gross_photo_mean,
+           aes(x = ORGANISM, y = GROSS_MEAN),
+           width = 0.5) +
+  geom_errorbar(data = gross_photo_mean,
+                aes(x = ORGANISM, 
+                    ymin = GROSS_MEAN - GROSS_SE, 
+                    ymax = GROSS_MEAN + GROSS_SE),
+                width = 0.25) +
+  geom_point(data = gross_photosynthesis,
+           aes(x = ORGANISM, y = GROSS_PHOTOSYNTHESIS)) +
+  xlab("Organism") +
+  ylab("Gross photosynthesis (mg 02 / (g*h))")
+
+gross_plot
+```
