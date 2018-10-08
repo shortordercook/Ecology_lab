@@ -3,11 +3,11 @@
 
 ## Background information
 
-Community ecology depends directly on our ability to quantify the various species that compose the community or a component of the community (such as the plants present). Quantification of community composition is essential for understanding changes through time or impacts of management actions. This week we will quantify the community composition of wetland plants at the Lake Waco Wetlands (LWWs).
+Community ecology depends on our ability to quantify the various species that compose the community in an area or a subset of the community (such as the plants present). Quantification of community composition is essential for understanding changes through time or impacts of management actions. This week we will describe management effects on the plant community at the Lake Waco Wetlands (LWWs).
 
 The LWWs has historically been strongly dominated by *Typha* (cattail). Although native to Texas, cattails are very agressive and frequently dominant wetlands to the exclusion of other species. To counter this dominance tendency, managers have tried to increase the diversity of the plant community in some areas of the LWWs by planting other species [especially *Schenoplectus* (bulrush) and *Pontederia* (pickerelweed)], or by hand-harvesting cattail out of some areas in the hopes that other species will colonize the open areas (Fig. \@ref(fig:restoration-fig)). 
 
-```{r restoration-fig, echo = FALSE, fig.cap="Map showing cells 1 and 2 of the Lake Waco Wetlands (LWWs). The boardwalk in cell 1 has had frequent management for several years (dotted red circle), while cell 2 has had no mmanagement (solid red circle)."}
+```{r restoration-fig, echo = FALSE, fig.cap="Map showing cells 1 and 2 of the Lake Waco Wetlands (LWWs). The boardwalk in cell 1 has been managed for several years (dotted red circle), while cell 2 has had no management (solid red circle)."}
 knitr::include_graphics("chapter_materials/restoration_ecology/lww_management.jpg")
 ```
 
