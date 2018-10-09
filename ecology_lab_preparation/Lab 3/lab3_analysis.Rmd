@@ -67,41 +67,21 @@ richness.test <- t.test(cell1_richness$RICHNESS, cell2_richness$RICHNESS)
 richness.test
 ```
 
+Does typha dominance influence species richness?
 
+```{r}
+typha_dom_richness <- lww %>%
+  select(CAT_DOMINANT, RICHNESS) %>%
+  filter(CAT_DOMINANT == 1)
 
+other_dom_richness <- lww %>%
+  select(CAT_DOMINANT, RICHNESS) %>%
+  filter(CAT_DOMINANT == 0)
 
-## Plotting
+typha.test <- t.test(typha_dom_richness$RICHNESS, other_dom_richness$RICHNESS)
 
-
-```{r, fig.cap = "This is a really nice way to make figure captions without worrying about formatting in Microsoft Word"}
-respiration_plot <- ggplot() +
-  geom_col(data = respiration,
-           aes(x = ORGANISM, y = RESPIRATION_MEAN),
-           width = 0.5) +
-  geom_errorbar(data = respiration,
-                aes(x = ORGANISM, 
-                    ymin = RESPIRATION_MEAN - RESPIRATION_SE, 
-                    ymax = RESPIRATION_MEAN + RESPIRATION_SE),
-                width = 0.25) +
-  xlab("Organism") +
-  ylab("Respiration (mg 02 / (g*h))")
-
-respiration_plot
+typha.test
 ```
-```{r, fig.cap = "This is a really nice way to make figure captions without worrying about formatting in Microsoft Word"}
-gross_plot <- ggplot() +
-  geom_col(data = gross_photo_mean,
-           aes(x = ORGANISM, y = GROSS_MEAN),
-           width = 0.5) +
-  geom_errorbar(data = gross_photo_mean,
-                aes(x = ORGANISM, 
-                    ymin = GROSS_MEAN - GROSS_SE, 
-                    ymax = GROSS_MEAN + GROSS_SE),
-                width = 0.25) +
-  geom_point(data = gross_photosynthesis,
-           aes(x = ORGANISM, y = GROSS_PHOTOSYNTHESIS)) +
-  xlab("Organism") +
-  ylab("Gross photosynthesis (mg 02 / (g*h))")
 
-gross_plot
-```
+
+

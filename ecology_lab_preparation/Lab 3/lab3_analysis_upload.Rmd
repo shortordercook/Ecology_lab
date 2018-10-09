@@ -1,0 +1,56 @@
+---
+title: "Lab 3 Analysis"
+author: "Stephen Cook"
+date: "Oct 6 2018"
+output:
+  pdf_document: default
+---
+
+## Import packages
+
+
+```{r, message=FALSE}
+require(tidyverse)
+require(lubridate)
+```
+
+
+## Import data
+
+
+```{r}
+lww <- read.csv(file = "lww_fall_18.csv", header = T, sep = ",")
+```
+
+## Calculations
+
+Is management activity influencing the *abundance* of cattail?
+
+```{r}
+management_abundance <- lww %>%
+  select(CELL, CAT_PRESENT) %>%
+  group_by(CELL) %>%
+  summarise(CAT_PRESENT = sum(CAT_PRESENT)) %>%
+  mutate(CAT_ABSENT = 50 - CAT_PRESENT)
+
+
+managment.abund <- chisq.test(management_abundance, simulate.p.value = TRUE)
+managment.abund
+```
+
+Is management activity influencing the *dominance* of cattail?
+
+
+
+Is management activity influencing species richness?
+
+
+
+Does typha dominance influence species richness?
+
+
+## Plots
+
+
+
+
