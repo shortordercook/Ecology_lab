@@ -67,6 +67,45 @@ richness.test <- t.test(cell1_richness$RICHNESS, cell2_richness$RICHNESS)
 richness.test
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+manag.rich <- lww %>%
+  select(CELL, RICHNESS) %>%
+  mutate(RICH_CATEGORY = ifelse(RICHNESS > 4, 1, 0)) %>%
+  select(-RICHNESS)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Does typha dominance influence species richness?
 
 ```{r}
@@ -82,6 +121,61 @@ typha.test <- t.test(typha_dom_richness$RICHNESS, other_dom_richness$RICHNESS)
 
 typha.test
 ```
+
+```{r}
+manag.dom <- lww %>%
+  select(CAT_DOMINANT, RICHNESS) %>%
+  mutate(RICH_CATEGORY = ifelse(RICHNESS > 4, 1, 0)) %>%
+  select(-RICHNESS) %>%
+  group_by(CAT_DOMINANT) %>%
+  summarise(RICH_HIGH = sum(RICH_CATEGORY)) %>%
+  mutate(RICH_LOW = ifelse(CAT_DOMINANT == 1, 76-RICH_HIGH, 24-RICH_HIGH))
+
+
+new.test <- chisq.test(manag.dom, simulate.p.value = TRUE)
+new.test
+```
+
+
+
+
+
+
+
+```{r}
+test <- lww %>%
+  select(CAT_DOMINANT, RICHNESS)
+
+
+
+sum(test$CAT_DOMINANT)
+```
+
+
+
+```{r}
+typha_richness <- lww %>%
+  select(CAT_DOMINANT, RICHNESS) %>%
+  filter(CAT_DOMINANT == 1)
+
+other_richness <- lww %>%
+  select(CAT_DOMINANT, RICHNESS) %>%
+  filter(CAT_DOMINANT == 0)
+
+
+richness.test <- t.test(typha_richness$RICHNESS, other_richness$RICHNESS)
+
+richness.test
+```
+
+
+
+
+
+
+
+
+
 
 
 

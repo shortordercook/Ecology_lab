@@ -1,0 +1,42 @@
+---
+title: "Question 4 help"
+author: "Stephen Cook"
+date: "Oct 11 2018"
+output:
+  pdf_document: default
+---
+
+## Import packages
+
+
+```{r, message=FALSE}
+require(tidyverse)
+require(lubridate)
+```
+
+
+## Import data
+
+
+```{r}
+lww <- read.csv(file = "lww_fall_18.csv", header = T, sep = ",")
+```
+
+
+```{r}
+number_typha_dom <- sum(lww$CAT_DOMINANT)
+
+
+typha_richness_effect <- lww %>%
+  select(CAT_DOMINANT, RICHNESS) %>%
+  mutate(RICH_CATEGORY = ifelse(RICHNESS >= 4, 1, 0)) %>%
+  select(-RICHNESS) %>%
+  group_by(CAT_DOMINANT) %>%
+  summarise(RICH_HIGH = sum(RICH_CATEGORY)) %>%
+  mutate(RICH_LOW = ifelse(CAT_DOMINANT == 1, 
+                           number_typha_dom - RICH_HIGH, 
+                           (100-number_typha_dom) - RICH_HIGH))
+```
+
+
+
