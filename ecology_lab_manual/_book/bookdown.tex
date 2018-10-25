@@ -187,10 +187,11 @@
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{lemma}{Lemma}[chapter]
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[chapter]
 \newtheorem{corollary}{Corollary}[chapter]
 \newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
 \theoremstyle{definition}
 \newtheorem{example}{Example}[chapter]
 \theoremstyle{definition}
@@ -254,9 +255,9 @@ my book. My R session information is shown below:
 \end{Shaded}
 
 \begin{verbatim}
-## R version 3.5.1 (2018-07-02)
+## R version 3.4.3 (2017-11-30)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
-## Running under: Windows 10 x64 (build 17134)
+## Running under: Windows 7 x64 (build 7601) Service Pack 1
 ## 
 ## Matrix products: default
 ## 
@@ -272,12 +273,12 @@ my book. My R session information is shown below:
 ## [6] methods   base     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] compiler_3.5.1  backports_1.1.2 bookdown_0.7   
-##  [4] magrittr_1.5    rprojroot_1.3-2 tools_3.5.1    
-##  [7] htmltools_0.3.6 rstudioapi_0.7  yaml_2.2.0     
-## [10] Rcpp_0.12.18    stringi_1.1.7   rmarkdown_1.10 
-## [13] knitr_1.20      xfun_0.3        stringr_1.3.1  
-## [16] digest_0.6.16   evaluate_0.11
+##  [1] compiler_3.4.3   backports_1.1.2  bookdown_0.7.12 
+##  [4] magrittr_1.5     rprojroot_1.3-2  tools_3.4.3     
+##  [7] htmltools_0.3.6  rstudioapi_0.7   yaml_2.1.19     
+## [10] Rcpp_0.12.17     stringi_1.1.7    rmarkdown_1.10.1
+## [13] knitr_1.20       xfun_0.1         stringr_1.3.1   
+## [16] digest_0.6.15    evaluate_0.10.1
 \end{verbatim}
 
 Package names are in bold text (e.g., \textbf{rmarkdown}), and inline
@@ -726,6 +727,41 @@ of your model in the text of your results section.
   \end{itemize}
 \end{enumerate}
 
+\begin{verbatim}
+## Warning: package 'tibble' was built under R version
+## 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'tidyr' was built under R version
+## 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'purrr' was built under R version
+## 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version
+## 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'stringr' was built under R version
+## 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'forcats' was built under R version
+## 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'kableExtra' was built under R version
+## 3.4.4
+\end{verbatim}
+
 \begin{landscape}\begin{table}[H]
 \centering\begingroup\fontsize{8}{10}\selectfont
 \rowcolors{2}{gray!6}{white}
@@ -927,6 +963,151 @@ Using the data generated and appropriate statistical analyses
     Question 3 (text \textbf{AND} graph/table)
   \item
     Question 4 (text \textbf{AND} graph/table)
+  \end{itemize}
+\item
+  Discussion
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Hypotheses rejected/supported
+  \item
+    Provide a coherent explanation/interpretation of your results
+  \end{itemize}
+\end{enumerate}
+
+\chapter{Biodiversity: measuring biological
+integrity}\label{biodiversity-measuring-biological-integrity}
+
+\section{Background information}\label{background-information-3}
+
+Quantifying biodiversity is an active area of research for ecologists
+and conservationists. Organisms have evolved alongside each other, and
+developed adaptations that allow them to thrive in different niches. The
+interactions between these organisms, and between these organisms and
+their environment can be incredibly complex. How diverse communities
+are, and how diversity changes area to area, can tell us a lot about a
+system. How do we even measure diversity? Or how similar 2 areas are?
+Alpha-diversity is a measure of biodiversity at a single location, while
+gamma-diversity is the cumulative diversity in a particular region of
+interest. Beta-diversity links the two, and is a measure of variable the
+subsets of gamma-diversity are (Fig. \ref{fig:partition-fig}).
+
+Scientists have been arguing for years about the best way to measure
+biodiversity, but at its heart all biodiversity metrics are a way to
+compress complex information into an interpretable number. A coarse
+analogy would be the Body Mass Index (BMI) score. Humans are comprised
+of assemblages of cells and organ systems, and we could measure the
+health of a single individual in thousands of different ways. The BMI
+score is a simple way to compress that information into a single number
+that we can use to assess relative `health'. We can do something similar
+for biodiversity! I do not want you to conflate `health' with
+`biodiversity', but it is a useful starting point.
+
+Benthic macroinvertebrates (Fig. \ref{fig:invert-fig}) are a useful
+group of study organisms because they are incredibly diverse, and are
+important ecological indicators of the physical and chemical
+characteristics of their ecosystem. Some are incredibly sensitive to
+changes in dissolved oxygen or pH, or will struggle if sediment loads
+into the stream from the surrounding landscape is too high. Stream
+ecosystems are linked to the areas around them (their watershed). Think
+of some ways that humans influence the landscape - then Google how those
+changes influence aquatic environments (most anthropogenic impacts are
+very well studied).
+
+\begin{figure}
+\centering
+\includegraphics{chapter_materials/biodiversity_ecology/partitioning.jpg}
+\caption{\label{fig:partition-fig}Schematic representation of how alpha
+(sample level), gamma (region level), and beta (sample variability)
+diversities are related. For each stream you have multiple measures of
+alpha-diversity (taxa richness), with one measure of gamma and
+beta-diversity per stream.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{chapter_materials/biodiversity_ecology/invert_pic.jpg}
+\caption{\label{fig:invert-fig}Example macroinvertebrate (Order:
+Trichoptera) that you will collect in the field and identify under a
+dissecting microscope. Caddisflies frequently have elaborate shells
+built from materials around them in the stream.}
+\end{figure}
+
+\section{Objectives}\label{objectives-3}
+
+We collected macroinvertebrates from 2 sites in central Texas that
+differed in anthropogenic impact using 1 m\textsuperscript{2}
+kick-screens. Neils Creek is a relatively unimpacted site, with some
+pasture, farmland, and forrest in its watershed, while Harris Creek is
+surrounded by heavy farming activity and neighborhoods. Actually, the
+Fall 2017 class collected the Harris Creek data for you, but you get the
+idea. You will use this data to answer the following questions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Does anthropogenic impact influence biodiversity?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Assess this question by calculating alpha, gamma, and beta-diversity
+    for the 2 sites.
+  \end{itemize}
+\item
+  Does anthropogenic impact influence the EPT taxa in a stream?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Assess this question by calculating the \%EPT in each sample.
+  \end{itemize}
+\end{enumerate}
+
+\section{Lab report specifics}\label{lab-report-specifics-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Introduction
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Why is biodiversity important?
+  \item
+    How is biodiversity measured?
+  \item
+    Why are macroinvertebrates useful?
+  \item
+    Objectives
+  \item
+    Hypotheses
+  \end{itemize}
+\item
+  Methods
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Experimental design and field work
+  \item
+    laboratory work
+  \item
+    Calculations / statistics
+  \end{itemize}
+\item
+  Results
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Question 1 (text \textbf{AND} graph)
+  \item
+    Question 2 (text \textbf{AND} graph)
   \end{itemize}
 \item
   Discussion

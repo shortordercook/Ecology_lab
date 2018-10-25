@@ -1,0 +1,111 @@
+---
+title: "Lab 4 Analysis"
+author: "Stephen Cook"
+date: "Oct 22 2018"
+output:
+  pdf_document: default
+---
+
+## Import packages
+
+
+```{r, message=FALSE}
+require(tidyverse)
+```
+
+
+## Import data
+
+
+```{r}
+invert <- read.csv(file = "biodiversity_data_distributed.csv", header = T, sep = ",")
+```
+
+## Calculations
+
+Which stream is more diverse (using richness-based measurements)? Neils or Harris Creek? 
+
+```{r}
+alpha_div <- invert %>%
+  select(SITE, REP, CODE) %>%
+  group_by(SITE, REP) %>%
+  summarise(ALPHA_R = n_distinct(CODE))
+
+gamma_div <- invert %>%
+  select(SITE, CODE) %>%
+  group_by(SITE) %>%
+  summarise(GAMMA_R = n_distinct(CODE))
+```
+
+```{r}
+richness_diversity <- alpha_div %>%
+  summarise(ALPHA_R = mean(ALPHA_R)) %>%
+  full_join(gamma_div, by = "SITE") %>%
+  mutate(BETA_R = ALPHA_R/GAMMA_R)
+```
+
+%EPT is a common and simple biotic integrity score (remember these taxa are commonly sensitive to anthropogenic stressors).
+
+
+```{r}
+ept_taxa <- invert %>%
+  select(SITE, REP, ORDER, COUNT) %>% # select the columns you need
+  group_by(SITE, REP, ORDER) %>% # put appropriate grouping variables here
+  summarise(COUNT = sum(COUNT)) %>% # sum across the order (for orders with more than one genus)
+  filter(ORDER == "Ephemeroptera" | ORDER == "Plecoptera" | ORDER == "Odonata") %>%
+  group_by(SITE, REP) %>%
+  summarise(EPT_COUNT = sum(COUNT))
+```
+
+```{r}
+all_taxa <- invert %>%
+  select(SITE, REP, ORDER, COUNT) %>% # select the columns you need
+  group_by(SITE, REP) %>%
+  summarise(ALL_COUNT = sum(COUNT))
+```
+
+```{r}
+combined <- ept_taxa %>%
+  full_join(all_taxa, by = c("SITE", "REP")) %>%
+  mutate(PERCENT_EPT = (EPT_COUNT/ALL_COUNT)*100)
+```
+
+# Statistical tests
+
+Is alpha-diversity significantly differ between the sites?
+
+```{r}
+neils <- alpha_div %>%
+  filter(SITE == "neils") 
+
+harris <- alpha_div %>%
+  filter(SITE == "harris") 
+```
+
+
+```{r}
+diversity_ttest <- t.test(neils$ALPHA_R, harris$ALPHA_R)
+
+diversity_ttest
+```
+Does the % of EPT in the assemblage differ between the 2 sites?
+
+```{r}
+neils_ept <- combined %>%
+  filter(SITE == "neils") 
+
+harris_ept <- combined %>%
+  filter(SITE == "harris") 
+```
+
+
+```{r}
+ept_ttest <- t.test(neils_ept$PERCENT_EPT, harris_ept$PERCENT_EPT)
+
+ept_ttest
+```
+
+
+
+
+

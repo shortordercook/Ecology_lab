@@ -1,0 +1,99 @@
+---
+title: "Lab 4 Analysis"
+author: "Stephen Cook"
+date: "Oct 22 2018"
+output:
+  pdf_document: default
+---
+
+Below is the analysis for Lab 4. Please delete the <> segments below, and fill in the appropriate code or variables to complete the analysis. You may go about the analysis your own way, and as long as it addresses the hypotheses we covered in lab, you will receive full credit.
+
+
+## Import packages
+
+
+```{r, message=FALSE}
+require(tidyverse)
+```
+
+
+## Import data
+
+
+```{r}
+<>
+```
+
+## Calculations
+
+
+
+Which stream is more diverse (using richness-based measurements)? Neils or Harris Creek? 
+
+
+```{r}
+alpha_div <- invert %>%
+  select(<>, <>, <>) %>% #select only the columns you need
+  group_by(<>, <>) %>% # group by the variables you need to calculate alpha-diversity
+  summarise(ALPHA_R = n_distinct(<>)) # n_distinct counts the number of unique things in a column
+
+gamma_div <- invert %>%
+  select(<>, <>) %>%
+  group_by(<>) %>%
+  summarise(GAMMA_R = n_distinct(<>))
+```
+
+
+```{r}
+richness_diversity <- alpha_div %>%
+  summarise(ALPHA_R = mean(<>)) %>% # calculate average alpha-diversity per site
+  full_join(gamma_div, by = "SITE") %>% # join the 2 tables together
+  mutate(BETA_R = <>/<>) # calculate beta (beta = gamma/mean(alpha))
+```
+
+
+
+%EPT is a common and simple biotic integrity score (remember these taxa are commonly sensitive to anthropogenic stressors). First calculate the number of EPT taxa in each replicate, then in a separate table calculate the total number of organisms in each replicate.
+
+
+```{r}
+ept_taxa <- invert %>%
+  select(SITE, REP, ORDER, COUNT) %>% # select the columns you need
+  group_by(SITE, REP, ORDER) %>% # put appropriate grouping variables here
+  summarise(COUNT = sum(COUNT)) %>% # sum across the order (for orders with more than one genus)
+  filter(ORDER == "Ephemeroptera" | ORDER == "Plecoptera" | ORDER == "Odonata") %>%
+  group_by(SITE, REP) %>%
+  summarise(EPT_COUNT = sum(COUNT))
+```
+
+```{r}
+all_taxa <- invert %>%
+  select(<>, <>, <>, <>) %>% # select the columns you need
+  group_by(<>, <>) %>% # group by variables that will provide a sum across the entire site
+  summarise(ALL_COUNT = sum(<>))
+```
+
+```{r}
+combined <- ept_taxa %>%
+  full_join(all_taxa, by = c("<>", "<>")) %>%
+  mutate(PERCENT_EPT = (<>/<>)*100)
+```
+
+# Statistical tests
+
+Is alpha-diversity significantly differ between the sites?
+
+Does the % of EPT in the assemblage differ between the 2 sites?
+
+
+
+# Plotting
+
+Bar-plot of mean site richness.
+
+Bar-plot comparing the mean %EPT between the 2 sites.
+
+
+
+
+
