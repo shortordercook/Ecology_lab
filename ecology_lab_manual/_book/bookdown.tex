@@ -255,9 +255,9 @@ my book. My R session information is shown below:
 \end{Shaded}
 
 \begin{verbatim}
-## R version 3.4.3 (2017-11-30)
+## R version 3.4.4 (2018-03-15)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
-## Running under: Windows 7 x64 (build 7601) Service Pack 1
+## Running under: Windows 10 x64 (build 18267)
 ## 
 ## Matrix products: default
 ## 
@@ -273,12 +273,12 @@ my book. My R session information is shown below:
 ## [6] methods   base     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] compiler_3.4.3   backports_1.1.2  bookdown_0.7.12 
-##  [4] magrittr_1.5     rprojroot_1.3-2  tools_3.4.3     
-##  [7] htmltools_0.3.6  rstudioapi_0.7   yaml_2.1.19     
-## [10] Rcpp_0.12.17     stringi_1.1.7    rmarkdown_1.10.1
-## [13] knitr_1.20       xfun_0.1         stringr_1.3.1   
-## [16] digest_0.6.15    evaluate_0.10.1
+##  [1] compiler_3.4.4  backports_1.1.2 bookdown_0.7.11
+##  [4] magrittr_1.5    rprojroot_1.3-2 tools_3.4.4    
+##  [7] htmltools_0.3.6 rstudioapi_0.7  yaml_2.1.19    
+## [10] Rcpp_0.12.16    stringi_1.1.7   rmarkdown_1.9  
+## [13] knitr_1.20.3    xfun_0.1        stringr_1.3.1  
+## [16] digest_0.6.15   evaluate_0.10.1
 \end{verbatim}
 
 Package names are in bold text (e.g., \textbf{rmarkdown}), and inline
@@ -727,41 +727,6 @@ of your model in the text of your results section.
   \end{itemize}
 \end{enumerate}
 
-\begin{verbatim}
-## Warning: package 'tibble' was built under R version
-## 3.4.4
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'tidyr' was built under R version
-## 3.4.4
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'purrr' was built under R version
-## 3.4.4
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'dplyr' was built under R version
-## 3.4.4
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'stringr' was built under R version
-## 3.4.4
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'forcats' was built under R version
-## 3.4.4
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'kableExtra' was built under R version
-## 3.4.4
-\end{verbatim}
-
 \begin{landscape}\begin{table}[H]
 \centering\begingroup\fontsize{8}{10}\selectfont
 \rowcolors{2}{gray!6}{white}
@@ -855,12 +820,7 @@ of some areas in the hopes that other species will colonize the open
 areas (Fig. \ref{fig:restoration-fig}).
 
 \begin{figure}
-\centering
-\includegraphics{chapter_materials/restoration_ecology/lww_management.jpg}
-\caption{\label{fig:restoration-fig}Map showing cells 1 and 2 of the Lake
-Waco Wetlands (LWWs). The boardwalk in cell 1 has been managed for
-several years (dotted red circle), while cell 2 has had no management
-(solid red circle).}
+\includegraphics[width=7.04in]{chapter_materials/restoration_ecology/lww_management} \caption{Map showing cells 1 and 2 of the Lake Waco Wetlands (LWWs). The boardwalk in cell 1 has been managed for several years (dotted red circle), while cell 2 has had no management (solid red circle).}\label{fig:restoration-fig}
 \end{figure}
 
 \section{Objectives}\label{objectives-2}
@@ -1016,22 +976,11 @@ changes influence aquatic environments (most anthropogenic impacts are
 very well studied).
 
 \begin{figure}
-\centering
-\includegraphics{chapter_materials/biodiversity_ecology/partitioning.jpg}
-\caption{\label{fig:partition-fig}Schematic representation of how alpha
-(sample level), gamma (region level), and beta (sample variability)
-diversities are related. For each stream you have multiple measures of
-alpha-diversity (taxa richness), with one measure of gamma and
-beta-diversity per stream.}
+\includegraphics[width=27.06in]{chapter_materials/biodiversity_ecology/partitioning} \caption{Schematic representation of how alpha (sample level), gamma (region level), and beta (sample variability) diversities are related. For each stream you have multiple measures of alpha-diversity (taxa richness), with one measure of gamma and beta-diversity per stream.}\label{fig:partition-fig}
 \end{figure}
 
 \begin{figure}
-\centering
-\includegraphics{chapter_materials/biodiversity_ecology/invert_pic.jpg}
-\caption{\label{fig:invert-fig}Example macroinvertebrate (Order:
-Trichoptera) that you will collect in the field and identify under a
-dissecting microscope. Caddisflies frequently have elaborate shells
-built from materials around them in the stream.}
+\includegraphics[width=7.89in]{chapter_materials/biodiversity_ecology/invert_pic} \caption{Example macroinvertebrate (Order: Trichoptera) that you will collect in the field and identify under a dissecting microscope. Caddisflies frequently have elaborate shells built from materials around them in the stream.}\label{fig:invert-fig}
 \end{figure}
 
 \section{Objectives}\label{objectives-3}
@@ -1108,6 +1057,214 @@ idea. You will use this data to answer the following questions:
     Question 1 (text \textbf{AND} graph)
   \item
     Question 2 (text \textbf{AND} graph)
+  \end{itemize}
+\item
+  Discussion
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Hypotheses rejected/supported
+  \item
+    Provide a coherent explanation/interpretation of your results
+  \end{itemize}
+\end{enumerate}
+
+\chapter{Climate modeling}\label{climate-modeling}
+
+\section{Background information}\label{background-information-4}
+
+Human industrial activity, use of fossil fuels, and land use changes
+have been leading to increased emissions and atmospheric concentrations
+of carbon dioxide and other greenhouse gases (GHGs). GHGs in the
+atmosphere allow electromagnetic radiation (light) to pass through to
+the Earth's surface, but absorb the radiation that is emitted by the
+Earth out toward space.
+
+Scientists study the effects of GHG concentrations by constructing
+computer simulations (called Coupled Global Climate Models, or CGCMs
+Fig. \ref{fig:model-fig}) that mathematically represent the physical,
+chemical, and biological processes of the climate system. We have a
+descent understanding of how these processes interact to form
+large-scale climate features, including how GHGs influence climate. To
+predict the effects of GHG emissions on climate, scientists plug
+predictions of GHG emissions into a CGCM to predict future climates
+under different emissions scenarios.
+
+\begin{figure}
+\includegraphics[width=7.5in]{chapter_materials/climate_ecology/model_picture} \caption{Coupled global climate models simulate physical processes in both the atmosphere and from landscape/oceanic features (NOAA, public domain). Each cell in the climate model contains these features, and energy and matter may pass from one cell to another (the cells are not isolated).}\label{fig:model-fig}
+\end{figure}
+
+The community of climate change experts has developed different
+storylines that describe alternative possible futures, which each has
+its own projection of predicted quantities of GHG emissions (Table
+\ref{tab:scenario-table}). To predict the effects of GHG emissions on
+climate, scientists plug predictions of GHG emissions into a CGCM to
+predict future climate under different emissions scenarios.
+
+\rowcolors{2}{gray!6}{white}
+
+\begin{table}[t]
+
+\caption{\label{tab:scenario-table}Characteristics of selected emissions scenarios from the Intergovernmental Panel on Climate Change. These scenarios represent alternative possibilities for future social and technological change as envisioned by a collaboration of governmental and non-governmental analysts.}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}{>{\raggedright\arraybackslash}p{20em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}}
+\hiderowcolors
+\toprule
+Scenario.characteristics & A1B & A2 & B1\\
+\midrule
+\showrowcolors
+Human population growth & Low & High & Low\\
+Globalization & High & Low & High\\
+Focus on environmental sustainability & Low & Low & High\\
+Economic growth & Very high & Medium & High\\
+Land-use changes & Low & Medium/high & High\\
+\addlinespace
+Pace of technological developments (energy use) & Rapid & Slow & Medium\\
+Changes in energy use & Rapid; changes in both production and use & Slow; vary by region & Medium; shift to lowered use of materials\\
+Realized energy use & Very high & High & Low\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\rowcolors{2}{white}{white}
+
+\section{Objectives}\label{objectives-4}
+
+You will work with output from a simulation run from the 3rd-generation
+CGCM produced by the Canadian Center for Climate Modeling and Analysis.
+This dataset focuses on near-surface air temperature - the same type of
+temperature reported in the daily weather report. The temperature is
+reported in mean temperature (\(^\circ\)K) for each month during the
+21\textsuperscript{st}-century (2001-2100), giving a total of 1200
+values for the 1200 concecutive months. You are provided these data for
+the three emissions scenarios described in Table
+\ref{tab:scenario-table} (A1B, A2, B1) and a fourth set of conditions
+representing ``Committed'' climate change. The ``Committed'' set of
+conditions assumes that the composition of the atmosphere remains
+unchanged at year 2001 values (which has already been proven entirely
+unrealistic). Therefore, the only climate changes that will occur are
+those to which the climate system is already committed due to changes in
+atmospheric concentration as of the year 2001. The Committed scenario is
+not intended as a realistic scenario. Instead, it serves as a control
+for comparison with the other scenarios. By comparing the results of a
+given scenario with the results under the Committed scenario, one can
+see how much additional climate change a scenario produces compared to
+what would be produced if alterations in climate forcing agents were
+arrested at 2001 levels.
+
+Since climate is highly variable across the globe, you will focus on a
+particular grid cell in a continuous North-South trasect through North
+America (Fig. \ref{fig:transect-fig}) for questions 1 and 2. These grid
+cells will be assigned either in lab, or on Canvas. For question 3, you
+will use all of the data.
+
+\begin{figure}
+\includegraphics[width=5.22in]{chapter_materials/climate_ecology/transect_picture} \caption{Location of latitudinal transect through North America for which you have data. The amount of sunlight reaching the earth's surface varies greatly along the transect (as does other seasonal features such as precipitation, ice-sheet cover, etc).}\label{fig:transect-fig}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Will future near-surface air temperature be influenced by GHG
+  emissions?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Seasonal variation in temperature will probably mask any long-term
+    trends in temperature due solely to GHG concentrations. With that in
+    mind, analyze data just using one month (July) in the dataset:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Make a graph {[}geom\_point(){]} showing how temperature in
+      \textbf{July} varies across the 100 years of the simulation for
+      all of the emissions scenarios.
+    \end{itemize}
+  \end{itemize}
+\item
+  Under the most extreme GHG emissions scenario (A2), will climate
+  change have a greater effect in the winter or summer on near-surface
+  temperatures?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Seasonal swings in irradiance is one of the primary natural
+    control-knobs on temperature, so GHG emissions may cause temperature
+    to change more in a particular season.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Repeat the prior analysis, but compare data from January and July
+      (but only for the \textbf{A2 scenario}).
+    \end{itemize}
+  \end{itemize}
+\item
+  Under the most extreme GHG emissions scenario (A2), will climate
+  change have a greater effect at high or low latitudes?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Irradiance is distributed unevenly across the globe, so the effect
+    of GHG concentrations may differ based on location.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Create a graph examining 100-year mean temperature change (y-axis
+      values) across latitude (x-axis values), which will help you
+      address this question.
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+
+\section{Lab report specifics}\label{lab-report-specifics-4}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Introduction
+
+  \begin{itemize}
+  \tightlist
+  \item
+    How do GHGs influence climate?
+  \item
+    How do scientists study future climates?
+  \item
+    Objectives
+  \item
+    Hypotheses
+  \end{itemize}
+\item
+  Methods
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Model particulars and analysis steps
+  \item
+    Calculations / statistics
+  \end{itemize}
+\item
+  Results
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Question 1 (text \textbf{AND} graph)
+  \item
+    Question 2 (text \textbf{AND} graph)
+  \item
+    Question 3 (text \textbf{AND} graph)
   \end{itemize}
 \item
   Discussion

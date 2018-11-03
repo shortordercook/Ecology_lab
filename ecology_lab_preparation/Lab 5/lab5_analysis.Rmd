@@ -1,0 +1,65 @@
+---
+title: "Lab 5 Analysis"
+author: "Stephen Cook"
+date: "Oct 27 2018"
+output:
+  pdf_document: default
+---
+
+## Import packages
+
+
+```{r, message=FALSE}
+require(tidyverse)
+```
+
+
+## Import data
+
+
+```{r}
+climate <- read.csv(file = "data/CGCM3_combined.csv", header = T, sep = ",")
+```
+
+## Will future near-surface air temperature be influence by GHG emissions?
+
+```{r}
+july <- climate %>%
+  filter(MONTH == 7) %>%
+  filter(LATITUDE == 18)
+```
+
+```{r}
+july_plot <- ggplot() +
+  geom_point(data = july,
+             aes(x = YEAR, y = TEMPERATURE,
+                 colour = SCENARIO)) +
+  stat_smooth(data = july,
+              aes(x = YEAR, y = TEMPERATURE, colour = SCENARIO),
+              method = "lm")
+
+july_plot
+```
+
+```{r}
+july_model <- lm(data = july,
+                 TEMPERATURE ~ YEAR*SCENARIO)
+
+summary(july_model)
+```
+
+```{r}
+july <- climate %>%
+  filter(MONTH == 7) %>%
+  filter(LATITUDE == 18) %>%
+  filter(SCENARIO == "A2")
+
+july_a2_model <- lm(data = july,
+                    TEMPERATURE ~ YEAR)
+
+coefficients(july_a2_model)
+```
+
+
+
+

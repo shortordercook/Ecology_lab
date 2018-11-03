@@ -1,0 +1,52 @@
+---
+title: "Climate data cleaning"
+author: "SC"
+date: "October 28, 2018"
+output: html_document
+---
+
+
+```{r}
+require(tidyverse)
+```
+
+Read in csv files.
+```{r}
+files = list.files(".", ".csv")
+```
+
+
+```{r}
+fixed_files = lapply(files, function(x) {
+           df <- read.csv(x, header = F, sep = ",")
+           lat <- substr(x, 1,2)
+           df <- df[-c(1,2),]
+           colnames(df) <- c("YEAR", "MONTH", "COMMITTED", "A1B", "A2", "B1")
+           df <- df %>%
+             mutate(LATITUDE = lat) %>%
+             select(YEAR, MONTH, LATITUDE, COMMITTED, A1B, A2, B1)
+           #print(head(df))
+           return(df)})
+```
+
+```{r}
+combined_lats <- do.call(rbind, fixed_files)
+```
+
+```{r}
+long_format <- combined_lats %>%
+  gather("SCENARIO", "TEMPERATURE", 4:7) %>%
+  mutate(YEAR = as.numeric(YEAR),
+         MONTH = as.numeric(MONTH),
+         LATITUDE = as.numeric(LATITUDE),
+         SCENARIO = as.factor(SCENARIO),
+         TEMPERATURE = as.numeric(TEMPERATURE))
+```
+
+```{r}
+write.csv(long_format, file = "CGCM3_combined.csv", row.names = FALSE)
+```
+
+
+
+

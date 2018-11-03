@@ -1,0 +1,167 @@
+---
+title: "Lab 4 Analysis"
+author: "Lauren Kirsch"
+date: "Oct 22 2018"
+output:
+  pdf_document: default
+---
+
+Below is the analysis for Lab 4. Please delete the <> segments below, and fill in the appropriate code or variables to complete the analysis. You may go about the analysis your own way, and as long as it addresses the hypotheses we covered in lab, you will receive full credit.
+
+
+## Import packages
+
+
+```{r, message=FALSE}
+require(tidyverse)
+```
+
+
+## Import data
+
+
+```{r}
+invert <- read.csv(file = "biodiversity_data_distributed.csv", header = T, sep = ",")
+```
+
+## Calculations
+
+
+
+Which stream is more diverse (using richness-based measurements)? Neils or Harris Creek? 
+
+
+```{r}
+alpha_div <- invert %>%
+  select(SITE, REP, CODE) %>% #select only the columns you need
+  group_by(SITE, REP) %>% # group by the variables you need to calculate alpha-diversity
+  summarise(ALPHA_R = n_distinct(CODE)) # n_distinct counts the number of unique things in a column
+
+gamma_div <- invert %>%
+  select(SITE, CODE) %>%
+  group_by(SITE) %>%
+  summarise(GAMMA_R = n_distinct(CODE))
+```
+
+
+```{r}
+richness_diversity <- alpha_div %>%
+  summarise(ALPHA_R = mean(ALPHA_R)) %>% # calculate average alpha-diversity per site
+  full_join(gamma_div, by = "SITE") %>% # join the 2 tables together
+  mutate(BETA_R = GAMMA_R/ALPHA_R) # calculate beta (beta = gamma/mean(alpha))
+```
+
+
+
+%EPT is a common and simple biotic integrity score (remember these taxa are commonly sensitive to anthropogenic stressors). First calculate the number of EPT taxa in each replicate, then in a separate table calculate the total number of organisms in each replicate.
+
+
+```{r}
+ept_taxa <- invert %>%
+  select(SITE, REP, ORDER, COUNT) %>% # select the columns you need
+  group_by(SITE, REP, ORDER) %>% # put appropriate grouping variables here
+  summarise(COUNT = sum(COUNT)) %>% # sum across the order (for orders with more than one genus)
+  filter(ORDER == "Ephemeroptera" | ORDER == "Plecoptera" | ORDER == "Odonata") %>%
+  group_by(SITE, REP) %>%
+  summarise(EPT_COUNT = sum(COUNT))
+```
+
+```{r}
+all_taxa <- invert %>%
+  select(SITE, REP, ORDER, COUNT) %>% # select the columns you need
+  group_by(SITE, REP) %>% # group by variables that will provide a sum across the entire site
+  summarise(ALL_COUNT = sum(COUNT))
+```
+
+```{r}
+combined <- ept_taxa %>%
+  full_join(all_taxa, by = c("SITE", "REP")) %>%
+  mutate(PERCENT_EPT = (EPT_COUNT/ALL_COUNT)*100)
+```
+
+# Statistical tests
+
+Is alpha-diversity significantly differ between the sites?
+
+```{r}
+HARRIS <- alpha_div %>%
+  filter(SITE == "harris") 
+
+NEILS <- alpha_div %>%
+  filter(SITE == "neils") 
+```
+  
+```{r}
+diversity_ttest <- t.test(HARRIS$ALPHA_R, NEILS$ALPHA_R)
+
+diversity_ttest
+```
+
+Does the % of EPT in the assemblage differ between the 2 sites?
+
+```{r}
+HARRIS <- combined %>%
+  filter(SITE == "harris") 
+
+NEILS <- combined %>%
+  filter(SITE == "neils") 
+```
+  
+```{r}
+invert_ttest <- t.test(HARRIS$PERCENT_EPT, NEILS$PERCENT_EPT)
+
+invert_ttest
+```
+
+# Plotting
+
+Bar-plot of mean site richness.
+
+```{r}
+richness_date <- invert %>%
+  select(SITE, REP, CODE) %>% 
+  group_by(SITE, REP) %>% 
+  mutate(ALPHA_R = n_distinct(CODE)) %>%
+  mutate(ALPHA_MEAN = mean(ALPHA_R)) %>%
+  mutate(ALPHA_SE = sd(ALPHA_R)/sqrt(n()))
+
+
+richness_plot <- ggplot() +
+  geom_col(data = richness_date,
+           aes(x = SITE, y = ALPHA_R),
+           width = 0.5) +
+   geom_errorbar(data = richness_date,
+                aes(x = SITE, ymin = ALPHA_MEAN - ALPHA_SE, ymax = ALPHA_MEAN + ALPHA_SE),
+                width = 0.25) +
+ 
+  xlab("Creek") +
+  ylab("Alpha Diversity (Species Richness)")
+
+richness_plot
+```
+
+
+
+Bar-plot comparing the mean %EPT between the 2 sites.
+
+```{r}
+combined_avg <- combined %>%
+  group_by(SITE) %>%
+  summarise(EPT_MEAN = mean(PERCENT_EPT),
+            EPT_SE = sd(PERCENT_EPT)/sqrt(n()))
+
+EPT_plot <- ggplot() +
+  geom_col(data = combined_avg,
+           aes(x = SITE, y = EPT_MEAN),
+           width = 0.5) +
+  geom_errorbar(data = combined_avg,
+                aes(x = SITE, ymin = EPT_MEAN - EPT_SE, ymax = EPT_MEAN + EPT_SE),
+                width = 0.25) +
+  xlab("Creek") +
+  ylab("Percent EPT")
+
+EPT_plot
+```
+
+
+
