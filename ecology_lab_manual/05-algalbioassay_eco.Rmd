@@ -3,14 +3,14 @@ output:
   pdf_document: default
   html_document: default
 ---
-# Biodiversity: measuring biological integrity
+# Nutrient limitation
 
 
 ## Background information
 
-Quantifying biodiversity is an active area of research for ecologists and conservationists. Organisms have evolved alongside each other, and developed adaptations that allow them to thrive in different niches. The interactions between these organisms, and between these organisms and their environment can be incredibly complex. How diverse communities are, and how diversity changes area to area, can tell us a lot about a system. How do we even measure diversity? Or how similar 2 areas are? Alpha-diversity is a measure of biodiversity at a single location, while gamma-diversity is the cumulative diversity in a particular region of interest. Beta-diversity links the two, and is a measure of variable the subsets of gamma-diversity are (Fig. \@ref(fig:partition-fig)). 
+All organisms need nutrients to grow and reproduce. For primary producers, nitrogen (N) and phosphorus (P) are two macronutrients that frequently limit growth (or are in . The primary source of inorganic P is from P-bearing rock, or from the remineralization of P from organic sources (i.e. the decomposition of dead biomass). N, on the other hand, composes nearly 78% of the atmosphere, but this inorganic N-pool is largely inaccessible to most organisms. Some organisms are able to fix N (N-fixing organisms) and access this gaseous pool, which gives them a competitive advantage when N is low in the environment. 
 
-Scientists have been arguing for years about the best way to measure biodiversity, but at its heart all biodiversity metrics are a way to compress complex information into an interpretable number. A coarse analogy would be the Body Mass Index (BMI) score. Humans are comprised of assemblages of cells and organ systems, and we could measure the health of a single individual in thousands of different ways. The BMI score is a simple way to compress that information into a single number that we can use to assess relative 'health'. We can do something similar for biodiversity! I do not want you to conflate 'health' with 'biodiversity', but it is a useful starting point.
+The 
 
 Benthic macroinvertebrates (Fig. \@ref(fig:invert-fig)) are a useful group of study organisms because they are incredibly diverse, and are important ecological indicators of the physical and chemical characteristics of their ecosystem. Some are incredibly sensitive to changes in dissolved oxygen or pH, or will struggle if sediment loads into the stream from the surrounding landscape is too high. Stream ecosystems are linked to the areas around them (their watershed). Think of some ways that humans influence the landscape - then Google how those changes influence aquatic environments (most anthropogenic impacts are very well studied). 
 
