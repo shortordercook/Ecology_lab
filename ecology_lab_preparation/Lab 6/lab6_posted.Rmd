@@ -1,0 +1,55 @@
+---
+title: "Lab 6 Analysis"
+author: "Stephen Cook"
+date: "Nov 23 2018"
+output:
+  pdf_document: default
+---
+
+## Import packages
+
+
+```{r, message=FALSE}
+require(tidyverse)
+require(lubridate)
+```
+
+
+## Import data
+
+Import data and get our date and time into a column called `DATE_TIME`, that we can perform operations on.
+
+```{r}
+algae <- read.csv(file = "algae_growth.csv", header = T, sep = ",") %>%
+  mutate(DATE_TIME = paste(DATE, TIME, sep = " ")) %>%
+  mutate(DATE_TIME = ymd_hm(DATE_TIME))
+```
+
+To plot time-series of this data, we should calculate the time elapsed since the beginning of the experiment. Lubridate makes this pretty easy, but the condition statement (which is necessary because Monday and Tuesday labs had different start times) is beyond what is expected of you in this lab. Run the code below to calculate the elapsed time from the beginning of the experiment to each fluorometer measurement. 
+
+```{r}
+algae_elapsed <- algae %>%
+  mutate(ELAPSED_TIME = ifelse(ORGANISM %in% c("MA", "C"), 
+                               ((DATE_TIME - ymd_hm("20181112 14:30"))),
+                               ((DATE_TIME - ymd_hm("20181113 14:30")))))
+```
+
+We will only analyze the green algae for this report, so exclude the cyanobacteria species before continuing.
+
+
+## Plot growth curves
+
+
+## Plot final RFU values
+
+
+Find the mean and standard error for each treatment and species' RFUs. Plot these values on two bar graphs (one graph for Chlamydomonas and another for Scenedesmus acutus) comparing the balanced and high-p treatments.
+
+
+## Run statistical analyses
+
+
+Use t-tests to determine if the nutrient treatments caused a significant difference in RFUs for each species.
+
+
+
