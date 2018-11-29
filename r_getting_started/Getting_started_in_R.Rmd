@@ -14,7 +14,7 @@ fontfamily: mathpazo
 urlcolor: blue
 abstract: "R is a programming language that is used by scientists in a wide variety of fields. It is open source (free to use and driven by community development) and installable on all major operating systems. RStudio is a separate installation from the R language, and is a desktop program that provides a graphical wrapper to the R language. The technical term for this type of program is *integrated development environment* (IDE), and it makes life much easier when using R.
 
-This document will get you up and running in R and RStudio on your personal machine. You will need installation permission on your computer (if installing on your home computer you will almost certainly have this)."
+This document will get you up and running in R and RStudio on your personal machine. You will need installation permission on your computer (if installing on your home computer you will almost certainly have this)"
 ---
 
 ```{r setup, include=FALSE}
