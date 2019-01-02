@@ -1,0 +1,137 @@
+---
+title: "Ecology Lab 6"
+author: "Raquel Hernandez"
+date: "11/30/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+```{r, message=FALSE}
+require(tidyverse)
+require(lubridate)
+```
+
+```{r}
+Algae_Growth <- read.csv(file = "algae_growth.csv", header = T, sep = ",") %>%
+  mutate (DATE_TIME = paste(DATE, TIME, sep = " ")) %>%
+  mutate (DATE_TIME = ymd_hm(DATE_TIME))
+```
+
+```{r}
+algae_elaspsedtime <- Algae_Growth %>% 
+  mutate(ELAPSED_TIME = ifelse(ORGANISM %in% c("MA", "C"),
+                               ((DATE_TIME - ymd_hm("20181112 14:30"))),
+                               ((DATE_TIME - ymd_hm("20181113 14:30")))))
+```
+
+# Only Green Algae is needed from the data.
+```{r}
+greenalgae_growth <- algae_elaspsedtime %>%
+  filter(ORGANISM == "C" | ORGANISM == "SA")
+```
+
+```{r}
+C_growth <- greenalgae_growth %>%
+  filter(ORGANISM == "C")
+```
+
+```{r}
+SA_growth <- greenalgae_growth %>%
+  filter(ORGANISM == "SA")
+```
+
+#Plotting Growth Curves
+```{r}
+C_plot <- ggplot() +
+  geom_point(data = C_growth, 
+                aes(x = ELAPSED_TIME, y = RFU, group = TREATMENT, colour = TREATMENT)) +
+  xlab("Elapsed Time (Minutes)") +
+  ylab("Relative Fluoresence Units")
+C_plot
+```
+
+```{r}
+SA_plot <- ggplot() +
+  geom_point(data = SA_growth, 
+                aes(x = ELAPSED_TIME, y = RFU, group = TREATMENT, colour = TREATMENT)) +
+  xlab("Elapsed Time (Minutes)") +
+  ylab("Relative Fluoresence Units")
+SA_plot
+```
+
+```{r}
+Mean_Balanced <- greenalgae_growth %>%
+  filter(TREATMENT == "BALANCED")%>%
+  group_by(ORGANISM) %>%
+  summarise(TIME_MEAN = mean(ELAPSED_TIME),
+            TIME_SE = sd(ELAPSED_TIME)/sqrt(n()))
+```
+
+```{r}
+Mean_C_Balanced <- Mean_Balanced %>%
+  filter(ORGANISM == "C") 
+```
+
+```{r}
+Mean_SA_Balanced <- Mean_Balanced %>%
+  filter(ORGANISM == "SA")
+```
+
+```{r}
+Mean_HighP <- greenalgae_growth %>%
+  filter(TREATMENT == "HIGH_P") %>%
+  group_by(ORGANISM) %>%
+  summarise(TIME_MEAN = mean(ELAPSED_TIME),
+            TIME_SE = sd(ELAPSED_TIME)/sqrt(n()))
+```
+
+```{r}
+Mean_C_HighP <- Mean_HighP %>%
+  filter(ORGANISM == "C")
+  filter()
+```
+
+```{r}
+Mean_SA_HighP <- Mean_HighP %>%
+  filter(ORGANISM == "SA")
+```
+
+```{r}
+C_test <- t.test(Mean_C_Balanced$TIME_MEAN, Mean_C_HighP$TIME_MEAN)
+
+C_test
+```
+
+
+
+
+
+
+
+
+
+
