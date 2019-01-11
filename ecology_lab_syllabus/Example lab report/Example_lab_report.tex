@@ -1,0 +1,176 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Example lab report},
+            pdfauthor={Stephen Cook},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Example lab report}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Stephen Cook}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{January 9, 2019}
+
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Student success in college is more critical today than at any point in
+history. Postsecondary education is increasingly necessary to become
+economically self-sufficient, and the baccalaureate degree is the
+preferred choice for many. However, many students are not as prepared
+academically as collegiate faculty and teaching-assistants (TAs) would
+like. The syllabus is a common tool used in virtually every college
+course to outline expectations and ways that the course or lab is
+designed to help their academic development.
+
+The objective of this experiment was to determine the effectiveness of
+the syllabus in aiding student success in Biology 3103 (BIO 3103). We
+tested the null hypothesis that students who receive the syllabus, and
+those that do not, receive similar scores on their Lab Reports. Our
+alternative hypothesis was that students who read the syllabus would
+perform significantly better that students who did not.
+
+\hypertarget{methods}{%
+\section{Methods}\label{methods}}
+
+We conducted a study on two sections of BIO 3103 in the spring of 2019
+using Lab Report scores as a measure of student success in the course.
+To determine the effectiveness of the syllabus, we distributed the
+syllabus to one section, and withheld the syllabus from the other
+section. The syllabus contained information about lab meetings,
+instructor contact information, scheduling, report expectations, and
+information about how to submit work electronically. There were 14
+students in the section receiving the syllabus, and 18 students in the
+section not receiving the syllabus. Each student completed 6 reports
+throughout the semester. All other variables such as the number of lab
+meetings, field excursions, and lab report grading were held constant
+between the two sections throughout the semester. At the end of the
+semester, lab report scores (as a point score ranging from 0-12) were
+compared between the two sections.
+
+We calculated the mean and standard error (s.e.) of the report scores
+for each section, and displayed this information in a bar-graph. To
+determine if there was any statistically significant difference between
+the section scores, we conducted a two-sample t-test (\emph{a priori}
+\$\alpha of 0.5).
+
+\hypertarget{results}{%
+\section{Results}\label{results}}
+
+The syllabus had a significant effect on lab report scores of students
+in BIO 3103 (t-test, p\textless{}0.001). The mean lab report score of
+students who had access to the lab syllabus (10.15 +/- 0.17 points) was
+higher than students who did not (8.23 +/- 0.18 points).
+
+\begin{figure}
+\centering
+\includegraphics{Example_lab_report_files/figure-latex/unnamed-chunk-7-1.pdf}
+\caption{Figure 1. Access to the course syllabus had a significant
+effect on lab report scores (t-test, p\textless{}0.001). Shown are group
+means +/- the standard error. Mean lab report scores were higher for
+students with syllabus access (10.15 +/- 0.17 points) than students with
+no access (8.26 +/- 0.18 points)}
+\end{figure}
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
+
+We rejected the null hypothesis that the lab report syllabus has no
+effect on student success. The data supported our alternative
+hypothesis, that students who read the syllabus earn significantly
+higher scores on their lab reports. That students earn higher scores on
+lab reports after reading the syllabus is probably because of the
+information the syllabus contains about what is required in lab reports.
+Students who were denied access to the syllabus frequently left out
+important information required in every lab report such as hypothesis
+statements and detailed figure captions.
+
+The variability in scores between the two sections was similar (0.17
+s.e. for the syllabus group, and 0.18 s.e. for the non syllabus group).
+This could mean that though students who received the syllabus scored
+higher, some students do particularly well or poor despite access to the
+syllabus. Additional factors could have influenced final scores on lab
+reports such as class history, the number of class hours that a student
+was enrolled in, and the number of classes the student missed. Syllabi
+are important tools used in education, and our results indicate that
+they should be distributed in every class to enhance student success.
+
+
+\end{document}

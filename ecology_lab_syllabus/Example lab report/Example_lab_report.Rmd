@@ -1,0 +1,79 @@
+---
+title: "Example lab report"
+author: "Stephen Cook"
+date: "January 9, 2019"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r include = FALSE}
+#tells R to hide all code chunks so they are not included in report - figures are still included
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE, results='hide', fig.keep='all')
+```
+
+# Introduction
+
+Student success in college is critically important. Postsecondary education is increasingly necessary to become economically self-sufficient, and the baccalaureate degree is the preferred choice for many. However, many students are not as prepared academically as collegiate faculty and teaching-assistants (TAs) would like. The syllabus is a common tool used in virtually every college course to outline expectations and ways that the course or lab is designed to help their academic development. 
+
+The objective of this experiment was to determine the effectiveness of the syllabus in aiding student success in Biology 3103 (BIO 3103). We tested the null hypothesis that students who receive the syllabus, and those that do not, receive similar scores on their lab reports. Our alternative hypothesis was that students who read the syllabus would perform significantly better that students who did not.
+
+# Methods
+
+We conducted a study on two sections of BIO 3103 in the spring of 2019 using lab report scores as a measure of student success in the course. To determine the effectiveness of the syllabus, we distributed the syllabus to one section, and withheld the syllabus from the other section. The syllabus contained information about lab meetings, instructor contact information, scheduling, report expectations, and information about how to submit work electronically. There were 14 students in the section receiving the syllabus, and 18 students in the section not receiving the syllabus. Each student completed 6 reports throughout the semester that the TA graded. All other variables such as the number of lab meetings, field excursions, and lab report grading were held constant between the two sections throughout the semester. At the end of the semester, lab report scores (as a point score ranging from 0-12) were compared between the two sections.
+
+We calculated the mean and standard error (s.e.) of the report scores for each section, and displayed this information in a bar-graph. To determine if there was any statistically significant difference between the sections, we conducted a two-sample t-test on the report scores (*a priori* $\alpha$ of 0.5).
+
+# Results
+
+```{r}
+require(tidyverse) #required packages
+```
+
+```{r}
+grades <- read.csv(file = "grades_bio3103.csv", header = T, sep = ",") #import grades
+```
+
+```{r}
+grades_summary <- grades %>%
+  group_by(SECTION) %>%
+  summarize(REPORT_MEAN = mean(REPORT_SCORE),
+            REPORT_SE = sd(REPORT_SCORE)/sqrt(n()))
+```
+
+```{r}
+syllabus <- grades %>%
+  filter(SECTION == "Syllabus") # filters only males out to assign to 'male'
+
+no_syllabus <- grades %>%
+  filter(SECTION == "No syllabus") # filters only females out to assign to 'female'
+```
+
+```{r}
+syllabus_ttest <- t.test(syllabus$REPORT_SCORE, no_syllabus$REPORT_SCORE)
+
+syllabus_ttest
+```
+
+The syllabus had a significant effect on lab report scores of students in BIO 3103 (t-test, p<0.001). The mean lab report score of students who had access to the lab syllabus (10.15 +/- 0.17 points) was higher than students who did not (8.23 +/- 0.18 points). 
+
+
+```{r, fig.cap = "Figure 1. Access to the course syllabus had a significant effect on lab report scores (t-test, p<0.001). Shown are group means +/- the standard error. Mean lab report scores were higher for students with syllabus access (10.15 +/- 0.17 points) than students with no access (8.26 +/- 0.18 points)"}
+plot1 <- ggplot() +
+  geom_col(data = grades_summary,
+           aes(x = SECTION, y = REPORT_MEAN),
+           width = 0.5) +
+  geom_errorbar(data = grades_summary,
+                aes(x = SECTION, ymin = REPORT_MEAN - REPORT_SE, ymax = REPORT_MEAN + REPORT_SE),
+                width = 0.25) +
+  xlab("Sections") +
+  ylab("Report score (points)")
+
+plot1
+```
+
+# Discussion
+
+We rejected the null hypothesis that the lab report syllabus has no effect on student success. The data supported our alternative hypothesis, that students who read the syllabus earn significantly higher scores on their lab reports. That students earn higher scores on lab reports after reading the syllabus is probably because of the information the syllabus contains about what is required in lab reports. Students who were denied access to the syllabus frequently left out important information required in every lab report such as hypothesis statements and detailed figure captions.
+
+The variability in scores between the two sections was similar (0.17 s.e. for the syllabus group, and 0.18 s.e. for the non syllabus group). This could mean that though students who received the syllabus scored higher, some students do particularly well or poor despite access to the syllabus. Additional factors could have influenced final scores on lab reports such as class history, the number of class hours that a student was enrolled in, and the number of classes the student missed. Syllabi are important tools used in education, and our results indicate that they should be distributed in every class to enhance student success.

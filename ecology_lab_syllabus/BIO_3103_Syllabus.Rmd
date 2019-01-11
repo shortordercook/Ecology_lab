@@ -1,13 +1,14 @@
 ---
 title: 'Biology 3103 : Ecology Laboratory'
 author: "Stephen Cook & Dr. Robert Doyle"
-date: "Fall 2018"
+date: "Spring 2019"
 output:
   pdf_document:
     fig_caption: yes
     keep_tex: yes
     latex_engine: xelatex
     template: svm-latex-syllabus.tex
+  word_document: default
   html_document:
     df_print: paged
 email: stephen_cook@baylor.edu, robert_doyle@baylor.edu
@@ -16,7 +17,7 @@ fontsize: 11pt
 geometry: margin=1in
 header-includes: \linespread{1.05}
 office: C453.R (Cook), C419 (Doyle)
-officehours: MTu 9:00-11:00am (Cook), or by appointment
+officehours: By appointment, but generally around
 classroom: A222
 classhours: 2:00-6:15
 ---
@@ -32,7 +33,7 @@ and data handling practices).
 
 # General information
 
-Ecology is synonymous with field research - barring dangerous conditions (e.g., lightning) we
+Each lab will consist of the same general elements. You will (1) form hypotheses, (2) collect some data, (3) analyze that data, and (4) write-up the results. Ecology is synonymous with field research - barring dangerous conditions (e.g., lightning) we
 will be outdoors if the planned lab is outdoors. Rain or shine! Wearing clothes not suited to field
 conditions will not be considered a valid excuse to not participate in the lab, so dress appropriately.
 
@@ -44,9 +45,7 @@ jeans or quick-dry pants/shorts. Shorts could be fine- but we may be wading thro
 provided for each outdoor lab.
 
 If you ever have questions or concerns, please do not hesitate to email either Stephen (preferably)
-or Dr. Doyle. We generally respond quickly to emails, with the exception of the evening before lab reports are due (Stephen will respond to report questions up untill 5:00pm the day before the
-assigment is due). Please take advantage of office hours, and we are always happy to arrange
-alternative times to meet if the posted hours do not work with your schedule.
+or Dr. Doyle. We generally respond quickly to emails, with the exception of the evening before lab reports are due (Stephen will politely ignore report questions emailed after 5:00pm the day before the assignment is due). Please get in touch if you need help outside of lab - we are around and available to meet.
 
 ## Laboratory/field activities
 
@@ -65,7 +64,7 @@ It is important that students be aware that participating in laboratory activiti
 
 - **72 points** - 6 lab reports at 12 points each
 
-- **18 points** - 6 R scripts at 3 points each
+- **18 points** - 6 R analyses at 3 points each
 
 - **10 points** - 2 field trips at 5 points each
 
@@ -92,11 +91,11 @@ cat(tabl) # output the table in a format good for HTML/PDF/docx conversion
 
 See below.
 
-## R scripts
+## Analyses in R
 
-R is a simple programming language that scientists in a wide variety of fields use for data analysis, graphing, and report generation. If computer programming is completely foreign to you, don't worry! You will be given everything you need for this lab. 
+R is a user-friendly programming language that scientists in a wide variety of fields use for data analysis, graphing, and report generation. If computer programming is completely foreign to you, don't worry! You will be given everything you need for this lab. 
 
-You will turn in a .rmd file with each lab report, which will include all calculations, data analysis, and graph generation. 
+We will be using RstudioCloud, which enables you to log-in online to conduct your analysis and create figures for your reports. This document will be due the same time as each Lab Report. Look to a separate handout for information.
 
 ## Field trips (2x)
 
@@ -112,14 +111,14 @@ it is very important to be on time, as we will frequently be leaving the lab to 
 a valid excuse for missing class. Attendance policy is detailed in the Baylor University student handbook. You will
 be automatically dropped from the class if you have 4 unexcused absences. Missing a lab is forfeiture of the points
 available for that day. For labs that take up two days, missing one of the labs will result in a 50% deduction on the
-lab report. For an absence to be excused, the instructor must receive documentation (e.g., doctor's note or chaplain's
+lab report. For an absence to be excused, the instructor must receive documentation (e.g., doctor's or chaplain's
 note). Students with excused absences may be given alternate assignments.
 
-## CANVAS
+## Canvas
 
 We will use Canvas to post data, report guidelines, readings, and communications about the lab. You will also use
-Canvas to submit lab reports. Each report will be submitted to Turnitin, and will be graded and scored on Canvas.
-Please review any comments/suggestions in order to improve your lab reports. We suggest you check Canvas each
+Canvas to submit lab reports. Each report will automatically be submitted to *Turnitin*, and will be graded and scored on Canvas.
+**Please review any comments/suggestions in order to improve your lab reports.** We suggest you check Canvas each
 week before coming to class for any updated announcements.
 
 
@@ -134,8 +133,7 @@ not responsible for them!
 Plagiarism or any form of cheating involves a breach of student-teacher trust. This means that any work submitted under your name is expected to be your own, neither composed by anyone else as a whole or in part, nor handed over to another person for complete or partial revision. Be sure to document all ideas that are not your own. Instances of plagiarism or any other act of academic dishonesty will be reported to the Honor Council and may result in failure of the course. Not understanding plagiarism is not an excuse. You may use online resources to study for this course, but you must do so in ways that are consistent with all aspects of the Baylor University Honor Code (see, specifically, Section III.C.12 and Section III.C.16). As a Baylor student, I expect you to be intimately familiar with all aspects of the Honor Code, which can be found at this link: http://www.baylor.edu/honorcode/.
 
 Translation... If you use outside resources,
-please cite them appropriately, and do not copy directly either from sources or the lab handouts. Also, do not copy
-from current/previous students' lab reports.
+please cite them appropriately, and do not copy directly from sources or the lab handouts. Though we encourage you to work in partners/groups, you must analyze the data and write reports independently. **Do not copy from current/previous students' lab reports.** Please be advised that each report will be automatically submitted to *Turnitin* through Canvas and assigned a similarity score.
 
 
 ## Disabilities policy
@@ -144,44 +142,84 @@ Any student who needs academic accommodations related to a documented disability
 
 ## Title IX statement
 
-Baylor University does not discriminate on the basis of sex or gender in any of its education or employment programs and activities, and it does not tolerate discrimination or harassment on the basis of sex or gender. This policy prohibits sexual and gender-based harassment, sexual assault, sexual exploitation, stalking, intimate partner violence, and retaliation (collectively referred to as prohibited conduct). For more information on how to report, or to learn more about our policy and process, please visit www.baylor.edu/titleix. You may also contact the Title IX office directly by phone, (254) 710-8454, or email, TitleIX_Coordinator@baylor.edu.
+Baylor University does not discriminate on the basis of sex or gender in any of its education or employment programs and activities, and it does not tolerate discrimination or harassment on the basis of sex or gender. This policy prohibits sexual and gender-based harassment, sexual assault, sexual exploitation, stalking, intimate partner violence, and retaliation (collectively referred to as prohibited conduct).  For more information on how to report, or to learn more about our policy and process, please visit www.baylor.edu/titleix. You may also contact the Title IX office directly by phone, (254) 710-8454, or email, TitleIX_Coordinator@baylor.edu.
+
+The Title IX office understands the sensitive nature of these situations and can provide information about available on- and off-campus resources, such as counseling and psychological services, medical treatment, academic support, university housing, and other forms of assistance that may be available. Staff members at the office can also explain your rights and procedural options if you contact the Title IX Office. You will not be required to share your experience. If you or someone you know feels unsafe or may be in imminent danger, please call the Baylor Police Department (254-710-2222) or Waco Police Department (9-1-1) immediately.
 
 \newpage
 
-# Tentative lab schedule
+# Monday (section 01) tentative schedule
 
 ```{r table_2, echo=FALSE, message=FALSE, warnings=FALSE, results='asis', fig.align='left'}
 tabl_2 <- # simple table creation here
 "| Date        | Lab  | What is due? |
 |---------------|:-------------| ------:|
-| Aug 20/21     | Introduction, safety, lab reports | Nothing |
-| Aug 27/28     | LAB 1: Cemetery demography / golden eagle lab| R installation |
-| Sep 3/4     | LABOR DAY | Do something ecological |
-| Sep 10/11     | LAB 2: Photosynthesis | Nothing |
-| Sep 17/18     | Field trip no. 1 / LAB 2 discussion | LAB 1 |
-| Sep 24/25     | LAB 3: Vegetation transects | LAB 2 |
-| Oct 1/2     | LAB 4: Biodiversity (sampling) | Nothing |
-| Oct 8/9     | LAB 4: Biodiversity (processing) | LAB 3 |
-| Oct 15/16     | Field trip no. 2 | Nothing |
-| Oct 22/23     | LAB 5: Climate modeling | LAB 4 |
-| Oct 29/30     | LAB 5: Climate modeling (group data) | Nothing |
-| Nov 5/6     | LAB 6: Trophic ecology | LAB 5 |
-| Nov 12/13     | LAB 6: Trophic ecology | Nothing |
-| Nov 19/20     | THANKSGIVING FLEX DAY | Nothing |
-| Nov 26/27     | Field trip no. 3 | LAB 6 (during final) |"
+| Jan 14     | Introduction, LAB 1 data collection | Nothing |
+| Jan 21     | MLK Day| Nothing |
+| Jan 28     | LAB 1: Cemetery demography / golden eagle lab| R primers & reading |
+| Feb 4     | LAB 2: Population ecology (algal bioassay) | LAB 1 |
+| Feb 11     | LAB 2: Analysis / discussion | Nothing |
+| Feb 18     | Field trip no. 1 | LAB 2 |
+| Feb 25     | LAB 3: Photosynthesis | Nothing |
+| March 4    | LAB 3: Analysis / discussion | Nothing |
+| March 11     | SPRING BREAK | Nothing |
+| March 18     | LAB 4: Vegetation transects | LAB 3 |
+| March 25     | LAB 4: Analysis / discussion | Nothing |
+| April 1     | LAB 5: Biodiversity (field)| LAB 4 |
+| April 8     | LAB 5: Biodiversity (lab, analysis/discussion) | Nothing |
+| April 15     | Field trip no. 2 - Cameron Park | LAB 5 |
+| April 22     | EASTER BREAK | Nothing |
+| April 29     | LAB 6: Climate modeling | Nothing |"
 
 cat(tabl_2) # output the table in a format good for HTML/PDF/docx conversion
+
 ```
+
+\begin{flushright}
+
+**Lab 6 will be due on Wednesday, May 8 at 5:00pm.**
+
+\end{flushright}
+
+# Tuesday (section 02) tentative schedule
+
+```{r table_3, echo=FALSE, message=FALSE, warnings=FALSE, results='asis', fig.align='left', fig.cap="This is a test."}
+tabl_3 <- # simple table creation here
+"| Date        | Lab  | What is due? |
+|---------------|:-------------| ------:|
+| Jan 15     | Introduction, LAB 1 data collection | Nothing |
+| Jan 22     | MLK DAY | Nothing |
+| Jan 29     | LAB 1: Cemetery demography / golden eagle lab| R primers & reading|
+| Feb 5     | LAB 2: Population ecology (algal bioassay) | LAB 1 |
+| Feb 12     | LAB 2: Analysis / discussion | Nothing |
+| Feb 19     | Field trip no. 1 | LAB 2 |
+| Feb 26     | LAB 3: Photosynthesis | Nothing |
+| March 5    | LAB 3: Analysis / discussion | Nothing |
+| March 12     | SPRING BREAK | Nothing |
+| March 19     | LAB 4: Vegetation transects | LAB 3 |
+| March 26     | LAB 4: Analysis / discussion | Nothing |
+| April 2     | LAB 5: Biodiversity (field)| LAB 4 |
+| April 9     | DIADELOSO | Nothing |
+| April 16     | LAB 5: Biodiversity (lab, analysis/discussion) | Nothing |
+| April 23     | Field trip no. 2 - Cameron Park | LAB 5 |
+| April 30     | LAB 6: Climate modeling | Nothing |"
+
+cat(tabl_3) # output the table in a format good for HTML/PDF/docx conversion
+```
+
+\begin{flushright}
+
+**Lab 6 will be due on Thursday, May 9 at 5:00pm.**
+
+\end{flushright}
 
 \newpage
 
 # Lab report guidelines
 
-Lab reports are due via electronic submission (Canvas) by the beginning of lab time on the due dates mentioned on the course schedule. It is the student's responsibility to turn in lab reports. Labs may be accepted late up to one week late and will receive a 30% reduction in score (maximum 70%), but will not be eligible for a rewrite. No labs will be accepted more than one week late unless special circumstances are approved by instructor or TA. 
+Lab reports are due via electronic submission (Canvas) by the beginning of lab time on the due dates mentioned on the course schedule. It is the student's responsibility to turn in lab reports. Labs may be accepted up to one week late and will receive a 30% reduction in score (maximum 70%), but will not be eligible for a rewrite. No labs will be accepted more than one week late unless special circumstances are approved by TA or Professor. 
 
-If you receive a failing score (< 70%) on a report, you have the opportunity to rewrite and resubmit the report for a maximum of 70%. This rewrite will be due one week from when the report is handed back. If you choose to take advantage of this, please carefully consider the comments/corrections on your graded report, and ask questions if necessary!
-
-Reports will be scored by the rubric below.
+If you receive a failing score (< 70%) on a report, and you turned it in on time, you have the opportunity to rewrite and resubmit the report for a maximum of 70%. This rewrite will be due one week from when the report is handed back. If you choose to take advantage of this, please carefully consider the comments/corrections on your graded report, and ask questions if necessary!
 
 ## Style and format for written report
 
@@ -202,11 +240,11 @@ Briefly give introductory material explaining the importance of the lab material
 
 ## Methods
 
-Clearly summarize what was done in lab to address the hypothesis.  The KEY points of all experimental design, data collection, and data analysis should be included.  You will only learn 2 statistical tests - so tell us which one you used and how it was applied to the data to address your hypothesis.
+Begin with a general, overarching statement about what you did, then clearly summarize what was done in lab to address the hypotheses.  The KEY points of all experimental design, data collection, and data analysis should be included. Make sure to include details about any calculations and/or statistics you used, and how you used them.
 
 ## Results
 
-Summarize the data collected and the results used to address the hypothesis. The results in the text (in paragraph form) should be graphically represented - you will use the R programming language and the Rstudio program, **with appropriate labelling of axes and legends, if applicable.** Clearly state the results of the statistical test employed.
+Summarize the data collected and the results used to address the hypothesis. The results in the text (in paragraph form) should be graphically represented - you will use the R to generate your figures, **with appropriate labelling of axes and legends, if applicable.** Clearly state the results of the statistical test employed.
 
 - Graphs and tables MUST have a detailed caption explaining the contents!
 - Figures must have labeled axes that include the units (if appropriate) 
@@ -214,6 +252,7 @@ Summarize the data collected and the results used to address the hypothesis. The
 ## Discussion
 
 Explain if the null hypothesis stated in the introduction was rejected or supported (you should remind the reader what hypothesis you were testing). Describe what the Results mean in the context of your Introduction. While the Results section details *what* you found, the Discussion section should be dedicated to rationalizing *why* you think your data displayed these results.  
+
 \newpage
 
 ```{r echo=FALSE, fig.cap="Grading rubric for Ecology Lab of Fall 2018. Each section will be scored by the criteria provided under 'Aspect being evaluated', and points will total to 12 points."}

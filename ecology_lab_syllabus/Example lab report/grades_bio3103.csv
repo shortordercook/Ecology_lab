@@ -1,0 +1,193 @@
+SECTION,STUDENT,REPORT_NO,REPORT_SCORE
+Syllabus,1,1,11
+Syllabus,2,1,12
+Syllabus,3,1,10
+Syllabus,4,1,11
+Syllabus,5,1,9
+Syllabus,6,1,6
+Syllabus,7,1,11
+Syllabus,8,1,12
+Syllabus,9,1,8
+Syllabus,10,1,9
+Syllabus,11,1,10
+Syllabus,12,1,11
+Syllabus,13,1,12
+Syllabus,14,1,11
+No syllabus,1,1,8
+No syllabus,2,1,9
+No syllabus,3,1,7
+No syllabus,4,1,5
+No syllabus,5,1,8
+No syllabus,6,1,12
+No syllabus,7,1,11
+No syllabus,8,1,8
+No syllabus,9,1,11
+No syllabus,10,1,7
+No syllabus,11,1,6
+No syllabus,12,1,4
+No syllabus,13,1,8
+No syllabus,14,1,10
+No syllabus,15,1,12
+No syllabus,16,1,6
+No syllabus,17,1,7
+No syllabus,18,1,8
+Syllabus,1,2,11
+Syllabus,2,2,12
+Syllabus,3,2,8
+Syllabus,4,2,11
+Syllabus,5,2,9
+Syllabus,6,2,7
+Syllabus,7,2,11
+Syllabus,8,2,11
+Syllabus,9,2,7
+Syllabus,10,2,8
+Syllabus,11,2,7
+Syllabus,12,2,8
+Syllabus,13,2,12
+Syllabus,14,2,11
+No syllabus,1,2,8
+No syllabus,2,2,9
+No syllabus,3,2,7
+No syllabus,4,2,5
+No syllabus,5,2,8
+No syllabus,6,2,12
+No syllabus,7,2,11
+No syllabus,8,2,8
+No syllabus,9,2,11
+No syllabus,10,2,7
+No syllabus,11,2,6
+No syllabus,12,2,4
+No syllabus,13,2,8
+No syllabus,14,2,9
+No syllabus,15,2,11
+No syllabus,16,2,7
+No syllabus,17,2,8
+No syllabus,18,2,8
+Syllabus,1,3,10
+Syllabus,2,3,11
+Syllabus,3,3,9
+Syllabus,4,3,10
+Syllabus,5,3,10
+Syllabus,6,3,8
+Syllabus,7,3,11
+Syllabus,8,3,10
+Syllabus,9,3,8
+Syllabus,10,3,8
+Syllabus,11,3,7
+Syllabus,12,3,8
+Syllabus,13,3,11
+Syllabus,14,3,11
+No syllabus,1,3,10
+No syllabus,2,3,10
+No syllabus,3,3,8
+No syllabus,4,3,4
+No syllabus,5,3,7
+No syllabus,6,3,11
+No syllabus,7,3,10
+No syllabus,8,3,9
+No syllabus,9,3,10
+No syllabus,10,3,8
+No syllabus,11,3,5
+No syllabus,12,3,4
+No syllabus,13,3,9
+No syllabus,14,3,9
+No syllabus,15,3,10
+No syllabus,16,3,8
+No syllabus,17,3,8
+No syllabus,18,3,8
+Syllabus,1,4,12
+Syllabus,2,4,12
+Syllabus,3,4,9
+Syllabus,4,4,11
+Syllabus,5,4,12
+Syllabus,6,4,9
+Syllabus,7,4,11
+Syllabus,8,4,12
+Syllabus,9,4,9
+Syllabus,10,4,9
+Syllabus,11,4,8
+Syllabus,12,4,8
+Syllabus,13,4,11
+Syllabus,14,4,11
+No syllabus,1,4,9
+No syllabus,2,4,9
+No syllabus,3,4,7
+No syllabus,4,4,8
+No syllabus,5,4,7
+No syllabus,6,4,10
+No syllabus,7,4,10
+No syllabus,8,4,9
+No syllabus,9,4,9
+No syllabus,10,4,7
+No syllabus,11,4,4
+No syllabus,12,4,5
+No syllabus,13,4,9
+No syllabus,14,4,9
+No syllabus,15,4,9
+No syllabus,16,4,10
+No syllabus,17,4,10
+No syllabus,18,4,9
+Syllabus,1,5,12
+Syllabus,2,5,12
+Syllabus,3,5,10
+Syllabus,4,5,11
+Syllabus,5,5,12
+Syllabus,6,5,9
+Syllabus,7,5,11
+Syllabus,8,5,12
+Syllabus,9,5,10
+Syllabus,10,5,10
+Syllabus,11,5,9
+Syllabus,12,5,8
+Syllabus,13,5,11
+Syllabus,14,5,12
+No syllabus,1,5,8
+No syllabus,2,5,7
+No syllabus,3,5,9
+No syllabus,4,5,8
+No syllabus,5,5,6
+No syllabus,6,5,9
+No syllabus,7,5,9
+No syllabus,8,5,9
+No syllabus,9,5,9
+No syllabus,10,5,7
+No syllabus,11,5,4
+No syllabus,12,5,5
+No syllabus,13,5,9
+No syllabus,14,5,9
+No syllabus,15,5,9
+No syllabus,16,5,12
+No syllabus,17,5,10
+No syllabus,18,5,9
+Syllabus,1,6,11
+Syllabus,2,6,10
+Syllabus,3,6,10
+Syllabus,4,6,11
+Syllabus,5,6,12
+Syllabus,6,6,11
+Syllabus,7,6,11
+Syllabus,8,6,12
+Syllabus,9,6,11
+Syllabus,10,6,11
+Syllabus,11,6,10
+Syllabus,12,6,9
+Syllabus,13,6,11
+Syllabus,14,6,12
+No syllabus,1,6,8
+No syllabus,2,6,7
+No syllabus,3,6,9
+No syllabus,4,6,8
+No syllabus,5,6,6
+No syllabus,6,6,10
+No syllabus,7,6,10
+No syllabus,8,6,9
+No syllabus,9,6,9
+No syllabus,10,6,7
+No syllabus,11,6,6
+No syllabus,12,6,6
+No syllabus,13,6,9
+No syllabus,14,6,9
+No syllabus,15,6,9
+No syllabus,16,6,11
+No syllabus,17,6,10
+No syllabus,18,6,9
