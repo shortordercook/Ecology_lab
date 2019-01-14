@@ -55,10 +55,10 @@ syllabus_ttest <- t.test(syllabus$REPORT_SCORE, no_syllabus$REPORT_SCORE)
 syllabus_ttest
 ```
 
-The syllabus had a significant effect on lab report scores of students in BIO 3103 (t-test, p<0.001). The mean lab report score of students who had access to the lab syllabus (10.15 +/- 0.17 points) was higher than students who did not (8.23 +/- 0.18 points). 
+Access to the syllabus had a significant effect on lab report scores of students in BIO 3103 (t-test, p<0.001). The mean lab report score of students who had access to the lab syllabus (10.15 +/- 0.17 points) was higher than students who did not (8.23 +/- 0.18 points). 
 
 
-```{r, fig.cap = "Figure 1. Access to the course syllabus had a significant effect on lab report scores (t-test, p<0.001). Shown are group means +/- the standard error. Mean lab report scores were higher for students with syllabus access (10.15 +/- 0.17 points) than students with no access (8.26 +/- 0.18 points)"}
+```{r, fig.cap = "Figure 1. Students who had access to the syllabus performed significantly better on lab reports than students who did not (t-test, p<0.001). Shown are group means +/- the standard error. Mean lab report scores were higher for students with syllabus access (10.15 +/- 0.17 points) than students with no access (8.26 +/- 0.18 points)"}
 plot1 <- ggplot() +
   geom_col(data = grades_summary,
            aes(x = SECTION, y = REPORT_MEAN),
