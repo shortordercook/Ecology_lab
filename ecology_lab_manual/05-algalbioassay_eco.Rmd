@@ -10,18 +10,7 @@ output:
 
 All organisms need nutrients to grow and reproduce. For primary producers, nitrogen (N) and phosphorus (P) are two macronutrients that frequently limit growth (or are in . The primary source of inorganic P is from P-bearing rock, or from the remineralization of P from organic sources (i.e. the decomposition of dead biomass). N, on the other hand, composes nearly 78% of the atmosphere, but this inorganic N-pool is largely inaccessible to most organisms. Some organisms are able to fix N (N-fixing organisms) and access this gaseous pool, which gives them a competitive advantage when N is low in the environment. 
 
-The 
 
-Benthic macroinvertebrates (Fig. \@ref(fig:invert-fig)) are a useful group of study organisms because they are incredibly diverse, and are important ecological indicators of the physical and chemical characteristics of their ecosystem. Some are incredibly sensitive to changes in dissolved oxygen or pH, or will struggle if sediment loads into the stream from the surrounding landscape is too high. Stream ecosystems are linked to the areas around them (their watershed). Think of some ways that humans influence the landscape - then Google how those changes influence aquatic environments (most anthropogenic impacts are very well studied). 
-
-
-```{r partition-fig, echo = FALSE, fig.cap="Schematic representation of how alpha (sample level), gamma (region level), and beta (sample variability) diversities are related. For each stream you have multiple measures of alpha-diversity (taxa richness), with one measure of gamma and beta-diversity per stream."}
-knitr::include_graphics("chapter_materials/biodiversity_ecology/partitioning.jpg")
-```
-
-```{r invert-fig, echo = FALSE, fig.cap="Example macroinvertebrate (Order: Trichoptera) that you will collect in the field and identify under a dissecting microscope. Caddisflies frequently have elaborate shells built from materials around them in the stream."}
-knitr::include_graphics("chapter_materials/biodiversity_ecology/invert_pic.jpg")
-```
 
 ## Objectives
 

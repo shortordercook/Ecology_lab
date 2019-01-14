@@ -1,0 +1,1138 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[]{book}
+\usepackage[]{mathpazo}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={Biology 3103 - Ecology Laboratory},
+            pdfauthor={S Cook},
+            colorlinks=true,
+            linkcolor=Maroon,
+            citecolor=Blue,
+            urlcolor=Blue,
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multicol}
+\usepackage{textgreek}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+
+\usepackage[bf,singlelinecheck=off]{caption}
+
+\usepackage{framed,color}
+\definecolor{shadecolor}{RGB}{248,248,248}
+
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.8}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\floatpagefraction}{0.75}
+
+\renewenvironment{quote}{\begin{VF}}{\end{VF}}
+\let\oldhref\href
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+
+\makeatletter
+\newenvironment{kframe}{%
+\medskip{}
+\setlength{\fboxsep}{.8em}
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}
+
+\usepackage{makeidx}
+\makeindex
+
+\urlstyle{tt}
+
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+
+\frontmatter
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Biology 3103 - Ecology Laboratory}
+\author{S Cook}
+\date{Summer 2018}
+
+\begin{document}
+\maketitle
+
+% you may need to leave a few empty pages before the dedication page
+
+%\cleardoublepage\newpage\thispagestyle{empty}\null
+%\cleardoublepage\newpage\thispagestyle{empty}\null
+%\cleardoublepage\newpage
+\thispagestyle{empty}
+
+\begin{center}
+%\includegraphics{images/dedication.pdf}
+\end{center}
+
+\setlength{\abovedisplayskip}{-5pt}
+\setlength{\abovedisplayshortskip}{-5pt}
+
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\listoftables
+\listoffigures
+\hypertarget{preface}{%
+\chapter*{Preface}\label{preface}}
+
+
+Filler.
+
+\hypertarget{why-read-this-book}{%
+\section*{Why read this book}\label{why-read-this-book}}
+
+
+More filler.
+
+\hypertarget{structure-of-the-book}{%
+\section*{Structure of the book}\label{structure-of-the-book}}
+
+
+Chapters \ref{introduction} introduces a new topic, and \ldots{}
+
+\hypertarget{software-information-and-conventions}{%
+\section*{Software information and conventions}\label{software-information-and-conventions}}
+
+
+I used the \textbf{knitr}\index{knitr} package \citep{xie2015} and the \textbf{bookdown}\index{bookdown} package \citep{R-bookdown} to compile my book. My R session information is shown below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sessionInfo}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## R version 3.5.1 (2018-07-02)
+## Platform: x86_64-w64-mingw32/x64 (64-bit)
+## Running under: Windows 10 x64 (build 17763)
+## 
+## Matrix products: default
+## 
+## locale:
+## [1] LC_COLLATE=English_United States.1252 
+## [2] LC_CTYPE=English_United States.1252   
+## [3] LC_MONETARY=English_United States.1252
+## [4] LC_NUMERIC=C                          
+## [5] LC_TIME=English_United States.1252    
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets 
+## [6] methods   base     
+## 
+## loaded via a namespace (and not attached):
+##  [1] compiler_3.5.1  backports_1.1.2 magrittr_1.5   
+##  [4] bookdown_0.9    rprojroot_1.3-2 tools_3.5.1    
+##  [7] htmltools_0.3.6 rstudioapi_0.8  yaml_2.2.0     
+## [10] Rcpp_1.0.0      stringi_1.2.4   rmarkdown_1.10 
+## [13] knitr_1.20      stringr_1.3.1   xfun_0.4       
+## [16] digest_0.6.18   evaluate_0.12
+\end{verbatim}
+
+Package names are in bold text (e.g., \textbf{rmarkdown}), and inline code and filenames are formatted in a typewriter font (e.g., \texttt{knitr::knit(\textquotesingle{}foo.Rmd\textquotesingle{})}). Function names are followed by parentheses (e.g., \texttt{bookdown::render\_book()}).
+
+\hypertarget{acknowledgments}{%
+\section*{Acknowledgments}\label{acknowledgments}}
+
+
+There are lots.
+
+\mainmatter
+
+\hypertarget{population}{%
+\chapter{Population Ecology}\label{population}}
+
+\hypertarget{background-information}{%
+\section{Background information}\label{background-information}}
+
+Organisms have evolved different life history strategies which differ in their methods of reproduction, care of offspring, timing of growth, means of resource acquisition, and prey avoidance. While these factors and how they interact can be highly complex, \textbf{survivorship} offers a simple means to quantify how a particular population ensures their reproductive success. For example, humans devote an enormous amount of energy and resources to offspring care, which results in low mortality rates among their young. On the other hand, most insects produce a massive number of offspring that have extremely high rates of mortality.
+
+Plotting the number of survivors against age yields what is called a `survivorship-curve' (Fig. \ref{fig:survivor-fig}), which is a visual way to assess how various organisms differ in their \textbf{life-history strategies} (number of offspring, number of reproductive cycles, degree of parental care, etc.). Scientists can use these plots to examine differences in organisms, or assess changes within subsets of a population.
+
+\begin{figure}
+\centering
+\includegraphics{chapter_materials/population_ecology/base_plot.pdf}
+\caption{\label{fig:survivor-fig}Idealized examples of Types I, II, and III survivorship curves overlaid with example organisms. Type I survivorship is characterized by high probability of survival early in life, followed by a rapid decline as individuals reach older age. Type II survivorship displays roughly constant mortality throughout the lifespan of the organism, and Type III exhibits high mortality among young offspring.}
+\end{figure}
+
+\hypertarget{objectives}{%
+\section{Objectives}\label{objectives}}
+
+You will use the cemetery data, as well as data generated by the U.S. Fish \& Wildlife Service \citep{milsap_bald_2016}, to address hypotheses about different populations. We can use birth and death years on gravestones, as well as names (to infer gender), to collect simple but useful information to collect demographic data for the local human population. The survivorship curve you will generate from this data will inform some ideas about the life history strategy of humans.
+
+\begin{figure}
+\centering
+\includegraphics{chapter_materials/population_ecology/golden_eagle.jpg}
+\caption{\label{fig:eagle-fig}Migratory Golden eagle in Denali National Park and Preserve. Mating pairs return each year to northern nesting territory in the spring, and most new fledglings leave the nest by mid-August. During winter their range extends from southern Canada to south of the Rocky Mountains\citep{brown_patterns_2017}.}
+\end{figure}
+
+Additionally, survey data collected by state and federal agencies provide valuable information about natural population. We can use ancillary data about individuals within a population to examine how different forces influence demographics within a population. Golden Eagles are federally protected in the United States, and Fish \& Wildlife collects detailed information from tagged individuals (Fig. \ref{fig:eagle-fig}).
+
+We will use this data to test hypotheses addressing the following questions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Do humans and eagles display different life history strategies?
+\item
+  Does gender affect survivorship in human populations?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    And if so, how?
+  \end{itemize}
+\item
+  Does human impact affect survivorship in eagle populations?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    And if so, how?
+  \end{itemize}
+\end{enumerate}
+
+Please form testable null hypotheses to address question number 1 and \textbf{either} question 2 or 3 (pick one). If you want, you may also substitute question 2 or 3 to address a hypothesis using the extra data we generated from the gravestones (height of gravestones as a proxy of material wealth).
+
+To evaluate your hypotheses, you will\ldots{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Statistically address differences in survivorship between groups using a \textbf{t-test}, and display that information using a \textbf{bar-graph}
+\item
+  Unpack question 1 by \textbf{computing} and \textbf{displaying survivorship} (no statistical test needed for this part).
+\end{enumerate}
+
+\pagebreak
+
+\hypertarget{lab-report-specifics}{%
+\section{Lab Report Specifics}\label{lab-report-specifics}}
+
+Below are some specific guidelines for this lab report, but you should also utilize the general grading rubric in the Syllabus!
+
+\begin{itemize}
+\item
+  \textbf{Participation} (1 pts)
+\item
+  \textbf{Introduction} (2 pts)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    General information about population ecology / life history strategies
+  \item
+    How are survivorship curves used in population ecology?
+  \item
+    Build up rationale to lead into your objectives/hypotheses statements.
+  \end{itemize}
+\item
+  \textbf{Methods} (2 pts)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Explanation of data collection and analysis
+  \end{itemize}
+\item
+  \textbf{Results} (5 pts)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Summary statistics in the text
+  \item
+    Bar-plots and associated t-tests for each question
+  \item
+    Survivorship curves for each question
+  \end{itemize}
+\item
+  \textbf{Discussion} (2 pts)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Explain your results in light of your hypotheses
+  \item
+    What are some plausible explanations for differences (or lack thereof) between groups?
+  \item
+    Place your results in an evolutionary context.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{physiological-ecology}{%
+\chapter{Physiological Ecology}\label{physiological-ecology}}
+
+\hypertarget{background-information-1}{%
+\section{Background information}\label{background-information-1}}
+
+\newcommand{\textunderscript}[1]{$_{\text{#1}}$}
+
+In the presence of light, photosynthetic organisms can utilize light and carbon dioxide (CO\textsubscript{2}) to make sugars - the process of photosynthesis. The sugars made are used by these organisms (and organisms that eat them) as a source of energy. A by-product of the photosynthetic process is the liberation of oxygen (O\textsubscript{2}).
+
+Alongside photosynthesis, these organisms are consuming oxygen via respiration. Although respiration and photosynthesis both take place in the light, in the dark only respiration occurs (since photosynthesis is a light-dependent process). Though it is impossible to directly measure gross photosynthesis (or the total amount of O\textsubscript{2} produced \citep{wohlfahrt_many_2015}, we \emph{can} measure respiration (R) as the \textbf{rate of O\textsubscript{2} consumed} in the dark, and the \textbf{rate of oxygen produced} in the presence of light as a measure of net photosynthesis (P\textsubscript{net}). Combining these direct measurements, we can estimate gross photosynthesis (P\textsubscript{gross}).
+
+\begin{equation}
+\color{blue} P_{net} \color{black}= \color{red}P_{gross} \color{black}- \color{blue}R
+\label{eq:photosynthesis}
+\end{equation}
+
+Using equation \eqref{eq:photosynthesis}, we can use the direclty measured terms in \color{blue} blue \color{black}, and may use them to calculate \color{red} P\textsubscript{gross} \color{black}.
+
+Organisms capable of photosynthesis span an incredible range of phylogeny, from \emph{unicellular algae} to \emph{vascular plants} (Fig. \ref{fig:organisms}). While every algae cell is photosynthetic, \emph{aquatic macrophytes} (i.e.~vascular plants adapted to live in aquatic ecosystems) have large amounts of specialized tissue devoted to the transportation of resources and structural support. These two organisms are in competition for very similar resources (such as sunlight and dissolved nutrients) - how do their morphological adaptations convey a competitive advantage?
+
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{chapter_materials/physiological_ecology/aquatic_photosynthesis} \includegraphics[width=0.5\linewidth]{chapter_materials/physiological_ecology/ludwigia} \caption{Aquatic algae (left pane, in both meta- and periphyton communities) and aquatic macrophytes (right pane) are photosynthetic organisms that evolved in aquatic ecosystems.}\label{fig:organisms}
+\end{figure}
+
+\hypertarget{objectives-1}{%
+\section{Objectives}\label{objectives-1}}
+
+You will form hypotheses to test questions about photosynthesis in 2 aquatic organisms - algae and a common aquatic macrophyte.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Which organism has the highest rate of \emph{biomass specific} gross photosynthesis?
+\item
+  Which organism has the highest rate of \emph{biomass-specific} respiration?
+\item
+  Which organism has the highest rate of net primary production (NPP) per day?
+\end{enumerate}
+
+\hypertarget{materials-methods}{%
+\section{Materials \& methods}\label{materials-methods}}
+
+You will be using a common \textbf{oxygen-change method} to determine rates of photosynthesis and respiration. Biological oxygen demand (BOD) bottles use a stopper that prevents gas exchange, which provides a means of isolating processes happening inside the bottle from the outside environment.
+
+\pagebreak
+
+\hypertarget{materials}{%
+\subsection{Materials}\label{materials}}
+
+\begin{multicols}{2}
+\begin{itemize}{}
+  \item 10 L photosynthesis solution\footnote{10 L DI Water, 917 mg CaCl\textunderscript{2}, 960 mg MgSO\textunderscript{4}, 584 mg NaHCO\textunderscript{3}, 154 mg KHCO\textunderscript{3}}\\(40\% air saturation\footnote{Aerate with N\textunderscript{2} gas for 10 minutes})
+  \item Samples of algae and macrophytes
+  \item 330 mL BOD bottles
+  \item Dissolved O\textsubscript{2} meter (DO Meter)
+  \item Light source (> 400 \textmu E m\textsuperscript{-2}s\textsuperscript{-1})
+  \item Aluminum foil
+  \item Stir bars / stir plate
+  \item Sieves (fine mesh)
+  \item Forceps
+  \item Drying boats (aluminum)
+  \item Analytical balance \\(capable of 0.001 g)
+  \item Drying oven
+\end{itemize}
+\end{multicols}
+
+Oxygen production varies with the intensity of light, but reaches saturation as light intensity increases (Fig. \ref{fig:light-response-fig}). Since different organisms display different light-response curves, we need to saturate their photosystems with high light levels to account for a potential confounding variable in our experiment.
+
+\begin{figure}
+\centering
+\includegraphics{chapter_materials/physiological_ecology/light_response_curve.pdf}
+\caption{\label{fig:light-response-fig}A photosynthesis light-response curve illustrates that as light intensity increases, dissolved oxygen (DO) production eventually becomes saturated. In the dark, photosynthesis shuts off, and respiration causes the rate of DO production to fall below 0 (red circle on the y-axis).}
+\end{figure}
+
+\hypertarget{methods}{%
+\subsection{Methods}\label{methods}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Each group will be responsible for \textbf{one} of the two species. Fill 9 BOD bottles with photosynthesis solution (fill to brim - the idea with BOD bottles is for the glass stopper to push any excess water out of the seal the stopper creates).
+\item
+  Carefully transfer a representative sample of your organism into 8 of the BOD bottles. Add a small stir bar to each bottle, and place the glass stopper and plastic cap on the bottle to seal. Use the DO probe to measure oxygen concentration in the remaining bottle (your control bottle).
+\item
+  You will have 4 replicates for the dark treatment, and 4 for the light. Wrap the dark treatment bottles in aluminum foil, and place the light treatment bottles under the light source. \underline{Record the intial times for these samples}.
+\item
+  While you wait (at least 1.5 hours)\ldots{}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Observe samples of these organisms under a dissecting/compound microscope and note differences in morphology. Note differences in the proportion of support tissues (i.e.~stems) vs.~photosynthetic tissues for each organism.
+  \end{itemize}
+\item
+  After at least 1.5 hours, measure DO concentrations in the light bottles. Make sure to record the end time each time you take a DO measurement.
+\item
+  After 2 hours, measure the DO concentrations in the dark bottles. Make sure to record the end time each time you take a DO measurement.
+\item
+  Carefully empty the BOD bottle into a fine-mesh sieve to separate the sample from the photosynthesis solution. Collect/scrape the sample into a labeled aluminum drying tin, and place tins into a drying oven for 24 hrs at 105\textdegree{}C.
+\end{enumerate}
+
+\hypertarget{data-analysis}{%
+\section{Data analysis}\label{data-analysis}}
+
+You can directly determine P\textsubscript{net} (from the light treatment bottles) and R (from the dark treatment bottles) by calculating the change (\textDelta) in dissolved oxygen (DO) concentrations:
+
+\begin{equation}
+\Delta{}DO = DO_{final} - DO_{initial}
+\label{eq:delta}
+\end{equation}
+
+You also recorded the elapsed incubation time(\textDelta{}h), the volume of the BOD bottles (0.330 L), and the mass of the sample (in dry weight, g). Using equation \eqref{eq:photosynthesis}, after getting \textDelta{}DO normalized to volume (L) and dry weight (g), you can then calculate P\textsubscript{gross}, or the total oxygen produced by photosynthesis per unit biomass.
+
+For the 1\textsuperscript{st}, and 2\textsuperscript{nd} questions, a two-sample t-test comparing the rates of each process (P\textsubscript{gross} and R) will tell you if there are significant differences between each organism. Bar-graphs (with error-bars display the stardard error of the mean) are a good way of displaying this data visually.
+
+The 3\textsuperscript{rd} question requires you to construct a simple \textbf{model}. A model is a way to represent a natural process using mathematics. Some models are simple (like the one you will construct), and some are incredibly complex. What assumptions can you make to tackle question 3? If we assume that these organisms respire for 24 hours a day, and only photosynthesize when the sun is out (10 hours a day), we can use these values as a foundation for our model (Fig. \ref{fig:photo-model}). While this makes the maths significantly easier, what are the limitations of this assumption?
+
+\begin{figure}
+\centering
+\includegraphics{chapter_materials/physiological_ecology/photo_model.pdf}
+\caption{\label{fig:photo-model}A photosynthesis light-response curve illustrates that as light intensity increases, dissolved oxygen (DO) production eventually becomes saturated. In the dark, photosynthesis shuts off, and respiration causes the rate of DO production to fall below 0 (red circle on the y-axis).}
+\end{figure}
+
+There are no associated statistical tests for question 3, since you should calculate daily values using mean P\textsubscript{gross} and mean R (no replicate values for this question). You can present the results of your model in the text of your results section.
+
+\pagebreak
+
+\hypertarget{lab-report-specifics-1}{%
+\section{Lab report specifics}\label{lab-report-specifics-1}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Introduction
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Importance of photosynthesis
+  \item
+    Morphological adaptations of aquatic photosynthesizers
+  \item
+    Objectives
+  \item
+    Hypotheses
+  \end{itemize}
+\item
+  Methods
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Oxygen change method (light/dark treatments)
+  \item
+    Experimental design
+  \item
+    Calculations / statistics / model explanation
+  \end{itemize}
+\item
+  Results
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Results/graphs/statistics for questions 1 and 2
+  \item
+    Results for question 3
+  \end{itemize}
+\item
+  Discussion
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Hypotheses rejected/supported?
+  \item
+    Provide a coherent explanation for the patterns you see in the photosynthesis and respiration data (use your observations of morphology and the information you covered in your introduction to tie everything together)
+  \end{itemize}
+\end{enumerate}
+
+\begin{verbatim}
+## Warning: package 'kableExtra' was built under R version
+## 3.5.2
+\end{verbatim}
+
+\begin{landscape}\begin{table}[H]
+\centering\begingroup\fontsize{8}{10}\selectfont
+\rowcolors{2}{gray!6}{white}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{>{\raggedright\arraybackslash}p{1cm}ll>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}}
+\hiderowcolors
+\toprule
+BOD No. & Organism & Treatment & Initial time & Initial DO (mg/L) & Final time & Final DO (mg/L) & Dish ID & Weight (g)\\
+\midrule
+\showrowcolors
+ & Algae & Light &  &  &  &  &  & \\
+ & Algae & Light &  &  &  &  &  & \\
+ & Algae & Light &  &  &  &  &  & \\
+ & Algae & Light &  &  &  &  &  & \\
+ & Algae & Dark &  &  &  &  &  & \\
+ & Algae & Dark &  &  &  &  &  & \\
+ & Algae & Dark &  &  &  &  &  & \\
+ & Algae & Dark &  &  &  &  &  & \\
+ & Algae & Control &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  & \\
+ & Macrophyte & Control &  &  &  &  &  & \\
+\bottomrule
+\end{tabular}}
+\rowcolors{2}{white}{white}\endgroup{}
+\end{table}
+\end{landscape}
+
+\begin{landscape}\begin{table}[H]
+\centering\begingroup\fontsize{8}{10}\selectfont
+\rowcolors{2}{gray!6}{white}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{>{\raggedright\arraybackslash}p{1cm}ll>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}}
+\hiderowcolors
+\toprule
+BOD No. & Organism & Treatment & Elapsed time (h) & Delta DO (mg/L) & Delta DO (mg) & Net Rate O2 (mg/(g*h)) & Rate (mg/(g*h)) & Daily\\
+\midrule
+\showrowcolors
+ & Algae & Light &  &  &  &  &  & \\
+ & Algae & Light &  &  &  &  &  & \\
+ & Algae & Light &  &  &  &  &  & \\
+ & Algae & Light &  &  &  &  &  & \\
+ & Algae & Dark &  &  &  &  &  & \\
+ & Algae & Dark &  &  &  &  &  & \\
+ & Algae & Dark &  &  &  &  &  & \\
+ & Algae & Dark &  &  &  &  &  & \\
+ & Algae & Control &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  & \\
+ & Macrophyte & Control &  &  &  &  &  & \\
+\bottomrule
+\end{tabular}}
+\rowcolors{2}{white}{white}\endgroup{}
+\end{table}
+\end{landscape}
+
+\hypertarget{biodiversity-ecosystem-management}{%
+\chapter{Biodiversity \& ecosystem management}\label{biodiversity-ecosystem-management}}
+
+\hypertarget{background-information-2}{%
+\section{Background information}\label{background-information-2}}
+
+Community ecology depends on our ability to quantify the various species that compose the community in an area or a subset of the community (such as the plants present). Quantification of community composition is essential for understanding changes through time or impacts of management actions. This week we will describe management effects on the plant community at the Lake Waco Wetlands (LWWs).
+
+The LWWs has historically been strongly dominated by \emph{Typha} (cattail). Although native to Texas, cattails are very agressive and frequently dominant wetlands to the exclusion of other species. To counter this dominance tendency, managers have tried to increase the diversity of the plant community in some areas of the LWWs by planting other species {[}especially \emph{Schenoplectus} (bulrush) and \emph{Pontederia} (pickerelweed){]}, or by hand-harvesting cattail out of some areas in the hopes that other species will colonize the open areas (Fig. \ref{fig:restoration-fig}).
+
+\begin{figure}
+\centering
+\includegraphics{chapter_materials/restoration_ecology/lww_management.jpg}
+\caption{\label{fig:restoration-fig}Map showing cells 1 and 2 of the Lake Waco Wetlands (LWWs). The boardwalk in cell 1 has been managed for several years (dotted red circle), while cell 2 has had no management (solid red circle).}
+\end{figure}
+
+\hypertarget{objectives-2}{%
+\section{Objectives}\label{objectives-2}}
+
+You will collect vegetation data from two zones in the LWWs which have different management histories. One area in Cell 1 adjacent to the floating boardwalk is a high visitation area where frequent management has taken place. In contrast, Cell 2 has had virtually no management. Five transects will be made originating from the boardwalk (cell 1) and from the levee (cell 2). Data about community composition will be recorded from 5 quadrats (area of 1 m\textsuperscript{2}) along each transect.
+
+\pagebreak
+
+Using the data generated and appropriate statistical analyses (contingency table or t-test), address the following questions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Is management activity influencing the \textbf{abundance} of cattail?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    A 2x2 contingency table is appropriate for this question.
+  \end{itemize}
+\item
+  Is management activity influencing the \textbf{dominance} of cattail?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    A 2x2 contingency table is appropriate for this question.
+  \end{itemize}
+\item
+  Is management activity influencing \textbf{species richness}?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Could be addressed using a 2x2 contingency table or a t-test.
+  \end{itemize}
+\item
+  Does cattail dominance influence \textbf{species richness}?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Could be addressed using a 2x2 contingency table or a t-test. For this question, the grouping variable is \emph{cattail dominance}, so you should use data from both cells!
+  \end{itemize}
+\end{enumerate}
+
+\pagebreak
+
+\hypertarget{lab-report-specifics-2}{%
+\section{Lab report specifics}\label{lab-report-specifics-2}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Introduction
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Why is biodiversity important?
+  \item
+    Why sample vegetation?
+  \item
+    Objectives
+  \item
+    Hypotheses
+  \end{itemize}
+\item
+  Methods
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Experimental design
+  \item
+    Review how data was collected
+  \item
+    Calculations / statistics
+  \end{itemize}
+\item
+  Results
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Question 1 (text \textbf{AND} graph/table)
+  \item
+    Question 2 (text \textbf{AND} graph/table)
+  \item
+    Question 3 (text \textbf{AND} graph/table)
+  \item
+    Question 4 (text \textbf{AND} graph/table)
+  \end{itemize}
+\item
+  Discussion
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Hypotheses rejected/supported
+  \item
+    Provide a coherent explanation/interpretation of your results
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{biodiversity-measuring-biological-integrity}{%
+\chapter{Biodiversity: measuring biological integrity}\label{biodiversity-measuring-biological-integrity}}
+
+\hypertarget{background-information-3}{%
+\section{Background information}\label{background-information-3}}
+
+Quantifying biodiversity is an active area of research for ecologists and conservationists. Organisms have evolved alongside each other, and developed adaptations that allow them to thrive in different niches. The interactions between these organisms, and between these organisms and their environment can be incredibly complex. How diverse communities are, and how diversity changes area to area, can tell us a lot about a system. How do we even measure diversity? Or how similar 2 areas are? Alpha-diversity is a measure of biodiversity at a single location, while gamma-diversity is the cumulative diversity in a particular region of interest. Beta-diversity links the two, and is a measure of variable the subsets of gamma-diversity are (Fig. \ref{fig:partition-fig}).
+
+Scientists have been arguing for years about the best way to measure biodiversity, but at its heart all biodiversity metrics are a way to compress complex information into an interpretable number. A coarse analogy would be the Body Mass Index (BMI) score. Humans are comprised of assemblages of cells and organ systems, and we could measure the health of a single individual in thousands of different ways. The BMI score is a simple way to compress that information into a single number that we can use to assess relative `health'. We can do something similar for biodiversity! I do not want you to conflate `health' with `biodiversity', but it is a useful starting point.
+
+Benthic macroinvertebrates (Fig. \ref{fig:invert-fig}) are a useful group of study organisms because they are incredibly diverse, and are important ecological indicators of the physical and chemical characteristics of their ecosystem. Some are incredibly sensitive to changes in dissolved oxygen or pH, or will struggle if sediment loads into the stream from the surrounding landscape is too high. Stream ecosystems are linked to the areas around them (their watershed). Think of some ways that humans influence the landscape - then Google how those changes influence aquatic environments (most anthropogenic impacts are very well studied).
+
+\begin{figure}
+\centering
+\includegraphics{chapter_materials/biodiversity_ecology/partitioning.jpg}
+\caption{\label{fig:partition-fig}Schematic representation of how alpha (sample level), gamma (region level), and beta (sample variability) diversities are related. For each stream you have multiple measures of alpha-diversity (taxa richness), with one measure of gamma and beta-diversity per stream.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{chapter_materials/biodiversity_ecology/invert_pic.jpg}
+\caption{\label{fig:invert-fig}Example macroinvertebrate (Order: Trichoptera) that you will collect in the field and identify under a dissecting microscope. Caddisflies frequently have elaborate shells built from materials around them in the stream.}
+\end{figure}
+
+\hypertarget{objectives-3}{%
+\section{Objectives}\label{objectives-3}}
+
+We collected macroinvertebrates from 2 sites in central Texas that differed in anthropogenic impact using 1 m\textsuperscript{2} kick-screens. Neils Creek is a relatively unimpacted site, with some pasture, farmland, and forrest in its watershed, while Harris Creek is surrounded by heavy farming activity and neighborhoods. Actually, the Fall 2017 class collected the Harris Creek data for you, but you get the idea. You will use this data to answer the following questions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Does anthropogenic impact influence biodiversity?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Assess this question by calculating alpha, gamma, and beta-diversity for the 2 sites.
+  \end{itemize}
+\item
+  Does anthropogenic impact influence the EPT taxa in a stream?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Assess this question by calculating the \%EPT in each sample.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{lab-report-specifics-3}{%
+\section{Lab report specifics}\label{lab-report-specifics-3}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Introduction
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Why is biodiversity important?
+  \item
+    How is biodiversity measured?
+  \item
+    Why are macroinvertebrates useful?
+  \item
+    Objectives
+  \item
+    Hypotheses
+  \end{itemize}
+\item
+  Methods
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Experimental design and field work
+  \item
+    laboratory work
+  \item
+    Calculations / statistics
+  \end{itemize}
+\item
+  Results
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Question 1 (text \textbf{AND} graph)
+  \item
+    Question 2 (text \textbf{AND} graph)
+  \end{itemize}
+\item
+  Discussion
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Hypotheses rejected/supported
+  \item
+    Provide a coherent explanation/interpretation of your results
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{nutrient-limitation}{%
+\chapter{Nutrient limitation}\label{nutrient-limitation}}
+
+\hypertarget{background-information-4}{%
+\section{Background information}\label{background-information-4}}
+
+All organisms need nutrients to grow and reproduce. For primary producers, nitrogen (N) and phosphorus (P) are two macronutrients that frequently limit growth (or are in . The primary source of inorganic P is from P-bearing rock, or from the remineralization of P from organic sources (i.e.~the decomposition of dead biomass). N, on the other hand, composes nearly 78\% of the atmosphere, but this inorganic N-pool is largely inaccessible to most organisms. Some organisms are able to fix N (N-fixing organisms) and access this gaseous pool, which gives them a competitive advantage when N is low in the environment.
+
+\hypertarget{objectives-4}{%
+\section{Objectives}\label{objectives-4}}
+
+We collected macroinvertebrates from 2 sites in central Texas that differed in anthropogenic impact using 1 m\textsuperscript{2} kick-screens. Neils Creek is a relatively unimpacted site, with some pasture, farmland, and forrest in its watershed, while Harris Creek is surrounded by heavy farming activity and neighborhoods. Actually, the Fall 2017 class collected the Harris Creek data for you, but you get the idea. You will use this data to answer the following questions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Does anthropogenic impact influence biodiversity?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Assess this question by calculating alpha, gamma, and beta-diversity for the 2 sites.
+  \end{itemize}
+\item
+  Does anthropogenic impact influence the EPT taxa in a stream?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Assess this question by calculating the \%EPT in each sample.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{lab-report-specifics-4}{%
+\section{Lab report specifics}\label{lab-report-specifics-4}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Introduction
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Why is biodiversity important?
+  \item
+    How is biodiversity measured?
+  \item
+    Why are macroinvertebrates useful?
+  \item
+    Objectives
+  \item
+    Hypotheses
+  \end{itemize}
+\item
+  Methods
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Experimental design and field work
+  \item
+    laboratory work
+  \item
+    Calculations / statistics
+  \end{itemize}
+\item
+  Results
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Question 1 (text \textbf{AND} graph)
+  \item
+    Question 2 (text \textbf{AND} graph)
+  \end{itemize}
+\item
+  Discussion
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Hypotheses rejected/supported
+  \item
+    Provide a coherent explanation/interpretation of your results
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{climate-modeling}{%
+\chapter{Climate modeling}\label{climate-modeling}}
+
+\hypertarget{background-information-5}{%
+\section{Background information}\label{background-information-5}}
+
+Human industrial activity, use of fossil fuels, and land use changes have been leading to increased emissions and atmospheric concentrations of carbon dioxide and other greenhouse gases (GHGs). GHGs in the atmosphere allow electromagnetic radiation (light) to pass through to the Earth's surface, but absorb the radiation that is emitted by the Earth out toward space.
+
+Scientists study the effects of GHG concentrations by constructing computer simulations (called Coupled Global Climate Models, or CGCMs Fig. \ref{fig:model-fig}) that mathematically represent the physical, chemical, and biological processes of the climate system. We have a descent understanding of how these processes interact to form large-scale climate features, including how GHGs influence climate. To predict the effects of GHG emissions on climate, scientists plug predictions of GHG emissions into a CGCM to predict future climates under different emissions scenarios.
+
+\begin{figure}
+\centering
+\includegraphics{chapter_materials/climate_ecology/model_picture.jpg}
+\caption{\label{fig:model-fig}Coupled global climate models simulate physical processes in both the atmosphere and from landscape/oceanic features (NOAA, public domain). Each cell in the climate model contains these features, and energy and matter may pass from one cell to another (the cells are not isolated).}
+\end{figure}
+
+The community of climate change experts has developed different storylines that describe alternative possible futures, which each has its own projection of predicted quantities of GHG emissions (Table \ref{tab:scenario-table}). To predict the effects of GHG emissions on climate, scientists plug predictions of GHG emissions into a CGCM to predict future climate under different emissions scenarios.
+
+\rowcolors{2}{gray!6}{white}\begin{table}
+
+\caption{\label{tab:scenario-table}Characteristics of selected emissions scenarios from the Intergovernmental Panel on Climate Change. These scenarios represent alternative possibilities for future social and technological change as envisioned by a collaboration of governmental and non-governmental analysts.}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{20em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}}
+\hiderowcolors
+\toprule
+Scenario.characteristics & A1B & A2 & B1\\
+\midrule
+\showrowcolors
+Human population growth & Low & High & Low\\
+Globalization & High & Low & High\\
+Focus on environmental sustainability & Low & Low & High\\
+Economic growth & Very high & Medium & High\\
+Land-use changes & Low & Medium/high & High\\
+\addlinespace
+Pace of technological developments (energy use) & Rapid & Slow & Medium\\
+Changes in energy use & Rapid; changes in both production and use & Slow; vary by region & Medium; shift to lowered use of materials\\
+Realized energy use & Very high & High & Low\\
+\bottomrule
+\end{tabular}}
+\end{table}\rowcolors{2}{white}{white}
+
+\hypertarget{objectives-5}{%
+\section{Objectives}\label{objectives-5}}
+
+You will work with output from a simulation run from the 3rd-generation CGCM produced by the Canadian Center for Climate Modeling and Analysis. This dataset focuses on near-surface air temperature - the same type of temperature reported in the daily weather report. The temperature is reported in mean temperature (\(^\circ\)K) for each month during the 21\textsuperscript{st}-century (2001-2100), giving a total of 1200 values for the 1200 concecutive months. You are provided these data for the three emissions scenarios described in Table \ref{tab:scenario-table} (A1B, A2, B1) and a fourth set of conditions representing ``Committed'' climate change. The ``Committed'' set of conditions assumes that the composition of the atmosphere remains unchanged at year 2001 values (which has already been proven entirely unrealistic). Therefore, the only climate changes that will occur are those to which the climate system is already committed due to changes in atmospheric concentration as of the year 2001. The Committed scenario is not intended as a realistic scenario. Instead, it serves as a control for comparison with the other scenarios. By comparing the results of a given scenario with the results under the Committed scenario, one can see how much additional climate change a scenario produces compared to what would be produced if alterations in climate forcing agents were arrested at 2001 levels.
+
+Since climate is highly variable across the globe, you will focus on a particular grid cell in a continuous North-South trasect through North America (Fig. \ref{fig:transect-fig}) for questions 1 and 2. These grid cells will be assigned either in lab, or on Canvas. For question 3, you will use all of the data.
+
+\begin{figure}
+\centering
+\includegraphics{chapter_materials/climate_ecology/transect_picture.jpg}
+\caption{\label{fig:transect-fig}Location of latitudinal transect through North America for which you have data. The amount of sunlight reaching the earth's surface varies greatly along the transect (as does other seasonal features such as precipitation, ice-sheet cover, etc).}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Will future near-surface air temperature be influenced by GHG emissions?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Seasonal variation in temperature will probably mask any long-term trends in temperature due solely to GHG concentrations. With that in mind, analyze data just using one month (July) in the dataset:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Make a graph {[}geom\_point(){]} showing how temperature in \textbf{July} varies across the 100 years of the simulation for all of the emissions scenarios.
+    \end{itemize}
+  \end{itemize}
+\item
+  Under the most extreme GHG emissions scenario (A2), will climate change have a greater effect in the winter or summer on near-surface temperatures?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Seasonal swings in irradiance is one of the primary natural control-knobs on temperature, so GHG emissions may cause temperature to change more in a particular season.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Repeat the prior analysis, but compare data from January and July (but only for the \textbf{A2 scenario}).
+    \end{itemize}
+  \end{itemize}
+\item
+  Under the most extreme GHG emissions scenario (A2), will climate change have a greater effect at high or low latitudes?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Irradiance is distributed unevenly across the globe, so the effect of GHG concentrations may differ based on location.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Create a graph examining 100-year mean temperature change (y-axis values) across latitude (x-axis values), which will help you address this question.
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{lab-report-specifics-5}{%
+\section{Lab report specifics}\label{lab-report-specifics-5}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Introduction
+
+  \begin{itemize}
+  \tightlist
+  \item
+    How do GHGs influence climate?
+  \item
+    How do scientists study future climates?
+  \item
+    Objectives
+  \item
+    Hypotheses
+  \end{itemize}
+\item
+  Methods
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Model particulars and analysis steps
+  \item
+    Calculations / statistics
+  \end{itemize}
+\item
+  Results
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Question 1 (text \textbf{AND} graph)
+  \item
+    Question 2 (text \textbf{AND} graph)
+  \item
+    Question 3 (text \textbf{AND} graph)
+  \end{itemize}
+\item
+  Discussion
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Hypotheses rejected/supported
+  \item
+    Provide a coherent explanation/interpretation of your results
+  \end{itemize}
+\end{enumerate}
+
+\bibliography{book.bib,packages.bib}
+
+\backmatter
+\printindex
+
+\end{document}
