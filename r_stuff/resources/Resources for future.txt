@@ -1,0 +1,3 @@
+Resources for future
+	- https://datasciencebox.org/infrastructure/rscloud/
+		- Good online instructional for rstudio cloud in a classroom setting. Geared towards data-science students, but most concepts can be applied to lab.

@@ -257,12 +257,11 @@ I used the \textbf{knitr}\index{knitr} package \citep{xie2015} and the \textbf{b
 ## [6] methods   base     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] compiler_3.5.1  backports_1.1.2 magrittr_1.5   
-##  [4] bookdown_0.9    rprojroot_1.3-2 tools_3.5.1    
-##  [7] htmltools_0.3.6 rstudioapi_0.8  yaml_2.2.0     
-## [10] Rcpp_1.0.0      stringi_1.2.4   rmarkdown_1.10 
-## [13] knitr_1.20      stringr_1.3.1   xfun_0.4       
-## [16] digest_0.6.18   evaluate_0.12
+##  [1] compiler_3.5.1   magrittr_1.5     bookdown_0.9    
+##  [4] tools_3.5.1      htmltools_0.3.6  rstudioapi_0.9.0
+##  [7] yaml_2.2.0       Rcpp_1.0.0       stringi_1.2.4   
+## [10] rmarkdown_1.11   knitr_1.21       stringr_1.3.1   
+## [13] xfun_0.4         digest_0.6.18    evaluate_0.12
 \end{verbatim}
 
 Package names are in bold text (e.g., \textbf{rmarkdown}), and inline code and filenames are formatted in a typewriter font (e.g., \texttt{knitr::knit(\textquotesingle{}foo.Rmd\textquotesingle{})}). Function names are followed by parentheses (e.g., \texttt{bookdown::render\_book()}).
@@ -582,77 +581,81 @@ There are no associated statistical tests for question 3, since you should calcu
 \end{enumerate}
 
 \begin{verbatim}
+## Warning: package 'tibble' was built under R version
+## 3.5.2
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'readr' was built under R version
+## 3.5.2
+\end{verbatim}
+
+\begin{verbatim}
 ## Warning: package 'kableExtra' was built under R version
 ## 3.5.2
 \end{verbatim}
 
 \begin{landscape}\begin{table}[H]
 \centering\begingroup\fontsize{8}{10}\selectfont
-\rowcolors{2}{gray!6}{white}
 
 \resizebox{\linewidth}{!}{
 \begin{tabular}{>{\raggedright\arraybackslash}p{1cm}ll>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}}
-\hiderowcolors
 \toprule
 BOD No. & Organism & Treatment & Initial time & Initial DO (mg/L) & Final time & Final DO (mg/L) & Dish ID & Weight (g)\\
 \midrule
-\showrowcolors
+\rowcolor{gray!6}   & Algae & Light &  &  &  &  &  \vphantom{3} & \\
+ & Algae & Light &  &  &  &  &  \vphantom{2} & \\
+\rowcolor{gray!6}   & Algae & Light &  &  &  &  &  \vphantom{1} & \\
  & Algae & Light &  &  &  &  &  & \\
- & Algae & Light &  &  &  &  &  & \\
- & Algae & Light &  &  &  &  &  & \\
- & Algae & Light &  &  &  &  &  & \\
+\rowcolor{gray!6}   & Algae & Dark &  &  &  &  &  \vphantom{3} & \\
+ & Algae & Dark &  &  &  &  &  \vphantom{2} & \\
+\rowcolor{gray!6}   & Algae & Dark &  &  &  &  &  \vphantom{1} & \\
  & Algae & Dark &  &  &  &  &  & \\
- & Algae & Dark &  &  &  &  &  & \\
- & Algae & Dark &  &  &  &  &  & \\
- & Algae & Dark &  &  &  &  &  & \\
- & Algae & Control &  &  &  &  &  & \\
- & Macrophyte & Light &  &  &  &  &  & \\
- & Macrophyte & Light &  &  &  &  &  & \\
- & Macrophyte & Light &  &  &  &  &  & \\
- & Macrophyte & Light &  &  &  &  &  & \\
- & Macrophyte & Dark &  &  &  &  &  & \\
- & Macrophyte & Dark &  &  &  &  &  & \\
- & Macrophyte & Dark &  &  &  &  &  & \\
- & Macrophyte & Dark &  &  &  &  &  & \\
+\rowcolor{gray!6}   & Algae & Control &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  \vphantom{3} & \\
+\rowcolor{gray!6}   & Macrophyte & Light &  &  &  &  &  \vphantom{2} & \\
+ & Macrophyte & Light &  &  &  &  &  \vphantom{1} & \\
+\rowcolor{gray!6}   & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  \vphantom{3} & \\
+\rowcolor{gray!6}   & Macrophyte & Dark &  &  &  &  &  \vphantom{2} & \\
+ & Macrophyte & Dark &  &  &  &  &  \vphantom{1} & \\
+\rowcolor{gray!6}   & Macrophyte & Dark &  &  &  &  &  & \\
  & Macrophyte & Control &  &  &  &  &  & \\
 \bottomrule
 \end{tabular}}
-\rowcolors{2}{white}{white}\endgroup{}
+\endgroup{}
 \end{table}
 \end{landscape}
 
 \begin{landscape}\begin{table}[H]
 \centering\begingroup\fontsize{8}{10}\selectfont
-\rowcolors{2}{gray!6}{white}
 
 \resizebox{\linewidth}{!}{
 \begin{tabular}{>{\raggedright\arraybackslash}p{1cm}ll>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}}
-\hiderowcolors
 \toprule
 BOD No. & Organism & Treatment & Elapsed time (h) & Delta DO (mg/L) & Delta DO (mg) & Net Rate O2 (mg/(g*h)) & Rate (mg/(g*h)) & Daily\\
 \midrule
-\showrowcolors
+\rowcolor{gray!6}   & Algae & Light &  &  &  &  &  \vphantom{3} & \\
+ & Algae & Light &  &  &  &  &  \vphantom{2} & \\
+\rowcolor{gray!6}   & Algae & Light &  &  &  &  &  \vphantom{1} & \\
  & Algae & Light &  &  &  &  &  & \\
- & Algae & Light &  &  &  &  &  & \\
- & Algae & Light &  &  &  &  &  & \\
- & Algae & Light &  &  &  &  &  & \\
+\rowcolor{gray!6}   & Algae & Dark &  &  &  &  &  \vphantom{3} & \\
+ & Algae & Dark &  &  &  &  &  \vphantom{2} & \\
+\rowcolor{gray!6}   & Algae & Dark &  &  &  &  &  \vphantom{1} & \\
  & Algae & Dark &  &  &  &  &  & \\
- & Algae & Dark &  &  &  &  &  & \\
- & Algae & Dark &  &  &  &  &  & \\
- & Algae & Dark &  &  &  &  &  & \\
- & Algae & Control &  &  &  &  &  & \\
- & Macrophyte & Light &  &  &  &  &  & \\
- & Macrophyte & Light &  &  &  &  &  & \\
- & Macrophyte & Light &  &  &  &  &  & \\
- & Macrophyte & Light &  &  &  &  &  & \\
- & Macrophyte & Dark &  &  &  &  &  & \\
- & Macrophyte & Dark &  &  &  &  &  & \\
- & Macrophyte & Dark &  &  &  &  &  & \\
- & Macrophyte & Dark &  &  &  &  &  & \\
+\rowcolor{gray!6}   & Algae & Control &  &  &  &  &  & \\
+ & Macrophyte & Light &  &  &  &  &  \vphantom{3} & \\
+\rowcolor{gray!6}   & Macrophyte & Light &  &  &  &  &  \vphantom{2} & \\
+ & Macrophyte & Light &  &  &  &  &  \vphantom{1} & \\
+\rowcolor{gray!6}   & Macrophyte & Light &  &  &  &  &  & \\
+ & Macrophyte & Dark &  &  &  &  &  \vphantom{3} & \\
+\rowcolor{gray!6}   & Macrophyte & Dark &  &  &  &  &  \vphantom{2} & \\
+ & Macrophyte & Dark &  &  &  &  &  \vphantom{1} & \\
+\rowcolor{gray!6}   & Macrophyte & Dark &  &  &  &  &  & \\
  & Macrophyte & Control &  &  &  &  &  & \\
 \bottomrule
 \end{tabular}}
-\rowcolors{2}{white}{white}\endgroup{}
+\endgroup{}
 \end{table}
 \end{landscape}
 
@@ -992,29 +995,27 @@ Scientists study the effects of GHG concentrations by constructing computer simu
 
 The community of climate change experts has developed different storylines that describe alternative possible futures, which each has its own projection of predicted quantities of GHG emissions (Table \ref{tab:scenario-table}). To predict the effects of GHG emissions on climate, scientists plug predictions of GHG emissions into a CGCM to predict future climate under different emissions scenarios.
 
-\rowcolors{2}{gray!6}{white}\begin{table}
+\begin{table}[t]
 
 \caption{\label{tab:scenario-table}Characteristics of selected emissions scenarios from the Intergovernmental Panel on Climate Change. These scenarios represent alternative possibilities for future social and technological change as envisioned by a collaboration of governmental and non-governmental analysts.}
 \centering
 \resizebox{\linewidth}{!}{
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{20em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}}
-\hiderowcolors
+\begin{tabular}{>{\raggedright\arraybackslash}p{20em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}}
 \toprule
 Scenario.characteristics & A1B & A2 & B1\\
 \midrule
-\showrowcolors
-Human population growth & Low & High & Low\\
+\rowcolor{gray!6}  Human population growth & Low & High & Low\\
 Globalization & High & Low & High\\
-Focus on environmental sustainability & Low & Low & High\\
+\rowcolor{gray!6}  Focus on environmental sustainability & Low & Low & High\\
 Economic growth & Very high & Medium & High\\
-Land-use changes & Low & Medium/high & High\\
+\rowcolor{gray!6}  Land-use changes & Low & Medium/high & High\\
 \addlinespace
 Pace of technological developments (energy use) & Rapid & Slow & Medium\\
-Changes in energy use & Rapid; changes in both production and use & Slow; vary by region & Medium; shift to lowered use of materials\\
+\rowcolor{gray!6}  Changes in energy use & Rapid; changes in both production and use & Slow; vary by region & Medium; shift to lowered use of materials\\
 Realized energy use & Very high & High & Low\\
 \bottomrule
 \end{tabular}}
-\end{table}\rowcolors{2}{white}{white}
+\end{table}
 
 \hypertarget{objectives-5}{%
 \section{Objectives}\label{objectives-5}}
