@@ -1,0 +1,100 @@
+---
+output: 
+  pdf_document:
+    keep_tex: true
+    fig_caption: true
+    latex_engine: pdflatex
+    template: ../../Templates/svm-latex-ms.tex
+    md_extensions: +lists_without_preceding_blankline
+title: "Lab 2: Algal bioassay: assessing nutrient limitation"
+thanks: "**Current version**: `r format(Sys.time(), '%B , %Y')`"
+author:
+- name: BIO 3103, Baylor University
+#abstract: "No abstract for this document "
+header-includes:
+  - \usepackage{multicol}
+  - \usepackage{textcomp}
+fontfamily: mathpazo
+fontsize: 11pt
+---
+
+
+# Background information
+
+All organisms need certain resources in order to survive. For primary producers (organisms that fix inorganic carbon using light energy), the nutrients nitrogen (N) and phosphorus (P) are vital for growth and reproduction. N exists in large supply in the atmosphere (~78%), but only a few specialized N-fixing organisms can access this inorganic N pool. The primary source of P in the environment is decomposing organic-P, and the weathering of inorganic P from P-rich rocks. One or both of these nutrients can limit growth if the availability of N or P does not meet demand.
+
+Aquatic algae are remarkably consistent in their elemental requirements. For every molecule of P, algae generally require 16 molecules of N, and 106 molecules of carbon (C). The ratio of C:N:P in biomass is called the Redfield ratio, and though there is some natural variation, most aquatic algae generally display the ratio 106:16:1.
+
+
+```{r survivor-fig, echo = FALSE, fig.cap="Algal growth in borosilicate glass culture tubes 7 days after start of incubations. C = control, N = nitrogen, P = phosphorus, NP = nitrogen and phosphorus."}
+knitr::include_graphics("../_chapter_materials/bioassay_picture.png", dpi = NA)
+```
+
+# Objectives
+
+For this experiment you will ammend lake water with the macronutrients nitrogen and phosphorus. By assessing how the algae community responds to these treatments, you will be able to tell which (if any) nutrient is limiting growth. 
+\bigskip
+
+\pagebreak
+
+## Materials
+\begin{multicols}{2}
+\begin{itemize}{}
+  \item Borosilicate glass culture tubes
+  \item Lake water sample (collect at least 30 mL per replicate)
+  \item 0.01 M phosphorus solution \\(NaH\textsubscript{2}PO\textsubscript{4} \textbullet  H\textsubscript{2}O)
+  \item 0.16 M nitrogen solution \\ (NaNO\textsubscript{3})
+  \item Micropipette and disposable tips
+  \item Light source (> 400 \textmu E m\textsuperscript{-2}s\textsuperscript{-1})
+  \item Fluorometer
+\end{itemize}
+\end{multicols}
+
+## Methods
+
+1. Organize and label 6 culture tubes per nutrient treatment. There should be a nitrogen treatment, a phosphorus treatment, a nitrogen and phosphorus treatment, as well as a control (no nutrients should be added to the control).
+2. Fill culture tubes with 30 mL of lake water.
+3. Add 100 $\mu$L of nutrient solution according to treatment.
+4. Mix combined solution in culture tubes by gently swirling. You may also use a vortex-mixer.
+5. Fit a foam stopper in the top of each tube. This reduces the chance that organisms fall into the tubes during the incubation.
+6. Take initial readings with the fluorometer.
+7. Incubate for 1 week. Either take readings each day, or take final measurements on day 7. 
+
+
+## Hypotheses
+
+We will use this data to test hypotheses addressing the following question:
+
++ Is the algae community in our lake sample limited by nitrogen or phosphorus?
+    * And if so, which one?
+    * Please form testable null hypotheses to address this question. 
+
++ You will address this hypothesis by plotting the data in bar/column graph form, then running an analysis of variance and Tukey post-hoc test.
+
+\pagebreak
+
+# Lab report specifics
+
+Below are some specific guidelines for this lab report, but you should also utilize the general grading rubric in the Syllabus!
+
+* **Participation** (1 pts)
+
+* **Introduction** (2 pts)
+    * What factors can limit primary producers?
+    * Nutrients/redfield ratio?
+    * What is one method we can use to assess nutrient limitation (algal bioassay)?
+    * Objectives/hypothesis statement
+    
+* **Methods** (2 pts)
+    * Explanation of data collection and analysis
+    
+* **Results** (5 pts)
+    * Text section (overview of results, summary statistics, etc.)
+    * Bar-plot of fluorescence
+    * Statistics (anova, tukey post-hoc test)
+    
+* **Discussion** (2 pts)
+    * Clearly address your null hypotheses
+    * What are some plausible explanations for differences (or lack thereof) between treatments?
+    * Relate this back to nutrients in the water column
+    * How might humans be influencing nutrient concentrations?

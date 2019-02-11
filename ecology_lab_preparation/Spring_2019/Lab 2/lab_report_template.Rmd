@@ -1,0 +1,27 @@
+---
+title: "Example lab report"
+author: "Student name here"
+date: "Date here"
+header-includes:
+    - \usepackage{setspace}\doublespacing
+output:
+  word_document: default
+  pdf_document: default
+indent: true
+---
+
+```{r include = FALSE}
+#tells R to hide all code chunks so they are not included in report - figures are still included
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE, results='hide', fig.keep='all')
+```
+
+# Introduction
+
+
+# Methods
+
+
+# Results
+
+
+# Discussion

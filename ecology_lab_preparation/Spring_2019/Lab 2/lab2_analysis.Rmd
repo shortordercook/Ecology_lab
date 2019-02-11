@@ -1,0 +1,92 @@
+---
+title: "Lab 2 analysis"
+author: "Enter name here"
+date: "2/10/2019"
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+
+Remember, every analysis will require the same general steps.
+
+1. Import packages
+2. Import data
+3. Perform some calculations
+4. Plot the results (perform statistics as necessary)
+
+The hashtag (i.e. pound sign, '#') is used to designate headings in the document. Use them to stay organized!
+
+
+# Import packages
+
+
+```{r}
+require(tidyverse)
+```
+
+
+# Import data
+
+```{r}
+rfu_data <- read.csv(file = "rfu_data.csv", header = T, sep = ",") %>%
+  mutate(treatment = fct_relevel(treatment, c("C", "N", "P", "NP")))
+```
+
+
+# Perform some calculations
+
+We only need a summary of the raw data points for plotting purposes, and you know how to do that! Recycle your old code to calculate the mean and standard error for each treatment group. 
+
+```{r}
+rfu_summary <- rfu_data %>%
+  group_by(treatment) %>%
+  summarise(rfu_mean = mean(rfu),
+            rfu_se = sd(rfu)/sqrt(n()))
+```
+
+# Plot results
+
+You are bar/column plot pros! Recycle your old code to make a column plot. Call it `rfu_barplot`. 
+
+```{r}
+rfu_barplot <- ggplot() +
+  geom_col(data = rfu_summary,
+           aes(x = treatment, y = rfu_mean),
+           width = 0.5) +
+  geom_errorbar(data = rfu_summary,
+                aes(x = treatment, ymin = rfu_mean - rfu_se, ymax = rfu_mean + rfu_se),
+                width = 0.1) +
+  xlab("Treatment") +
+  ylab("Relative fluorescence units")
+
+rfu_barplot
+```
+
+
+
+# Statistics
+
+Once you have visualized the data, do you think there really is a difference? Clear difference? Maybe a difference? A simple t-test isn't suited for this data. A t-test only compares data-points between 2 groups, but we have 4 groups!
+
+For this, we need an analysis of variance (also referred to as aov or anova). In R, we use the `aov()` function. This test could colloquially be called the "one of these things is unlike the others" test.
+
+```{r}
+rfu_anova <- aov(data = rfu_data, rfu ~ treatment)
+
+summary(rfu_anova)
+```
+
+An anova **only tells us there is a difference somewhere**, not which groups are different from each other. 
+
+For that, we need what is generally referred to a post-hoc analysis. Post-hoc just means "after the fact", because we need to do this analysis because the anova was significant. We need to explore some more.
+
+For this part, we need a Tukey post-hoc test. Also called the "lets figure out which of these things is unlike the others" test. In R, this is the `TukeyHSD()` function.
+
+```{r}
+rfu_tukey <- TukeyHSD(rfu_anova)
+
+rfu_tukey
+```
+
+Calling the object `rfu_tukey` will display the results, which are called "contrasts". They are all the possible combinations of our treatments, and the p-values tell us if the two considered groups are significantly different from each other. Very useful. 
+

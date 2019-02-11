@@ -1,0 +1,170 @@
+---
+title: "Lab 1 Analysis"
+author: "Stephen Cook"
+date: "August 27 2018"
+output:
+  pdf_document: default
+---
+
+# Analysis
+
+## Import packages
+
+
+```{r, message=FALSE}
+require(tidyverse)
+require(stringr)
+```
+
+## Import data
+
+
+```{r}
+human <- read.csv(file = "human_data.csv", header = T, sep = ",")
+```
+
+
+## Calculations
+
+```{r}
+human <- human %>%
+  mutate(AGE = DEATH - BIRTH)
+```
+
+## Plotting
+
+```{r}
+plot1 <- ggplot() +
+  geom_histogram(data = human,
+                 aes(x = AGE))
+
+plot1
+```
+
+```{r}
+plot1 <- ggplot() +
+  geom_histogram(data = human,
+                 aes(x = AGE),
+                 binwidth = 1)
+
+plot1
+```
+
+
+```{r}
+plot1 <- ggplot() +
+  geom_histogram(data = human,
+                 aes(x = AGE, fill = GENDER),
+                 binwidth = 1)
+
+plot1
+```
+
+
+```{r}
+human_avg <- human %>%
+  group_by(GENDER) %>%
+  summarise(AGE_MEAN = mean(AGE),
+            AGE_SE = sd(AGE)/sqrt(n()))
+```
+
+```{r}
+plot2 <- ggplot() +
+  geom_col(data = human_avg,
+           aes(x = GENDER, y = AGE_MEAN))
+
+plot2
+```
+
+
+```{r}
+plot2 <- ggplot() +
+  geom_col(data = human_avg,
+           aes(x = GENDER, y = AGE_MEAN),
+           width = 0.5) +
+  geom_errorbar(data = human_avg,
+                aes(x = GENDER, ymin = AGE_MEAN - AGE_SE, ymax = AGE_MEAN + AGE_SE),
+                width = 0.25)
+
+plot2
+```
+
+
+```{r, fig.cap = "This is a really nice way to make figure captions without worrying about formatting in Microsoft Word"}
+plot3 <- ggplot() +
+  geom_col(data = human_avg,
+           aes(x = GENDER, y = AGE_MEAN),
+           width = 0.5) +
+  geom_errorbar(data = human_avg,
+                aes(x = GENDER, ymin = AGE_MEAN - AGE_SE, ymax = AGE_MEAN + AGE_SE),
+                width = 0.25) +
+  xlab("Gender") +
+  ylab("Age at death (mean)")
+
+plot3
+```
+
+
+## Statistical analysis
+
+
+```{r}
+male <- human %>%
+  filter(GENDER == "M") # filters only males out to assign to 'male'
+
+female <- human %>%
+  filter(GENDER == "F") # filters only females out to assign to 'female'
+```
+
+
+```{r}
+human_ttest <- t.test(male$AGE, female$AGE)
+
+human_ttest
+```
+
+## Survivorship curve
+
+
+```{r}
+human_survivorship <- human %>%
+  select(GENDER, AGE) %>%
+  group_by(GENDER) %>%
+  summarise(greater_0 = sum(AGE>=0)/n(),
+            greater_10 = sum(AGE >=10)/n(),
+            greater_20 = sum(AGE >=20)/n(),
+            greater_30 = sum(AGE >=30)/n(),
+            greater_40 = sum(AGE >= 40)/n(),
+            greater_50 = sum(AGE >= 50)/n(),
+            greater_60 = sum(AGE >= 60)/n(),
+            greater_70 = sum(AGE >=70)/n(),
+            greater_80 = sum(AGE >= 80)/n(),
+            greater_90 = sum(AGE >= 90)/n(),
+            greater_100 = sum(AGE >= 100)/n(),
+            greater_110 = sum(AGE >= 110)/n()) %>%
+  group_by(GENDER) %>%
+  gather("AGE_RANGE", "COUNT", 2:ncol(.)) %>%
+  mutate(AGE_RANGE = as.numeric(str_extract(AGE_RANGE, "[[:digit:]]+")))
+```
+
+```{r}
+plot4 <- ggplot() +
+  geom_line(data = human_survivorship,
+            aes(x = AGE_RANGE, y = COUNT, group = GENDER, colour = GENDER)) +
+  theme_classic() +
+  xlab("Age") +
+  ylab("Proportion surviving")
+
+plot4
+```
+
+
+
+
+
+
+
+
+
+
+
