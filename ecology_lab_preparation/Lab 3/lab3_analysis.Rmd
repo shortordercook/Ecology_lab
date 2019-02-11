@@ -3,6 +3,7 @@ title: "Lab 3 Analysis"
 author: "Stephen Cook"
 date: "Oct 6 2018"
 output:
+  word_document: default
   pdf_document: default
 ---
 

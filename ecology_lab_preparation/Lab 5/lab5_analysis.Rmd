@@ -18,7 +18,7 @@ require(tidyverse)
 
 
 ```{r}
-climate <- read.csv(file = "data/CGCM3_combined.csv", header = T, sep = ",")
+climate <- read.csv(file = "climate_data.csv", header = T, sep = ",")
 ```
 
 ## Will future near-surface air temperature be influence by GHG emissions?
@@ -26,7 +26,7 @@ climate <- read.csv(file = "data/CGCM3_combined.csv", header = T, sep = ",")
 ```{r}
 july <- climate %>%
   filter(MONTH == 7) %>%
-  filter(LATITUDE == 18)
+  filter(LATITUDE == 46)
 ```
 
 ```{r}
@@ -51,13 +51,13 @@ summary(july_model)
 ```{r}
 july <- climate %>%
   filter(MONTH == 7) %>%
-  filter(LATITUDE == 18) %>%
+  filter(LATITUDE == 46) %>%
   filter(SCENARIO == "A2")
 
 july_a2_model <- lm(data = july,
                     TEMPERATURE ~ YEAR)
 
-coefficients(july_a2_model)
+summary(july_a2_model)
 ```
 
 
