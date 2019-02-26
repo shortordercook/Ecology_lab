@@ -2,6 +2,8 @@
 \usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
 \newcommand*{\authorfont}{\fontfamily{phv}\selectfont}
 
+
+
 \usepackage[]{mathpazo}
 
 
@@ -115,6 +117,8 @@
 \usepackage{booktabs}
 \usepackage{makecell}
 \usepackage[table]{xcolor}
+\usepackage{fixltx2e}
+\usepackage{hyperref}
 
 
 % add tightlist ----------
@@ -148,8 +152,7 @@
 
 
 
-\noindent  \hypertarget{background-information}{%
-\section{Background information}\label{background-information}}
+\noindent  \section{Background information}\label{background-information}
 
 \newcommand{\textunderscript}[1]{$_{\text{#1}}$}
 
@@ -180,20 +183,19 @@ P\textsubscript{gross} \color{black}.
 
 Organisms capable of photosynthesis span an incredible range of
 morphology, from \emph{unicellular algae} to \emph{vascular plants}
-(Fig. @ref(fig:organisms)). While every algae cell is photosynthetic,
-\emph{aquatic macrophytes} (i.e.~vascular plants adapted to live in
-aquatic ecosystems) have large amounts of specialized tissue devoted to
-the transportation of resources and structural support. These two
-organisms compete for very similar resources (such as sunlight and
-dissolved nutrients) - how do their morphological adaptations convey a
-competitive advantage?
+(Fig. 1). While every algae cell is photosynthetic, \emph{aquatic
+macrophytes} (i.e.~vascular plants adapted to live in aquatic
+ecosystems) have large amounts of specialized tissue devoted to the
+transportation of resources and structural support. These two organisms
+compete for very similar resources (such as sunlight and dissolved
+nutrients) - how do their morphological adaptations convey a competitive
+advantage?
 
 \begin{figure}
 \includegraphics[width=0.5\linewidth]{../_chapter_materials/aquatic_photosynthesis} \includegraphics[width=0.5\linewidth]{../_chapter_materials/ludwigia} \caption{Aquatic algae (left pane, in both meta- and periphyton communities) and aquatic macrophytes (right pane) are photosynthetic organisms that evolved in aquatic ecosystems.}\label{fig:organisms}
 \end{figure}
 
-\hypertarget{objectives}{%
-\section{Objectives}\label{objectives}}
+\section{Objectives}\label{objectives}
 
 You will form hypotheses to test questions about photosynthesis in 2
 aquatic organisms - algae and a common aquatic macrophyte.
@@ -215,8 +217,7 @@ aquatic organisms - algae and a common aquatic macrophyte.
 
 \pagebreak
 
-\hypertarget{materials-methods}{%
-\section{Materials \& methods}\label{materials-methods}}
+\section{Materials \& methods}\label{materials-methods}
 
 You will be using a common \textbf{oxygen-change method} to determine
 rates of photosynthesis and respiration. Biological oxygen demand (BOD)
@@ -224,17 +225,30 @@ bottles use a stopper that prevents gas exchange, which provides a means
 of isolating processes happening inside the bottle from the outside
 environment.
 
-\pagebreak
+\subsection{Materials}\label{materials}
 
-\hypertarget{materials}{%
-\subsection{Materials}\label{materials}}
+\begin{multicols}{2}
+\begin{itemize}{}
+  \item 10 L photosynthesis solution: 10 L DI Water, 917 mg CaCl\textsubscript{2}, 960 mg MgSO\textsubscript{4}, 584 mg NaHCO\textsubscript{3}, 154 mg KHCO\textsubscript{3}
+  \item Samples of algae and macrophyte
+  \item 330 mL BOD bottles
+  \item Dissolved O\textsubscript{2} meter (DO Meter)
+  \item Light source (> 400 \textmu E m\textsuperscript{-2}s\textsuperscript{-1})
+  \item Aluminum foil
+  \item Stir bars / stir plate
+  \item Sieves (fine mesh)
+  \item Forceps
+  \item Drying boats (aluminum)
+  \item Analytical balance \\(capable of 0.001 g)
+  \item Drying oven
+\end{itemize}
+\end{multicols}
 
 Oxygen production varies with the intensity of light, but reaches
-saturation as light intensity increases (Fig.
-@ref(fig:light-response-fig)). Since different organisms display
-different light-response curves, we need to saturate their photosystems
-with high light levels to account for a potential confounding variable
-in our experiment.
+saturation as light intensity increases (Fig. 2). Since different
+organisms display different light-response curves, we need to saturate
+their photosystems with high light levels to account for a potential
+confounding variable in our experiment. \pagebreak
 
 \begin{figure}
 \centering
@@ -245,30 +259,28 @@ saturated. In the dark, photosynthesis shuts off, and respiration causes
 the rate of DO production to fall below 0 (red circle on the y-axis).}
 \end{figure}
 
-\hypertarget{methods}{%
-\subsection{Methods}\label{methods}}
+\subsection{Methods}\label{methods}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
   Each group will be responsible for \textbf{one} of the two species.
-  Fill 9 BOD bottles with photosynthesis solution (fill to brim - the
+  Fill 12 BOD bottles with photosynthesis solution (fill to brim - the
   idea with BOD bottles is for the glass stopper to push any excess
   water out of the seal the stopper creates).
 \item
-  Carefully transfer a representative sample of your organism into 8 of
+  Carefully transfer a representative sample of your organism into 6 of
   the BOD bottles. Add a small stir bar to each bottle, and place the
   glass stopper and plastic cap on the bottle to seal. Use the DO probe
   to measure oxygen concentration in the remaining bottle (your control
   bottle).
 \item
-  You will have 4 replicates for the dark treatment, and 4 for the
-  light. Wrap the dark treatment bottles in aluminum foil, and place the
-  light treatment bottles under the light source.
-  \underline{Record the intial times for these samples}.
+  You will have 6 replicates for each organism. Wrap the bottles in
+  aluminum foil to block light, and
+  \underline{record the intial times for these samples}.
 \item
-  While you wait (at least 1.5 hours)\ldots{}
+  While you wait (at least 2 hours)\ldots{}
 
   \begin{itemize}
   \tightlist
@@ -279,12 +291,15 @@ the rate of DO production to fall below 0 (red circle on the y-axis).}
     tissues for each organism.
   \end{itemize}
 \item
-  After at least 1.5 hours, measure DO concentrations in the light
-  bottles. Make sure to record the end time each time you take a DO
-  measurement.
+  After at least 2 hours, remove the foil and measure DO concentrations
+  in the bottles. Make sure to record the end time each time you take a
+  DO measurement.
 \item
-  After 2 hours, measure the DO concentrations in the dark bottles. Make
-  sure to record the end time each time you take a DO measurement.
+  Place all bottles under a light source.
+\item
+  Wait at least 1.5 hours.
+\item
+  Measure the DO concentrations in the bottles.
 \item
   Carefully empty the BOD bottle into a fine-mesh sieve to separate the
   sample from the photosynthesis solution. Collect/scrape the sample
@@ -292,8 +307,7 @@ the rate of DO production to fall below 0 (red circle on the y-axis).}
   for 24 hrs at 105\textdegree{}C.
 \end{enumerate}
 
-\hypertarget{data-analysis}{%
-\section{Data analysis}\label{data-analysis}}
+\section{Data analysis}\label{data-analysis}
 
 You can directly determine P\textsubscript{net} (from the light
 treatment bottles) and R (from the dark treatment bottles) by
@@ -302,15 +316,13 @@ concentrations:
 
 \begin{equation}
 \Delta{}DO = DO_{final} - DO_{initial}
-(\#eq:delta)
 \end{equation}
 
 You also recorded the elapsed incubation time(\textDelta{}h), the volume
 of the BOD bottles (0.330 L), and the mass of the sample (in dry weight,
-g). Using equation @ref(eq:photosynthesis), after getting \textDelta{}DO
-normalized to volume (L) and dry weight (g), you can then calculate
-P\textsubscript{gross}, or the total oxygen produced by photosynthesis
-per unit biomass.
+g). You can then normalize \textDelta{}DO to volume (L) and dry weight
+(g), and use that to then calculate P\textsubscript{gross}, or the total
+oxygen produced by photosynthesis per unit biomass.
 
 For the 1\textsuperscript{st}, and 2\textsuperscript{nd} questions, a
 two-sample t-test comparing the rates of each process
@@ -325,9 +337,9 @@ mathematics. Some models are simple (like the one you will construct),
 and some are incredibly complex. What assumptions can you make to tackle
 question 3? If we assume that these organisms respire for 24 hours a
 day, and only photosynthesize when the sun is out (10 hours a day), we
-can use these values as a foundation for our model (Fig.
-@ref(fig:photo-model)). While this makes the maths significantly easier,
-what are the limitations of this assumption?
+can use these values as a foundation for our model (Fig. 3). While this
+makes the maths significantly easier, what are the limitations of this
+assumption?
 
 \begin{figure}
 \centering
@@ -345,8 +357,7 @@ of your model in the text of your results section.
 
 \pagebreak
 
-\hypertarget{lab-report-specifics}{%
-\subsection{Lab report specifics}\label{lab-report-specifics}}
+\subsection{Lab report specifics}\label{lab-report-specifics}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -406,58 +417,67 @@ of your model in the text of your results section.
 
 \renewcommand{\arraystretch}{2}
 
-\begin{landscape}\begin{table}[t]
+
+\begin{landscape}\rowcolors{2}{gray!6}{white}
+\begin{table}
 
 \caption{\label{tab:unnamed-chunk-1}Datasheet for BOD experiment.}
 \centering
 \resizebox{\linewidth}{!}{
 \fontsize{8}{10}\selectfont
-\begin{tabular}{>{\raggedright\arraybackslash}p{1cm}l>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{1cm}l>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{}p{1cm}>{}p{1cm}}
+\hiderowcolors
 \toprule
-BOD No. & Organism & Initial time (dark, hh:mm) & Initial DO (dark, mg/L) & Final time (dark, hh:mm) & Final DO (dark, mg/L) & Initial time (light, hh:mm) & Initial DO (light, mg/L) & Final time (light, hh:mm) & Final DO (light, mg/L) & Dish ID & Weight (g)\\
+BOD No. & Organism & Initial time (dark, hh:mm) & Initial DO (dark, mg/L) & Final time (dark, hh:mm) & Final DO (dark, mg/L) & Final time (light, hh:mm) & Final DO (light, mg/L) & Dish ID & Weight (g)\\
 \midrule
-\rowcolor{gray!6}   & Algae &  &  &  &  &  &  &  &  &  \vphantom{5} & \\
- & Algae &  &  &  &  &  &  &  &  &  \vphantom{4} & \\
-\rowcolor{gray!6}   & Algae &  &  &  &  &  &  &  &  &  \vphantom{3} & \\
- & Algae &  &  &  &  &  &  &  &  &  \vphantom{2} & \\
-\rowcolor{gray!6}   & Algae &  &  &  &  &  &  &  &  &  \vphantom{1} & \\
- & Algae &  &  &  &  &  &  &  &  &  & \\
-\rowcolor{gray!6}   & Macrophyte &  &  &  &  &  &  &  &  &  \vphantom{5} & \\
- & Macrophyte &  &  &  &  &  &  &  &  &  \vphantom{4} & \\
-\rowcolor{gray!6}   & Macrophyte &  &  &  &  &  &  &  &  &  \vphantom{3} & \\
- & Macrophyte &  &  &  &  &  &  &  &  &  \vphantom{2} & \\
-\rowcolor{gray!6}   & Macrophyte &  &  &  &  &  &  &  &  &  \vphantom{1} & \\
- & Macrophyte &  &  &  &  &  &  &  &  &  & \\
+\showrowcolors
+ & Algae & 10:00 & 8.82 &  &  &  &  &  & \\
+ & Algae & 10:00 & 8.82 &  &  &  &  &  & \\
+ & Algae & 10:00 & 8.82 &  &  &  &  &  & \\
+ & Algae & 10:00 & 8.82 &  &  &  &  &  & \\
+ & Algae & 10:00 & 8.82 &  &  &  &  &  & \\
+ & Algae & 10:00 & 8.82 &  &  &  &  &  & \\
+ & Macrophyte & 10:00 & 8.82 &  &  &  &  &  & \\
+ & Macrophyte & 10:00 & 8.82 &  &  &  &  &  & \\
+ & Macrophyte & 10:00 & 8.82 &  &  &  &  &  & \\
+ & Macrophyte & 10:00 & 8.82 &  &  &  &  &  & \\
+ & Macrophyte & 10:00 & 8.82 &  &  &  &  &  & \\
+ & Macrophyte & 10:00 & 8.82 &  &  &  &  &  & \\
 \bottomrule
 \end{tabular}}
 \end{table}
+\rowcolors{2}{white}{white}
 \end{landscape}
 
-\begin{landscape}\begin{table}[t]
+\begin{landscape}\rowcolors{2}{gray!6}{white}
+\begin{table}
 
 \caption{\label{tab:unnamed-chunk-2}Calculation sheet for BOD experiment.}
 \centering
 \resizebox{\linewidth}{!}{
 \fontsize{8}{10}\selectfont
-\begin{tabular}{ll>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}}
+\begin{tabular}[t]{ll>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}}
+\hiderowcolors
 \toprule
 BOD No. & Organism & Elapsed time (h) & Delta DO (mg/L) & Delta DO (mg) & Net photosynthesis (mg/(g*h)) & Respiration (mg/(g*h)) & Gross photosynthesis (mg/(g*h)\\
 \midrule
-\rowcolor{gray!6}   & Algae &  &  &  &  &  \vphantom{5} & \\
- & Algae &  &  &  &  &  \vphantom{4} & \\
-\rowcolor{gray!6}   & Algae &  &  &  &  &  \vphantom{3} & \\
- & Algae &  &  &  &  &  \vphantom{2} & \\
-\rowcolor{gray!6}   & Algae &  &  &  &  &  \vphantom{1} & \\
+\showrowcolors
  & Algae &  &  &  &  &  & \\
-\rowcolor{gray!6}   & Macrophyte &  &  &  &  &  \vphantom{5} & \\
- & Macrophyte &  &  &  &  &  \vphantom{4} & \\
-\rowcolor{gray!6}   & Macrophyte &  &  &  &  &  \vphantom{3} & \\
- & Macrophyte &  &  &  &  &  \vphantom{2} & \\
-\rowcolor{gray!6}   & Macrophyte &  &  &  &  &  \vphantom{1} & \\
+ & Algae &  &  &  &  &  & \\
+ & Algae &  &  &  &  &  & \\
+ & Algae &  &  &  &  &  & \\
+ & Algae &  &  &  &  &  & \\
+ & Algae &  &  &  &  &  & \\
+ & Macrophyte &  &  &  &  &  & \\
+ & Macrophyte &  &  &  &  &  & \\
+ & Macrophyte &  &  &  &  &  & \\
+ & Macrophyte &  &  &  &  &  & \\
+ & Macrophyte &  &  &  &  &  & \\
  & Macrophyte &  &  &  &  &  & \\
 \bottomrule
 \end{tabular}}
 \end{table}
+\rowcolors{2}{white}{white}
 \end{landscape}
 
 
