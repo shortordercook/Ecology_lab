@@ -1,0 +1,107 @@
+---
+title: "Lab 3 analysis"
+author: "Enter name here"
+date: "3/04/2019"
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+
+Remember, every analysis will require the same general steps.
+
+1. Import packages
+2. Import data
+3. Perform some calculations
+4. Plot the results (perform statistics as necessary)
+
+The hashtag (i.e. pound sign, '#') is used to designate headings in the document. Use them to stay organized!
+
+Please delete the <> segments below, and fill in the appropriate code or variables to complete the analysis. You may go about the analysis your own way, and as long as it addresses the hypotheses we covered in lab, you will receive full credit.
+
+# Import packages
+
+You will need the `tidyverse`, as well as the `lubridate` package which makes working with datetimes easier.
+
+```{r}
+require(tidyverse)
+require(lubridate)
+```
+
+
+# Import data
+
+The data import statement is exactly the same as previous labs, with one exception. The mutate statement tells R that the time columns should be treated as times. This makes doing simple arithmatic on times easier.
+
+```{r}
+photosynthesis_data <- read.csv(file = "photosynthesis_data.csv", header = T, sep = ",") %>%
+  mutate(time_dark_initial = hm(time_dark_initial),
+         time_dark_final = hm(time_dark_final),
+         time_light_final = hm(time_light_final))
+```
+
+
+# Perform some calculations
+
+Since we are interested in photosynthesis and respiration (which are enzyme-mediated reactions and are therefore *rates*), we must calculate changes in dissolved oxygen over time. Also, since each replicate had a different amount of material, we need to standardize each replicate to the amount of biomass in each BOD bottle to get each activity in terms of *per unit biomass*.
+
+Go through it step by step:
+
+1. Calculate the change in time over the dark and light periods of the experiment (delta_time)
+2. Calculate the change in dissolved oxygen over the dark and light periods (delta_do)
+3. Multiply by the volume of the BOD bottle to remove *liters* from the units
+4. Standardize each process by the biomass of each sample
+5. Calculate gross photosynthesis using the equation in the lab handout
+
+```{r}
+photosynthesis_calcs <- photosynthesis_data %>%
+  mutate(delta_time_dark = as.numeric(as.duration(time_dark_final-time_dark_initial), "hours")) %>%
+  mutate(delta_time_light = as.numeric(as.duration(time_light_final-time_dark_final), "hours")) %>%
+  mutate(delta_do_dark = <>) %>%
+  mutate(delta_do_light = <>) %>%
+  mutate(respiration = <>) %>%
+  mutate(net_photosynthesis = <>) %>%
+  mutate(respiration_biomass = <>) %>%
+  mutate(net_photosynthesis_biomass = <>) %>%
+  mutate(gross_photosynthesis = <>)
+```
+
+
+```{r}
+# your code to calculate means and s.e. goes here
+
+```
+
+# Plot results
+
+You are bar/column plot pros! Recycle your old code to make 2 column plots. Call them `respiration_plot` and `photosynthesis_plot`. 
+
+```{r}
+# your fantastic-looking respiration plot can go here
+
+```
+
+```{r}
+# your fantastic-looking gross photosynthesis plot can go here
+
+```
+
+
+# Statistics
+
+Is there really a difference between how much these organisms respire? How about photosynthesis? Use 2 t-tests to answer these questions. Go back to lab 1 if you do not remember how.
+
+```{r}
+# get the algae and macrophyte data in 2 different data frames here
+
+```
+
+
+```{r}
+# put t-test number 1 here
+```
+
+
+```{r}
+# put t-test number 2 here
+```
+
