@@ -1,0 +1,121 @@
+---
+title: "Lab 4 Analysis"
+author: "Stephen Cook"
+date: "March 24 2018"
+output:
+  pdf_document: default
+---
+
+Remember, every analysis will require the same general steps.
+
+1. Import packages
+2. Import data
+3. Perform some calculations
+4. Plot the results (perform statistics as necessary)
+
+The hashtag (i.e. pound sign, '#') is used to designate headings in the document. Use them to stay organized!
+
+Please delete the <> segments below, and fill in the appropriate code or variables to complete the analysis. You may go about the analysis your own way, and as long as it addresses the hypotheses we covered in lab, you will receive full credit. 
+
+
+# Import packages
+
+
+```{r, message=FALSE}
+require(tidyverse)
+require(kableExtra)
+```
+
+
+# Import data
+
+
+```{r}
+lww <- read.csv(file = "lww_vegetation.csv", header = T, sep = ",")
+```
+
+# Calculations and statistics
+
+Is management activity influencing the *abundance* of cattail?
+
+```{r}
+management_abundance <- lww %>%
+  select(cell, cat_present) %>%
+  group_by(cell) %>%
+  summarise(cat_present = sum(cat_present)) %>%
+  mutate(cat_absent = 50 - cat_present)
+```
+
+Categorical data is sometimes best presented in table format. Below is an example of how to get R to display table data for a knitted document. If writing in MS Word, please insert an appropriate table. 
+
+```{r}
+kable(management_abundance, 
+      caption = "This is an example table caption using the first 2x2 contingency table.", 
+      col.names = c("Cell", "Cattail present", "Cattail absent"),
+      booktabs = TRUE)
+```
+
+A chi-squared test determines if there is a significant difference between two nominal (i.e. categorical) variables across two different categories or groups. For this first example, the nominal variable is cattail presence or absence, and the grouping variable is the cells of the wetlands. The `simulate.p.value` makes this test a little more robust to this type of data. We will go over what it means in lab, but do not worry too much about it.
+
+```{r}
+managment.abund <- chisq.test(management_abundance, simulate.p.value = TRUE)
+managment.abund
+```
+
+
+Is management activity influencing the *dominance* of cattail?
+
+
+```{r}
+management_dominant <- lww %>%
+  select(cell, cat_dominant) %>%
+  group_by(cell) %>%
+  summarise(cat_dominant = sum(cat_dominant)) %>%
+  mutate(other_dominant = 50 - cat_dominant)
+```
+
+```{r}
+dominance <- chisq.test(management_dominant, simulate.p.value = TRUE)
+dominance
+```
+
+
+Is management activity influencing species richness?
+
+```{r}
+cell1_richness <- lww %>%
+  select(cell, richness) %>%
+  filter(cell == 1)
+
+cell2_richness <- lww %>%
+  select(cell, richness) %>%
+  filter(cell == 2)
+
+richness.test <- t.test(cell1_richness$richness, cell2_richness$richness)
+
+richness.test
+```
+
+
+
+
+Does typha dominance influence species richness?
+
+
+```{r}
+typha_dom_richness <- lww %>%
+  select(cat_dominant, richness) %>%
+  filter(cat_dominant == 1)
+
+other_dom_richness <- lww %>%
+  select(cat_dominant, richness) %>%
+  filter(cat_dominant == 0)
+
+typha.test <- t.test(typha_dom_richness$richness, other_dom_richness$richness)
+
+typha.test
+```
+
+
+
+

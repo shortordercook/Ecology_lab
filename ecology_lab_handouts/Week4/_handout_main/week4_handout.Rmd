@@ -1,0 +1,105 @@
+---
+title: 'Lab 4: Vegetation transects & ecosystem management'
+thanks: "**Current version**: `r format(Sys.time(), '%B , %Y')`"
+author:
+- name: BIO 3103, Baylor University
+fontsize: 11pt
+output:
+  pdf_document:
+    fig_caption: yes
+    keep_tex: yes
+    latex_engine: pdflatex
+    md_extensions: +lists_without_preceding_blankline
+    template: ../../Templates/svm-latex-ms.tex
+  word_document: default
+header-includes:
+- \usepackage{multicol}
+- \usepackage{textcomp}
+- \usepackage{textgreek}
+- \usepackage{pdflscape}
+- \usepackage{float}
+- \usepackage{booktabs}
+- \usepackage{makecell}
+- \usepackage[table]{xcolor}
+- \usepackage{fixltx2e}
+- \usepackage{hyperref}
+- \usepackage{graphicx}
+fontfamily: mathpazo
+---
+
+# Background information
+
+Ecosystem management aims to preserve or restore ecosystems to promote services or functions of natural environments that humans find beneficial. Wetlands provide habitat for a wide range of organisms, help mitigate flooding, and act as natural water filters by removing nutrients, pollutants, and sediments. Managers frequently assess an ecosystem by who lives there, which depends on our ability to accurately quantify community structure. Valuable data can be collected just by noting what organisms are there (also called presence/absence data), or by noting how many of those organisms are there (also called abundance data).
+
+The LWWs has historically been strongly dominated by *Typha* (cattail). Although native to Texas, cattails are very aggressive and frequently dominant wetlands to the exclusion of other species. To counter this dominance tendency, managers have tried to increase the diversity of the plant community in some areas of the LWWs by planting other species [especially *Schenoplectus* (bulrush) and *Pontederia* (pickerelweed)], or by hand-harvesting cattail out of some areas in the hopes that other species will colonize the open areas (Fig. 1). 
+
+```{r organisms, fig.ncol = 2, echo = FALSE, fig.cap = "Bulrush (\\textit{Schenoplectus}, left panel) and cattail (\\textit{Typha}, right panel) are two common wetland plants that compete for similar resources. Bulrush are characterized by round stems and an inflorescence (i.e. flower) that emerges from the side of the stem, while cattail have semi-circular leaves and a large, cylindrical infloresence.", fig.show='hold', out.width="50%", fig.height=10}
+knitr::include_graphics(c("../_chapter_materials/bulrush.jpg",
+                          "../_chapter_materials/cattail.jpg"), dpi = NA)
+```
+
+# Objectives
+
+You will collect vegetation data from two zones in the LWWs which have different management histories (Fig. 2). One area in Cell 1 adjacent to the floating boardwalk is a high visitation area where frequent management has taken place. In contrast, Cell 2 has had virtually no management. Five transects will be made originating in Cell 1, and five in Cell 2. Data about community composition will be recorded from 5 quadrats (area of 1 m^2^) along each transect. 
+
+```{r lww, echo = FALSE, fig.cap = "The Lake Waco Wetlands (LWW), near Waco Tx. (A) Water flows from the wetland inflow at the head of Cell 1 to the outflow after the nursery wetlands. (B) Cell 1 is managed by LWW staff, while Cell 2 is unmanaged.", fig.show='hold'}
+knitr::include_graphics("../_chapter_materials/lww_figure.pdf")
+```
+
+# Materials & methods
+
+## Materials
+
+
+\begin{multicols}{2}
+\begin{itemize}{}
+  \item Quadrat (m\textsuperscript{2})
+  \item Depth pole
+  \item Transect tape
+  \item Field datasheet and clipboard
+\end{itemize}
+\end{multicols}
+
+## Methods
+
+In each area sampled, place 5 quadrats along 5 parallel transects. These will originate from the either the boardwalk or the levee between cells. Place quadrats approximately 10 m apart. In each quadrat, record the depth (in cm), rank % cover, the presence of cattail and bulrush, and if cattail or bulrush is the dominant species. If another species is dominant, generate a descriptive 'common name' that we may later use to identify the plant. Also record the species richness of each quadrat. 
+
+
+## Data analysis
+
+Using the data generated and appropriate statistical analyses (contingency table or t-test), address the following questions:
+
+1. Is management activity influencing the **abundance** of cattail?
+    * A 2x2 contingency table is appropriate for this question.
+
+2. Is management activity influencing the **dominance** of cattail?
+    * A 2x2 contingency table is appropriate for this question.
+    
+3. Is management activity influencing **species richness**?
+    * Most suited to a t-test, but could also be address using a 2x2 contingency table.
+    
+4. Does cattail dominance influence **species richness**?
+    * Most suited to a t-test, but could also be address using a 2x2 contingency table. For this question, the grouping variable is *cattail dominance*, so you should use data from both cells!
+
+
+\pagebreak
+
+# Lab report specifics
+
+1. Introduction
+    * Why manage ecosystems?
+    * Why sample vegetation?
+    * Objectives
+    * Hypotheses
+2. Methods
+    * Experimental design
+    * Review how data was collected
+    * Calculations / statistics
+3. Results
+    * Question 1 (text **AND** graph/table)
+    * Question 2 (text **AND** graph/table)
+    * Question 3 (text **AND** graph/table)
+    * Question 4 (text **AND** graph/table)
+4. Discussion
+    * Hypotheses rejected/supported
+    * Provide a coherent explanation/interpretation of your results
