@@ -1,0 +1,99 @@
+---
+title: "Lab 4 Analysis"
+author: "Stephen Cook"
+date: "March 24 2018"
+output:
+  pdf_document: default
+---
+
+Remember, every analysis will require the same general steps.
+
+1. Import packages
+2. Import data
+3. Perform some calculations
+4. Plot the results (perform statistics as necessary)
+
+The hashtag (i.e. pound sign, '#') is used to designate headings in the document. Use them to stay organized!
+
+Please delete the <> segments below, and fill in the appropriate code or variables to complete the analysis. You may go about the analysis your own way, and as long as it addresses the hypotheses we covered in lab, you will receive full credit. 
+
+
+# Import packages
+
+
+```{r, message=FALSE}
+require(tidyverse)
+```
+
+## Import data
+
+
+```{r}
+invert <- read.csv(file = "invert_data_distributed.csv", header = T, sep = ",")
+```
+
+## Calculations
+
+Which stream is more biologically diverse (using richness-based measurements)? Since the primary difference between these two streams is higher nutrient concentrations from anthropogenic activity (primarily runoff from farming and pastureland), we can attribute any changes in the macroinvertebrates to this difference. 
+
+Remember that `summarise()` compresses a table using some function. In the past we have used functions like `mean()` to generate summaries of the data for plotting. This time, we will use the function `n_distinct()`, which counts the number of unique things in a column. Alpha-diversity is the number of species in a sample (in this case a single kick-screen). What columns do we need to calculate that? Select those columns, use `group_by()` to perform calculations on your groups of interest, and then use summarise to collapse the information in the column that contains the species information. 
+
+```{r}
+alpha_div <- invert %>%
+  select(site, replicate, code) %>%
+  group_by(site, replicate) %>%
+  summarise(alpha_richness = n_distinct(code))
+```
+
+
+Gamma-diversity is all of the biodiversity located in a region. For our purposes, the region is the stream we sampled. How does all of the taxa we collected from the Middle Bosque compare to all the taxa that were collected from Hog Creek? The only thing you should change is the grouping variable! We are still counting up taxa.
+
+
+```{r}
+gamma_div <- invert %>%
+  select(site, code) %>%
+  group_by(site) %>%
+  summarise(gamma_richness = n_distinct(code))
+```
+
+
+Beta-diversity relates alpha to gamma diversity, and is a measure of how variable the kick-screens are (refer to the diagram in your handout). The only new thing here is `full_join()`, which joins 2 data frames together by a column of your choice. It hunts for all the terms that are the same in that column, and joins maches together to create one dataframe.
+
+
+```{r}
+richness_diversity <- alpha_div %>%
+  summarise(mean_alpha = mean(alpha_richness)) %>%
+  full_join(gamma_div, by = "site") %>%
+  mutate(beta_richness = gamma_richness/mean_alpha)
+```
+
+# Statistics
+
+Only one measure of biodiversity has replicate measures - alpha diversity. Run a t-test on those values to determine if there is any statistical difference between alpha diversity of the two streams.
+
+```{r}
+# code for t-test can go here. copy over from a previous report
+
+
+```
+
+
+# Plotting
+
+Since gamma diversity and beta diversity are composite measures (only 1 measure per stream), you may report this information in the text of your results section. Alpha-diversity has replicate measures, so please present this information in a bar-graph.
+
+```{r}
+# mean and standard error calculations may go here. copy over from previous report
+
+
+```
+
+```{r}
+# code for column plot may go here. please make axes informative.
+
+
+
+```
+
+
+
