@@ -1,0 +1,133 @@
+---
+title: "Lab 6 Analysis"
+author: "Your name here"
+date: "April 29 2018"
+output:
+  pdf_document: default
+---
+
+Remember, every analysis will require the same general steps.
+
+1. Import packages
+2. Import data
+3. Perform some calculations
+4. Plot the results (perform statistics as necessary)
+
+The hashtag (i.e. pound sign, '#') is used to designate headings in the document. Use them to stay organized!
+
+Please delete the <> segments below, and fill in the appropriate code or variables to complete the analysis. You may go about the analysis your own way, and as long as it addresses the hypotheses we covered in lab, you will receive full credit. 
+
+
+## Import packages
+
+
+```{r, message=FALSE}
+require(tidyverse)
+require(broom)
+```
+
+
+## Import data
+
+
+```{r}
+climate <- read.csv(file = "climate_data.csv", header = T, sep = ",")
+```
+
+
+
+## Will future near-surface air temperature be influence by GHG emissions?
+
+Use filter to make a new dataframe containing *only* the data that you need to answer this question.
+
+```{r}
+july <- climate %>%
+  filter(month == 7) %>%
+  filter(latitude == 46)
+```
+
+This is a new kind of plot that you have not encountered before. Luckily all it takes is `geom_point()` to make a plot of points. Same arguments as previous `geom`s though!
+
+
+```{r}
+july_plot <- ggplot() +
+  geom_point(data = july,
+             aes(x = year, y = temperature))
+
+july_plot
+```
+
+How can we make sense out of this? Make a new plot, and include `color= <> ` in your `aes()` argument.
+
+```{r}
+# New plot here
+```
+
+
+
+How do we capture how those different scenarios change over time? A simple linear model will do nicely here. We will discuss more in lab, but `stat_smooth()` is what you are after!
+
+```{r}
+july_plot <- ggplot() +
+  geom_point(data = july,
+             aes(x = year, y = temperature, colour = scenario)) +
+  stat_smooth(data = july,
+              aes(x = year, y = temperature, colour = scenario),
+              method = "lm")
+
+july_plot
+```
+
+
+Ggplot is doing a lot behind the scenes here. We need to run our own linear regressions so that we can report the necessary values in the text of our results section.
+
+
+```{r}
+july_a2 <- climate %>%
+  filter(month == 7) %>%
+  filter(latitude == 46) %>%
+  filter(scenario == "A2")
+
+july_a2_model <- lm(data = july,
+                    temperature ~ year)
+
+summary(july_a2_model)
+```
+
+
+## Will climate change have a greater effect in the winter or summer on near-surface air temperatures under the A2 scenario?
+
+
+You have not learned how to filter multiple conditions. See how you do that below. 
+
+```{r}
+seasons <- climate %>%
+  filter(latitude == 21) %>%
+  filter(month == 7 | month == 1)
+```
+
+
+# Will climate change have a greater effect at high or low latitudes?
+
+
+
+Using just the January temperatures and the A2 scenario, great a graph and model the effects of latitude (x-axis values) on mean tempreature change (y-axis values). We will go over the code in class. 
+
+
+```{r}
+lat_question <- climate %>%
+  filter(month == 1) %>%
+  filter(scenario == "A2") 
+```
+
+
+```{r}
+lat_slopes <- lat_question %>%
+  group_by(latitude) %>%
+  do(data.frame(tidy(lm(temperature ~ year, data = .)))) %>%
+  select(latitude, term, estimate) %>%
+  filter(term == "year") %>%
+  mutate(century_change = estimate*100)
+  
+```
+

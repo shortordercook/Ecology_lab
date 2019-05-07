@@ -11,6 +11,7 @@ output:
 
 ```{r, message=FALSE}
 require(tidyverse)
+require(broom)
 ```
 
 
@@ -61,5 +62,23 @@ summary(july_a2_model)
 ```
 
 
+# For objective 3
 
+Using just the January temperatures and the A2 scenario, great a graph and model the effects of latitude (x-axis values) on mean tempreature change (y-axis values). We will go over the code in class. 
+
+```{r}
+lat_question <- climate %>%
+  filter(MONTH == 1) %>%
+  filter(SCENARIO == "A2") 
+```
+
+```{r}
+lat_slopes <- lat_question %>%
+  group_by(LATITUDE) %>%
+  do(data.frame(tidy(lm(TEMPERATURE ~ YEAR, data = .)))) %>%
+  select(LATITUDE, term, estimate) %>%
+  filter(term == "YEAR") %>%
+  mutate(century_change = estimate*100)
+  
+```
 
